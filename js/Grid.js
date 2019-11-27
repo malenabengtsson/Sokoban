@@ -40,10 +40,11 @@ export default {
             y: row,
           }
           this.tiles[row].push(position)
+        
         }
       }
 
-      console.log(grid)
+
       console.log(this.tiles)
       console.log(this.flatTiles)
     }
