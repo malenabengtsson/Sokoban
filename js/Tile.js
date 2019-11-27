@@ -1,7 +1,7 @@
 export default {
     props: ['position'],
     template:`
-        <button class="tile" @click="logPosition">X</button>
+        <span class="tile" @click="logPosition"></span>
     `,
     methods: {
         logPosition() {

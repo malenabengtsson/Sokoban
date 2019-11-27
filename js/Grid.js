@@ -24,10 +24,17 @@ export default {
       }
     },
     created() {
-      let gameBoard = 6;
-      for(let row = 1; row < gameBoard; row++){
+      let gameBoard = 5;
+      let grid = [
+        ['W', 'W', 'W', 'W', 'W'],
+        ['W', ' ', ' ', ' ', 'W'],
+        ['W', ' ', ' ', ' ', 'W'],
+        ['W', ' ', ' ', ' ', 'W'],
+        ['W', 'W', 'W', 'W', 'W']
+      ]
+      for(let row = 0; row < gameBoard; row++){
         this.tiles[row] = []
-        for(let col = 1; col < gameBoard; col++){
+        for(let col = 0; col < gameBoard; col++){
           let position = {
             x: col,
             y: row,
@@ -36,6 +43,7 @@ export default {
         }
       }
 
+      console.log(grid)
       console.log(this.tiles)
       console.log(this.flatTiles)
     }
