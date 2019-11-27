@@ -25,10 +25,12 @@ export default {
     },
     created() {
       let gameBoard = 5;
+      let wallImage = 'css/wall.jpg'
+      let stoneImage = '/css/stone.png'
       let grid = [
         ['W', 'W', 'W', 'W', 'W'],
         ['W', ' ', ' ', ' ', 'W'],
-        ['W', ' ', ' ', ' ', 'W'],
+        ['W', 'P', 'R', ' ', 'W'],
         ['W', ' ', ' ', ' ', 'W'],
         ['W', 'W', 'W', 'W', 'W']
       ]
@@ -38,14 +40,27 @@ export default {
           let position = {
             x: col,
             y: row,
+            img: Image,
           }
           this.tiles[row].push(position)
-        
+          switch (grid[row][col]){
+            case "W":
+              this.tiles[row][col].img= wallImage;
+              break;
+              case "R":
+              this.tiles[row][col].img= stoneImage;
+              break;
+
+              
+
+
+          }
         }
       }
+  
+
+    },
+   
 
 
-      console.log(this.tiles)
-      console.log(this.flatTiles)
-    }
 }
