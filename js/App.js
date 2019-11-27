@@ -1,12 +1,12 @@
-import Board from './Board.js'
+import Grid from './Grid.js'
 
 export default {
     components: {
-        Board
+        Grid
     },
     template: `
     <div id="app">
-      <Board></Board>
+      <Grid></Grid>
     </div>
     `,
 }
