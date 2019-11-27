@@ -8,7 +8,15 @@
     grid-gap: 0px;
 grid-auto-rows: minmax(100px, auto);
 }
-div{
+
+
+td{
     border: 2px solid black;
 }
 
+.x{
+    display: flex;
+}
+.y{
+    display: flex;
+}
