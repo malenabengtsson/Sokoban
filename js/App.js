@@ -8,5 +8,5 @@ export default {
     <div id="app">
       <Grid></Grid>
     </div>
-    `
+    `,
 }
