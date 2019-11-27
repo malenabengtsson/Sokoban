@@ -26,11 +26,13 @@ export default {
     created() {
       let gameBoard = 5;
       let wallImage = 'css/wall.jpg'
-      let stoneImage = '/css/stone.png'
+      let stoneImage = 'css/stone.png'
+      let playerImage = 'css/player.png'
+      let finishImage = 'css/finish.png'
       let grid = [
         ['W', 'W', 'W', 'W', 'W'],
         ['W', ' ', ' ', ' ', 'W'],
-        ['W', 'P', 'R', ' ', 'W'],
+        ['W', 'P', 'S', 'F', 'W'],
         ['W', ' ', ' ', ' ', 'W'],
         ['W', 'W', 'W', 'W', 'W']
       ]
@@ -47,13 +49,14 @@ export default {
             case "W":
               this.tiles[row][col].img= wallImage;
               break;
-              case "R":
+              case "S":
               this.tiles[row][col].img= stoneImage;
               break;
-
-              
-
-
+              case "P":
+                  this.tiles[row][col].img= playerImage;
+              break;
+              case "F":
+                  this.tiles[row][col].img= finishImage;
           }
         }
       }
