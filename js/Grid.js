@@ -5,12 +5,24 @@ export default {
     Tile
   },
     template:`
+    <div>
+      
+    <label for="level">Choose which level to play!</label>
+    <div class="level">
+      <select>
+      <option value="level-1">Level 1</option>
+      <option value="level-2">Level 2</option>
+      <option value="level-3">Level 3</option>
+      <option value="level-4">Level 4</option>
+      </select>
+      </div>
       <div class="grid-layout">
         <Tile 
           v-for="(tile, i) of flatTiles" 
           v-bind:position="tile" 
           v-bind:key="'tile' + i + tile.x + tile.y">
         </Tile>
+      </div>
       </div>
     `,
     data(){
@@ -25,10 +37,10 @@ export default {
     },
     created() {
       let gameBoard = 5;
-      let wallImage = 'css/wall.jpg'
-      let stoneImage = 'css/stone.png'
-      let playerImage = 'css/player.png'
-      let finishImage = 'css/finish.png'
+      let wallImage = 'css/img/wall.jpg'
+      let stoneImage = 'css/img/stone.png'
+      let playerImage = 'css/img/player.png'
+      let finishImage = 'css/img/finish.png'
       let grid = [
         ['W', 'W', 'W', 'W', 'W'],
         ['W', ' ', ' ', ' ', 'W'],
