@@ -9,12 +9,10 @@ export default {
       
     <label for="level">Choose which level to play!</label>
     <div class="level">
-      <select>
-      <option value="level-1">Level 1</option>
-      <option value="level-2">Level 2</option>
-      <option value="level-3">Level 3</option>
-      <option value="level-4">Level 4</option>
-      </select>
+      <button type="button">Level 1</button>
+      <button type="button">Level 2</button>
+      <button type="button">Level 3</button>
+      <button type="button">Level 4</button>
       </div>
       <div class="grid-layout">
         <Tile 
@@ -22,6 +20,10 @@ export default {
           v-bind:position="tile" 
           v-bind:key="'tile' + i + tile.x + tile.y">
         </Tile>
+      </div>
+      <label for="restart">Are you stuck?</label>
+    <div class="restart">
+      <button style="button" id="restart">Reset level</button>
       </div>
       </div>
     `,

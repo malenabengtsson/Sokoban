@@ -41,9 +41,16 @@ padding: 1%;
 label{
   display: flex;
   justify-content: center;
+  margin-top: 3%;
 
 }
 
-select{
+button{
   border-radius: 8px;
+  margin: 2%
+}
+.restart{
+ display: flex;
+ justify-content: center;
+;
 }
