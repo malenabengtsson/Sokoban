@@ -51,7 +51,7 @@ export default {
         ['W', 'W', 'W', 'W', 'W']
       ]
       for(let row = 0; row < gameBoard; row++){
-        this.tiles[row] = []
+      this.tiles[row] = []
         for(let col = 0; col < gameBoard; col++){
           let position = {
             x: col,
@@ -74,10 +74,5 @@ export default {
           }
         }
       }
-  
-
     },
-   
-
-
 }
