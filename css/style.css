@@ -1,5 +1,9 @@
 *{
     box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+body{
+  background-color: rgb(236, 231, 199);
 }
 
 .grid-layout {
@@ -10,7 +14,43 @@
 
 .tile {
   width: 20%;
-  height: 100px;
-  background-image: url('https://opengameart.org/sites/default/files/grass00.png');
-  
+  height: 12vw;
+  background-image: url(/css/img/grass.png);
+  background-size: cover;
+}
+
+.header{
+  display: flex;
+  justify-content: center;
+  font-size: 48px;
+  margin: 2%;
+}
+
+.grid-body{
+display: flex;
+justify-content: center;
+}
+
+.level{
+  display: flex;
+  justify-content: center;
+padding: 1%;
+
+}
+
+label{
+  display: flex;
+  justify-content: center;
+  margin-top: 3%;
+
+}
+
+button{
+  border-radius: 8px;
+  margin: 2%
+}
+.restart{
+ display: flex;
+ justify-content: center;
+;
 }
