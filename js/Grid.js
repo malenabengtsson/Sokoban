@@ -5,12 +5,26 @@ export default {
     Tile
   },
     template:`
+    <div>
+      
+    <label for="level">Choose which level to play!</label>
+    <div class="level">
+      <button type="button">Level 1</button>
+      <button type="button">Level 2</button>
+      <button type="button">Level 3</button>
+      <button type="button">Level 4</button>
+      </div>
       <div class="grid-layout">
         <Tile 
           v-for="(tile, i) of flatTiles" 
           v-bind:position="tile" 
           v-bind:key="'tile' + i + tile.x + tile.y">
         </Tile>
+      </div>
+      <label for="restart">Are you stuck?</label>
+    <div class="restart">
+      <button style="button" id="restart">Reset level</button>
+      </div>
       </div>
     `,
     data(){
@@ -25,12 +39,14 @@ export default {
     },
     created() {
       let gameBoard = 5;
-      let wallImage = 'css/wall.jpg'
-      let stoneImage = '/css/stone.png'
+      let wallImage = 'css/img/wall.jpg'
+      let stoneImage = 'css/img/stone.png'
+      let playerImage = 'css/img/player.png'
+      let finishImage = 'css/img/finish.png'
       let grid = [
         ['W', 'W', 'W', 'W', 'W'],
         ['W', ' ', ' ', ' ', 'W'],
-        ['W', 'P', 'R', ' ', 'W'],
+        ['W', 'P', 'S', 'F', 'W'],
         ['W', ' ', ' ', ' ', 'W'],
         ['W', 'W', 'W', 'W', 'W']
       ]
@@ -47,13 +63,14 @@ export default {
             case "W":
               this.tiles[row][col].img= wallImage;
               break;
-              case "R":
+              case "S":
               this.tiles[row][col].img= stoneImage;
               break;
-
-              
-
-
+              case "P":
+                  this.tiles[row][col].img= playerImage;
+              break;
+              case "F":
+                  this.tiles[row][col].img= finishImage;
           }
         }
       }
