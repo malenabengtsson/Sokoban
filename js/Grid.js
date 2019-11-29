@@ -5,7 +5,7 @@ export default {
     Tile
   },
     template:`
-    <div>
+    <div >
       
     <label for="level">Choose which level to play!</label>
     <div class="level">
@@ -107,7 +107,7 @@ export default {
             
             switch (grid[row][col]){
               case "W":
-                this.tiles[row][col].img= this.wallImage;
+                this.tiles[row][col].img= '';
                 console.log("W")
                 break;
                 case "S":
@@ -124,6 +124,7 @@ export default {
       },
       level2(){
     
+        console.log("hello")
         console.log("hello")
         this.tiles = []
         let grid = [
