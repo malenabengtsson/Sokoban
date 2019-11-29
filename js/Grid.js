@@ -87,7 +87,6 @@ export default {
     },
     methods: {
       level1(){
-        this.tiles.clear();
         this.tiles = []
         let grid = [
           ['W', 'W', 'W', 'W', 'W'],
