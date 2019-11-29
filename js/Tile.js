@@ -1,7 +1,7 @@
 export default {
     props: ['position'],
     template:`
-        <span ref="tile" class="tile" @click="logPosition"></span>
+        <span id="image1" ref="tile" class="tile" @click="logPosition"></span>
     `,
     methods: {
         logPosition() {

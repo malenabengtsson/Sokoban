@@ -31,10 +31,10 @@ export default {
       return{
         tiles: [],
         gameBoard: 5,
-      wallImage: '/css/img/wall.jpg',
-      stoneImage: '/css/img/stone.png',
-      playerImage: '/css/img/player.png',
-      finishImage: '/css/img/finish.png'
+      wallImage: 'css/img/wall.jpg',
+      stoneImage: 'css/img/stone.png',
+      playerImage: 'css/img/player.png',
+      finishImage: 'css/img/finish.png'
       }
     },
     computed: {
@@ -42,12 +42,13 @@ export default {
         return this.tiles.flat()
       }
     },
+    /*
     created() {
-      /*var gameBoard = 5;
-      var wallImage = '/css/img/wall.jpg'
-      var stoneImage = '/css/img/stone.png'
-      var playerImage = '/css/img/player.png'
-      var finishImage = '/css/img/finish.png'
+      var gameBoard = 5;
+      var wallImage = 'css/img/wall.jpg'
+      var stoneImage = 'css/img/stone.png'
+      var playerImage = 'css/img/player.png'
+      var finishImage = 'css/img/finish.png'
       let grid = [
         ['W', 'W', 'W', 'W', 'W'],
         ['W', ' ', ' ', ' ', 'W'],
@@ -79,10 +80,10 @@ export default {
                   this.tiles[row][col].img= finishImage;
           }
         }
-      }*/
-  
+      }
 
     },
+    */
     methods: {
       level1(){
         this.tiles = []
@@ -116,6 +117,7 @@ export default {
                 break;
                 case "F":
                     this.tiles[row][col].img= this.finishImage;
+                break;
             }
           }
         }
