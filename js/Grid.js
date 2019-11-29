@@ -5,7 +5,7 @@ export default {
     Tile
   },
     template:`
-    <div>
+    <div >
       
     <label for="level">Choose which level to play!</label>
     <div class="level">
@@ -18,7 +18,9 @@ export default {
         <Tile
           v-for="(tile, i) of flatTiles" 
           v-bind:position="tile" 
-          v-bind:key="'tile' + i + tile.x + tile.y">
+          v-bind:key="'tile' + i + tile.x + tile.y"
+          @testRight="testRight"
+          >
         </Tile>
       </div>
       <label for="restart">Are you stuck?</label>
@@ -105,7 +107,7 @@ export default {
             
             switch (grid[row][col]){
               case "W":
-                this.tiles[row][col].img= this.wallImage;
+                this.tiles[row][col].img= '';
                 console.log("W")
                 break;
                 case "S":
@@ -121,13 +123,15 @@ export default {
         }
       },
       level2(){
+    
+        console.log("hello")
         console.log("hello")
         this.tiles = []
         let grid = [
           ['W', 'W', 'W', 'W', 'W'],
           ['W', ' ', ' ', ' ', 'W'],
-          ['W', ' ', 'S', 'F', 'W'],
-          ['W', 'P', ' ', ' ', 'W'],
+          ['W', 'P', 'S', 'F', 'W'],
+          ['W', ' ', ' ', ' ', 'W'],
           ['W', 'W', 'W', 'W', 'W']
         ]
         for(let row = 0; row < 5; row++){
@@ -156,6 +160,17 @@ export default {
             }
           }
         }
+      },
+      testRight(x, y){
+        if (this.tiles[x][y].img == this.stoneImage){
+          this.tiles[x][y].img = this.playerImage;
+          this.tiles[(x-1)][y].img = this.stoneImage;
+          console.log("worked?")
+        }
+        else{
+          console.log("Cant move")
+        }
+
       }
     }
   }
