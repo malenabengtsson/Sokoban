@@ -1,7 +1,7 @@
 export default {
     props: ['position'],
     template:`
-        <span ref="tile" class="tile" @click="logPosition" ></span>
+        <span ref="tile" class="tile" @click="logPosition"></span>
     `,
     methods: {
         logPosition() {
@@ -13,5 +13,11 @@ export default {
     },
     mounted() {
      this.$refs.tile.style.setProperty('background-image', `url(${this.position.img})`)
-    }
+    },
+    computed: {
+        computed_position: function() {
+          return this.position;
+        }
+
+}
 }
