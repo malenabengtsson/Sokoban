@@ -12,6 +12,6 @@ export default {
         }
     },
     mounted() {
-       this.$refs.tile.style.setProperty('background-image', `url(${this.position.img})`)
+     this.$refs.tile.style.setProperty('background-image', `url(${this.position.img})`)
     }
 }

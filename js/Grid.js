@@ -36,7 +36,8 @@ export default {
       wallImage: '/css/img/wall.jpg',
       stoneImage: '/css/img/stone.png',
       playerImage: '/css/img/player.png',
-      finishImage: '/css/img/finish.png'
+      finishImage: '/css/img/finish.png',
+      grassImage: '/css/img/grass.png'
       }
     },
     computed: {
@@ -90,9 +91,9 @@ export default {
         this.tiles = []
         let grid = [
           ['W', 'W', 'W', 'W', 'W'],
-          ['W', 'P', ' ', ' ', 'W'],
-          ['W', ' ', 'S', 'F', 'W'],
-          ['W', ' ', ' ', ' ', 'W'],
+          ['W', 'P', 'G', 'G', 'W'],
+          ['W', 'G', 'S', 'F', 'W'],
+          ['W', 'G', 'G', 'G', 'W'],
           ['W', 'W', 'W', 'W', 'W']
         ]
         for(let row = 0; row < 5; row++){
@@ -118,19 +119,23 @@ export default {
                 break;
                 case "F":
                     this.tiles[row][col].img= this.finishImage;
+                    break;
+                    case "G":
+                      this.tiles[row][col].img = this.grassImage;
+                      break;
             }
           }
         }
+        console.log(this.tiles)
       },
       level2(){
-    
         console.log("hello")
         this.tiles = []
         let grid = [
           ['W', 'W', 'W', 'W', 'W'],
-          ['W', ' ', ' ', ' ', 'W'],
+          ['W', 'G', 'G', 'G', 'W'],
           ['W', 'P', 'S', 'F', 'W'],
-          ['W', ' ', ' ', ' ', 'W'],
+          ['W', 'G', 'G', 'G', 'W'],
           ['W', 'W', 'W', 'W', 'W']
         ]
         for(let row = 0; row < 5; row++){
@@ -156,15 +161,21 @@ export default {
                 break;
                 case "F":
                     this.tiles[row][col].img= this.finishImage;
+                    break;
+                    case "G":
+                        this.tiles[row][col].img = this.grassImage;
+                        break;
             }
           }
         }
+        console.log(this.tiles)
       },
       testRight(x, y){
         if (this.tiles[x][y].img == this.stoneImage){
           this.tiles[x][y].img = this.playerImage;
-          this.tiles[(x-1)][y].img = this.stoneImage;
           console.log("worked?")
+          console.log(this.tiles)
+          this.$forceUpdate();
         }
         else{
           console.log("Cant move")
