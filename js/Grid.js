@@ -39,7 +39,8 @@ export default {
       playerImage: '/css/img/player.png',
       finishImage: '/css/img/finish.png',
       grassImage: '/css/img/grass.png',
-      render: 0
+      render: 0,
+      playerPosition: ''
       }
     },
     computed: {
@@ -144,8 +145,8 @@ export default {
           this.tiles[row] = []
           for(let col = 0; col < 5; col++){
             let position = {
-              x: col,
-              y: row,
+              y: col,
+              x: row,
               img: Image,
             }
             this.tiles[row].push(position)
