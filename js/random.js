@@ -15,9 +15,11 @@ function checkKey(e) {
     }
     else if (e.keyCode == '37') {
        // left arrow
+       console.log("u pressed left")
     }
     else if (e.keyCode == '39') {
        // right arrow
+       console.log("u pressed right")
     } else {
         console.log("u pressed something else")
     }

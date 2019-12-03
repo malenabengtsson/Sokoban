@@ -42,11 +42,6 @@ export default {
       render: 0
       }
     },
-    computed: {
-      flatTiles() {
-        return this.tiles.flat()
-      }
-    },
     created() {
       /*var gameBoard = 5;
       var wallImage = '/css/img/wall.jpg'
@@ -110,14 +105,20 @@ export default {
             
             switch (this.grid[row][col]){
               case "W":
-                this.tiles[row][col].img= '';
-                console.log("W")
+                this.tiles[row][col].img= this.wallImage;
+                this.flatTiles = this.tiles.flat();
+                break;
+                case "G":
+                this.tiles[row][col].img= this.grassImage;
+                this.flatTiles = this.tiles.flat();
                 break;
                 case "S":
                 this.tiles[row][col].img= this.stoneImage;
+                this.flatTiles = this.tiles.flat();
                 break;
                 case "P":
                     this.tiles[row][col].img= this.playerImage;
+                    this.flatTiles = this.tiles.flat();
                 break;
                 case "F":
                     this.tiles[row][col].img= this.finishImage;
@@ -154,13 +155,19 @@ export default {
             switch (this.grid[row][col]){
               case "W":
                 this.tiles[row][col].img= this.wallImage;
-                console.log("W")
+                this.flatTiles = this.tiles.flat();
+                break;
+                case "G":
+                this.tiles[row][col].img= this.grassImage;
+                this.flatTiles = this.tiles.flat();
                 break;
                 case "S":
                 this.tiles[row][col].img= this.stoneImage;
+                this.flatTiles = this.tiles.flat();
                 break;
                 case "P":
                     this.tiles[row][col].img= this.playerImage;
+                    this.flatTiles = this.tiles.flat();
                 break;
                 case "F":
                     this.tiles[row][col].img= this.finishImage;
