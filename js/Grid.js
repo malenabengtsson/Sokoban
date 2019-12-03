@@ -5,7 +5,7 @@ export default {
     Tile
   },
     template:`
-    <div >
+    <div>
       
     <label for="level">Choose which level to play!</label>
     <div class="level">
@@ -39,7 +39,13 @@ export default {
       playerImage: '/css/img/player.png',
       finishImage: '/css/img/finish.png',
       grassImage: '/css/img/grass.png',
-      render: 0
+      render: 0,
+      playerPosition: ''
+      }
+    },
+    computed: {
+      flatTiles() {
+        return this.tiles.flat()
       }
     },
     created() {
@@ -106,19 +112,14 @@ export default {
             switch (this.grid[row][col]){
               case "W":
                 this.tiles[row][col].img= this.wallImage;
-                this.flatTiles = this.tiles.flat();
-                break;
-                case "G":
-                this.tiles[row][col].img= this.grassImage;
-                this.flatTiles = this.tiles.flat();
+                console.log("W")
                 break;
                 case "S":
                 this.tiles[row][col].img= this.stoneImage;
-                this.flatTiles = this.tiles.flat();
                 break;
                 case "P":
                     this.tiles[row][col].img= this.playerImage;
-                    this.flatTiles = this.tiles.flat();
+                    this.tiles[row][col] = playerPosition;
                 break;
                 case "F":
                     this.tiles[row][col].img= this.finishImage;
@@ -132,7 +133,6 @@ export default {
         console.log(this.tiles)
       },
       level2(){
-        console.log("hello")
         console.log("hello")
         this.tiles = []
         this.grid = [
@@ -155,19 +155,14 @@ export default {
             switch (this.grid[row][col]){
               case "W":
                 this.tiles[row][col].img= this.wallImage;
-                this.flatTiles = this.tiles.flat();
-                break;
-                case "G":
-                this.tiles[row][col].img= this.grassImage;
-                this.flatTiles = this.tiles.flat();
+                console.log("W")
                 break;
                 case "S":
                 this.tiles[row][col].img= this.stoneImage;
-                this.flatTiles = this.tiles.flat();
                 break;
                 case "P":
                     this.tiles[row][col].img= this.playerImage;
-                    this.flatTiles = this.tiles.flat();
+                    //this.tiles[row][col] = playerPosition;
                 break;
                 case "F":
                     this.tiles[row][col].img= this.finishImage;
@@ -183,9 +178,11 @@ export default {
       testRight(x, y){
         if (this.tiles[x][y].img != this.wallImage){
           this.tiles[x][y].img = this.playerImage;
-          console.log("worked?")
+          this.tiles[x+1][y].img = this.grassImage
+          //playerPosition = this.tiles[x][y].img
+          x++
           this.render++;
-  
+          
         }
         else{
           console.log("Cant move")
