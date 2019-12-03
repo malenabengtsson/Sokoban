@@ -129,7 +129,8 @@ export default {
             }
           }
         }
-        console.log(this.tiles)
+        console.log(this.tiles);
+        this.render++;
       },
       level2(){
         console.log("hello")
@@ -172,6 +173,7 @@ export default {
           }
         }
         console.log(this.tiles)
+        this.render++
       },
       testRight(x, y){
         if (this.tiles[x][y].img != this.wallImage){
