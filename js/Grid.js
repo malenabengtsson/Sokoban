@@ -119,6 +119,7 @@ export default {
                 break;
                 case "P":
                     this.tiles[row][col].img= this.playerImage;
+                    this.tiles[row][col] = playerPosition;
                 break;
                 case "F":
                     this.tiles[row][col].img= this.finishImage;
@@ -161,6 +162,7 @@ export default {
                 break;
                 case "P":
                     this.tiles[row][col].img= this.playerImage;
+                    //this.tiles[row][col] = playerPosition;
                 break;
                 case "F":
                     this.tiles[row][col].img= this.finishImage;
@@ -176,9 +178,11 @@ export default {
       testRight(x, y){
         if (this.tiles[x][y].img != this.wallImage){
           this.tiles[x][y].img = this.playerImage;
-          console.log("worked?")
+          this.tiles[x+1][y].img = this.grassImage
+          //playerPosition = this.tiles[x][y].img
+          x++
           this.render++;
-  
+          
         }
         else{
           console.log("Cant move")
