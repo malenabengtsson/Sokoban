@@ -14,10 +14,5 @@ export default {
     mounted() {
      this.$refs.tile.style.setProperty('background-image', `url(${this.position.img})`)
     },
-    computed: {
-        computed_position: function() {
-          return this.position;
-        }
 
-}
 }
