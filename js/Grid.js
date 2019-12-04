@@ -267,8 +267,8 @@ export default {
           this.flatTiles = this.tiles.flat()
       
         }
-        if(this.tiles[2][3].img == this.grassImage){
-          this.tiles[2][3].img = this.finishImage
+        if(this.tiles[3][7].img == this.grassImage){
+          this.tiles[3][7].img = this.finishImage
         }
         else{
           console.log("Cant move")
