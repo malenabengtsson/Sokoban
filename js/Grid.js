@@ -1,12 +1,9 @@
 import Tile from './Tile.js'
-import Player from './Player.js'
-
-document.onkeydown = checkKey;
 
 export default {
   components: {
     Tile,
-    Player
+  
   },
     template:`
     <div>
@@ -146,11 +143,11 @@ export default {
         this.tiles = []
         this.grid = [
           ['W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W'],
-          ['W', 'G', 'G', 'G', 'G', 'G', 'W', 'W', 'W', 'W'],
-          ['W', 'P', 'S', 'F', 'W', 'G', 'W', 'W', 'W', 'W'],
           ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
-          ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
-          ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
+          ['W', 'P', 'S', 'G', 'W', 'G', 'G', 'G', 'G', 'W'],
+          ['W', 'G', 'S', 'G', 'G', 'G', 'G', 'F', 'G', 'W'],
+          ['W', 'G', 'S', 'G', 'G', 'G', 'G', 'F', 'G', 'W'],
+          ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'F', 'G', 'W'],
           ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
           ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
           ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
