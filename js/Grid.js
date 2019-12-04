@@ -1,12 +1,12 @@
 import Tile from './Tile.js'
-//import PlayerMove from './PlayerMove.js'
+import Player from './Player.js'
 
 document.onkeydown = checkKey;
 
 export default {
   components: {
     Tile,
-    //PlayerMove
+    Player
   },
     template:`
     <div>
@@ -14,7 +14,7 @@ export default {
     <div class="level">
       <button type="button" @click="level1">Level 1</button>
       <button type="button" @click="level2">Level 2</button>
-      <button type="button">Level 3</button>
+      <button type="button" @click="level3">Level 3</button>
       <button type="button">Level 4</button>
       </div>
       <div class="grid-layout">
@@ -131,8 +131,8 @@ export default {
                 break;
                 case "F":
                     this.tiles[row][col].img= this.finishImage;
-                    break;
-                    case "G":
+               break;
+                case "G":
                       this.tiles[row][col].img = this.grassImage;
                       break;
             }
@@ -142,16 +142,133 @@ export default {
         this.flatTiles = this.tiles.flat()
         //this.render++;
       },
+      level3(){
+        this.tiles = []
+        this.grid = [
+          ['W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W'],
+          ['W', 'G', 'G', 'G', 'G', 'G', 'W', 'W', 'W', 'W'],
+          ['W', 'P', 'S', 'F', 'W', 'G', 'W', 'W', 'W', 'W'],
+          ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
+          ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
+          ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
+          ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
+          ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
+          ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
+          ['W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W']
+        ]
+        for(let row = 0; row < 10; row++){
+          this.tiles[row] = []
+          for(let col = 0; col < 10; col++){
+            let position = {
+              x: col,
+              y: row,
+              img: '',
+            }
+            this.tiles[row].push(position)
+            
+            switch (this.grid[row][col]){
+              case "W":
+                this.tiles[row][col].img= this.wallImage;
+                break;
+                case "S":
+                this.tiles[row][col].img= this.stoneImage;
+                break;
+                case "P":
+                    this.tiles[row][col].img= this.playerImage; 
+                break;
+                case "F":
+                    this.tiles[row][col].img= this.finishImage;
+               break;
+                case "G":
+                      this.tiles[row][col].img = this.grassImage;
+                      break;
+            }
+            this.flatTiles = this.tiles.flat()
+          }
+        }
+      },
       testRight(x, y){
         console.log('X is' + x)
         console.log('Y is' + y)
         if (this.tiles[y][x].img != this.wallImage){
-          this.tiles[y][x].img = this.playerImage;
-          this.tiles[y][x+1].img = this.grassImage;
+          if(this.tiles[y][x].img === this.playerImage){
+            console.log('This is the player')
+          }
+          //Moving right
+          else if(this.playerImage == this.tiles[y][x-1].img){
+            //Checking if theres a stone and if it can be moved
+            if(this.tiles[y][x].img == this.stoneImage && (this.tiles[y][x+1].img != this.wallImage)){
+              this.tiles[y][x].img = this.playerImage;
+              this.tiles[y][x+1].img = this.stoneImage;
+              this.tiles[y][x-1].img = this.grassImage;
+              console.log('You tried to move the stone')
+            }
+            //Cant move if thers a wall after
+            else if ((this.tiles[y][x].img == this.stoneImage && (this.tiles[y][x+1].img == this.wallImage))){
+              console.log('Cant move')}
+              else{
+            this.tiles[y][x].img = this.playerImage;
+            this.tiles[y][x-1].img = this.grassImage;
+            console.log('Moved right')}
+          }
+          //Moving left
+          else if(this.playerImage == this.tiles[y][x+1].img){
+             //Checking if theres a stone and if it can be moved
+             if(this.tiles[y][x].img == this.stoneImage && (this.tiles[y][x-1].img != this.wallImage)){
+              this.tiles[y][x].img = this.playerImage;
+              this.tiles[y][x-1].img = this.stoneImage;
+              this.tiles[y][x+1].img = this.grassImage;
+              console.log('You tried to move the stone')
+            }
+            //Cant move if thers a wall after
+            else if ((this.tiles[y][x].img == this.stoneImage && (this.tiles[y][x-1].img == this.wallImage))){
+              console.log('Cant move')}
+              else{
+                //If theres no stone
+            this.tiles[y][x].img = this.playerImage;
+            this.tiles[y][x+1].img = this.grassImage;
+            console.log('Moved left')
+              }
+          }
+          //Moving down
+          else if(this.playerImage == this.tiles[y-1][x].img){
+             //Checking if theres a stone and if it can be moved
+             if(this.tiles[y][x].img == this.stoneImage && (this.tiles[y+1][x].img != this.wallImage)){
+              this.tiles[y][x].img = this.playerImage;
+              this.tiles[y+1][x].img = this.stoneImage;
+              this.tiles[y-1][x].img = this.grassImage;
+              console.log('You tried to move the stone')
+            }
+            //Cant move if thers a wall after
+            else if ((this.tiles[y][x].img == this.stoneImage && (this.tiles[y+1][x].img == this.wallImage))){
+              console.log('Cant move')}
+              else{
+                //If theres no stone
+            this.tiles[y][x].img = this.playerImage;
+            this.tiles[y-1][x].img = this.grassImage;
+            console.log('Moved down')}
+          }
+          //Moving up
+          else if(this.playerImage == this.tiles[y+1][x].img){
+             //Checking if theres a stone and if it can be moved
+             if(this.tiles[y][x].img == this.stoneImage && (this.tiles[y-1][x].img != this.wallImage)){
+              this.tiles[y][x].img = this.playerImage;
+              this.tiles[y-1][x].img = this.stoneImage;
+              this.tiles[y+1][x].img = this.grassImage;
+              console.log('You tried to move the stone')
+            }
+            //Cant move if thers a wall after
+            else if ((this.tiles[y][x].img == this.stoneImage && (this.tiles[y-1][x].img == this.wallImage))){
+              console.log('Cant move')}
+              else{
+            //If theres no stone
+            this.tiles[y][x].img = this.playerImage;
+            this.tiles[y+1][x].img = this.grassImage;
+            console.log('Moved up')
+              }
+          }
           this.flatTiles = this.tiles.flat()
-          //playerPosition = this.tiles[x][y].img
-          //this.render++
-          
+      
         }
         else{
           console.log("Cant move")
