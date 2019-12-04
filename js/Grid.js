@@ -10,7 +10,7 @@ export default {
     <div class="level">
       <button type="button" @click="level1">Level 1</button>
       <button type="button" @click="level2">Level 2</button>
-      <button type="button">Level 3</button>
+      <button type="button" @click="level3">Level 3</button>
       <button type="button">Level 4</button>
       </div>
       <div class="grid-layout">
@@ -117,13 +117,12 @@ export default {
                 this.tiles[row][col].img= this.stoneImage;
                 break;
                 case "P":
-                    this.tiles[row][col].img= this.playerImage;
-                   //this.playerPosition = this.tiles[row][col]
+                    this.tiles[row][col].img= this.playerImage; 
                 break;
                 case "F":
                     this.tiles[row][col].img= this.finishImage;
-                    break;
-                    case "G":
+               break;
+                case "G":
                       this.tiles[row][col].img = this.grassImage;
                       break;
             }
@@ -131,6 +130,51 @@ export default {
         }
         console.log(this.tiles)
         this.flatTiles = this.tiles.flat()
+      },
+      level3(){
+        this.tiles = []
+        this.grid = [
+          ['W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W'],
+          ['W', 'G', 'G', 'G', 'G', 'G', 'W', 'W', 'W', 'W'],
+          ['W', 'P', 'S', 'F', 'W', 'G', 'W', 'W', 'W', 'W'],
+          ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
+          ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
+          ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
+          ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
+          ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
+          ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
+          ['W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W']
+        ]
+        for(let row = 0; row < 10; row++){
+          this.tiles[row] = []
+          for(let col = 0; col < 10; col++){
+            let position = {
+              x: col,
+              y: row,
+              img: '',
+            }
+            this.tiles[row].push(position)
+            
+            switch (this.grid[row][col]){
+              case "W":
+                this.tiles[row][col].img= this.wallImage;
+                break;
+                case "S":
+                this.tiles[row][col].img= this.stoneImage;
+                break;
+                case "P":
+                    this.tiles[row][col].img= this.playerImage; 
+                break;
+                case "F":
+                    this.tiles[row][col].img= this.finishImage;
+               break;
+                case "G":
+                      this.tiles[row][col].img = this.grassImage;
+                      break;
+            }
+            this.flatTiles = this.tiles.flat()
+          }
+        }
       },
       testRight(x, y){
         console.log('X is' + x)
@@ -169,6 +213,7 @@ export default {
             else if ((this.tiles[y][x].img == this.stoneImage && (this.tiles[y][x-1].img == this.wallImage))){
               console.log('Cant move')}
               else{
+                //If theres no stone
             this.tiles[y][x].img = this.playerImage;
             this.tiles[y][x+1].img = this.grassImage;
             console.log('Moved left')
@@ -187,6 +232,7 @@ export default {
             else if ((this.tiles[y][x].img == this.stoneImage && (this.tiles[y+1][x].img == this.wallImage))){
               console.log('Cant move')}
               else{
+                //If theres no stone
             this.tiles[y][x].img = this.playerImage;
             this.tiles[y-1][x].img = this.grassImage;
             console.log('Moved down')}
@@ -204,20 +250,14 @@ export default {
             else if ((this.tiles[y][x].img == this.stoneImage && (this.tiles[y-1][x].img == this.wallImage))){
               console.log('Cant move')}
               else{
+            //If theres no stone
             this.tiles[y][x].img = this.playerImage;
             this.tiles[y+1][x].img = this.grassImage;
             console.log('Moved up')
               }
           }
-
-
-
-
-
-
           this.flatTiles = this.tiles.flat()
-          //playerPosition = this.tiles[x][y].img
-          
+      
         }
         else{
           console.log("Cant move")
