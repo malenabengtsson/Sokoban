@@ -1,7 +1,7 @@
 document.onkeydown = checkKey;
 
 function checkKey(e) {
-
+//window.eventListener
     e = e || window.event;
 
     if (e.keyCode == '38') {
