@@ -119,7 +119,7 @@ export default {
                 break;
                 case "P":
                     this.tiles[row][col].img= this.playerImage;
-                    this.tiles[row][col] = playerPosition;
+                    //this.tiles[row][col] = playerPosition;
                 break;
                 case "F":
                     this.tiles[row][col].img= this.finishImage;
