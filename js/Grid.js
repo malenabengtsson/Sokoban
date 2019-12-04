@@ -3,10 +3,9 @@ import Tile from './Tile.js'
 export default {
   components: {
     Tile,
-  
   },
     template:`
-    <div>
+    <div id="map">
     <label for="level">Choose which level to play!</label>
     <div class="level">
       <button type="button" @click="level1">Level 1</button>
@@ -55,7 +54,7 @@ export default {
         this.tiles = []
         this.grid = [
           ['W', 'W', 'W', 'W', 'W'],
-          ['W', 'P', 'G', 'G', 'W'],
+          ['W', 'P', 'S', 'G', 'W'],
           ['W', 'G', 'S', 'F', 'W'],
           ['W', 'G', 'G', 'G', 'W'],
           ['W', 'W', 'W', 'W', 'W']
@@ -191,6 +190,7 @@ export default {
           if(this.tiles[y][x].img === this.playerImage){
             console.log('This is the player')
           }
+          
           //Moving right
           else if(this.playerImage == this.tiles[y][x-1].img){
             //Checking if theres a stone and if it can be moved
@@ -217,7 +217,7 @@ export default {
               this.tiles[y][x+1].img = this.grassImage;
               console.log('You tried to move the stone')
             }
-            //Cant move if thers a wall after
+            //Cant move if theres a wall after
             else if ((this.tiles[y][x].img == this.stoneImage && (this.tiles[y][x-1].img == this.wallImage))){
               console.log('Cant move')}
               else{
@@ -266,6 +266,9 @@ export default {
           }
           this.flatTiles = this.tiles.flat()
       
+        }
+        if(this.tiles[2][3].img == this.grassImage){
+          this.tiles[2][3].img = this.finishImage
         }
         else{
           console.log("Cant move")
