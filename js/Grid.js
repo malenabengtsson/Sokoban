@@ -1,8 +1,12 @@
 import Tile from './Tile.js'
+import Player from './Player.js'
+
+document.onkeydown = checkKey;
 
 export default {
   components: {
-    Tile
+    Tile,
+    Player
   },
     template:`
     <div>
@@ -34,18 +38,20 @@ export default {
         grid: [],
         flatTiles: [],
         gameBoard: 5,
-      wallImage: '/css/img/wall.jpg',
-      stoneImage: '/css/img/stone.png',
-      playerImage: '/css/img/player.png',
-      finishImage: '/css/img/finish.png',
-      grassImage: '/css/img/grass.png',
+      wallImage: 'css/img/wall.jpg',
+      stoneImage: 'css/img/stone.png',
+      playerImage: 'css/img/player.png',
+      finishImage: 'css/img/finish.png',
+      grassImage: 'css/img/grass.png',
       render: 0,
       playerPosition: '',
       }
     },
+    /*
     created() {
      
     },
+    */
     methods: {
       level1(){
         this.tiles = []
@@ -118,7 +124,6 @@ export default {
                 break;
                 case "P":
                     this.tiles[row][col].img= this.playerImage;
-                   //this.playerPosition = this.tiles[row][col]
                 break;
                 case "F":
                     this.tiles[row][col].img= this.finishImage;
@@ -223,5 +228,5 @@ export default {
           console.log("Cant move")
         }
       }
-    },
+    }
   }

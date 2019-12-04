@@ -26,14 +26,14 @@ body{
 }
 
 .grid-body{
-display: flex;
-justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .level{
   display: flex;
   justify-content: center;
-padding: 1%;
+  padding: 1%;
 
 }
 
@@ -51,5 +51,4 @@ button{
 .restart{
  display: flex;
  justify-content: center;
-;
 }
