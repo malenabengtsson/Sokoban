@@ -15,7 +15,6 @@ body{
 .tile {
   width: 20%;
   height: 12vw;
-  background-image: url(img/grass.png);
   background-size: cover;
 }
 
