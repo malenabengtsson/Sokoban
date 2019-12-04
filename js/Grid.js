@@ -201,7 +201,7 @@ export default {
               console.log('You tried to move the stone')
             }
             //Cant move if thers a wall after
-            else if ((this.tiles[y][x].img == this.stoneImage && (this.tiles[y+1][x].img == this.wallImage))){
+            else if ((this.tiles[y][x].img == this.stoneImage && (this.tiles[y-1][x].img == this.wallImage))){
               console.log('Cant move')}
               else{
             this.tiles[y][x].img = this.playerImage;
