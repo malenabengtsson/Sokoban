@@ -1,8 +1,12 @@
 import Tile from './Tile.js'
+import Player from './Player.js'
+
+document.onkeydown = checkKey;
 
 export default {
   components: {
-    Tile
+    Tile,
+    Player
   },
     template:`
     <div>
@@ -163,7 +167,6 @@ export default {
                 break;
                 case "P":
                     this.tiles[row][col].img= this.playerImage;
-                   //this.playerPosition = this.tiles[row][col]
                 break;
                 case "F":
                     this.tiles[row][col].img= this.finishImage;
@@ -176,7 +179,6 @@ export default {
         }
         console.log(this.tiles)
         this.flatTiles = this.tiles.flat()
-        //this.render++;
       },
       testRight(x, y){
         console.log('X is' + x)
@@ -185,13 +187,11 @@ export default {
           this.tiles[y][x].img = this.playerImage;
           this.tiles[y][x+1].img = this.grassImage;
           this.flatTiles = this.tiles.flat()
-          //playerPosition = this.tiles[x][y].img
-          //this.render++
-          
+      
         }
         else{
           console.log("Cant move")
         }
       }
-    },
+    }
   }
