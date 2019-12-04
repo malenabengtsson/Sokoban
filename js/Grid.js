@@ -1,12 +1,13 @@
 import Tile from './Tile.js'
+//import PlayerMove from './PlayerMove.js'
 
 export default {
   components: {
-    Tile
+    Tile,
+    //PlayerMove
   },
     template:`
     <div>
-      
     <label for="level">Choose which level to play!</label>
     <div class="level">
       <button type="button" @click="level1">Level 1</button>
@@ -42,49 +43,11 @@ export default {
       grassImage: '/css/img/grass.png',
       render: 0,
       playerPosition: '',
-      img: ''
       }
+
     },
     created() {
-      /*var gameBoard = 5;
-      var wallImage = '/css/img/wall.jpg'
-      var stoneImage = '/css/img/stone.png'
-      var playerImage = '/css/img/player.png'
-      var finishImage = '/css/img/finish.png'
-      let grid = [
-        ['W', 'W', 'W', 'W', 'W'],
-        ['W', ' ', ' ', ' ', 'W'],
-        ['W', 'P', 'S', 'F', 'W'],
-        ['W', ' ', ' ', ' ', 'W'],
-        ['W', 'W', 'W', 'W', 'W']
-      ]
-      for(let row = 0; row < gameBoard; row++){
-        this.tiles[row] = []
-        for(let col = 0; col < gameBoard; col++){
-          let position = {
-            x: col,
-            y: row,
-            img: Image,
-          }
-          this.tiles[row].push(position)
-          switch (grid[row][col]){
-            case "W":
-              this.tiles[row][col].img= wallImage;
-              console.log("W")
-              break;
-              case "S":
-              this.tiles[row][col].img= stoneImage;
-              break;
-              case "P":
-                  this.tiles[row][col].img= playerImage;
-              break;
-              case "F":
-                  this.tiles[row][col].img= finishImage;
-          }
-        }
-      }*/
-  
-
+     
     },
     methods: {
       level1(){
@@ -109,7 +72,6 @@ export default {
             switch (this.grid[row][col]){
               case "W":
                 this.tiles[row][col].img= this.wallImage;
-                console.log("W")
                 break;
                 case "S":
                 this.tiles[row][col].img= this.stoneImage;
@@ -127,13 +89,14 @@ export default {
   
           }
         }
-        console.log(this.tiles);
+        let player = {
+          x: 1,
+          y: 1,
+        }
         this.flatTiles = this.tiles.flat()
-        //this.render++
 
       },
       level2(){
-        console.log("hello")
         this.tiles = []
         this.grid = [
           ['W', 'W', 'W', 'W', 'W'],
@@ -155,7 +118,6 @@ export default {
             switch (this.grid[row][col]){
               case "W":
                 this.tiles[row][col].img= this.wallImage;
-                console.log("W")
                 break;
                 case "S":
                 this.tiles[row][col].img= this.stoneImage;
