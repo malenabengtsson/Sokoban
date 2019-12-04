@@ -42,6 +42,7 @@ export default {
       render: 0,
       playerPosition: '',
       }
+
     },
     /*
     created() {
@@ -88,7 +89,10 @@ export default {
   
           }
         }
-        console.log(this.tiles);
+        let player = {
+          x: 1,
+          y: 1,
+        }
         this.flatTiles = this.tiles.flat()
 
       },
@@ -132,16 +136,17 @@ export default {
         }
         console.log(this.tiles)
         this.flatTiles = this.tiles.flat()
+        //this.render++;
       },
       level3(){
         this.tiles = []
         this.grid = [
           ['W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W'],
-          ['W', 'G', 'G', 'G', 'G', 'G', 'W', 'W', 'W', 'W'],
-          ['W', 'P', 'S', 'F', 'W', 'G', 'W', 'W', 'W', 'W'],
           ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
-          ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
-          ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
+          ['W', 'P', 'S', 'G', 'W', 'G', 'G', 'G', 'G', 'W'],
+          ['W', 'G', 'S', 'G', 'G', 'G', 'G', 'F', 'G', 'W'],
+          ['W', 'G', 'S', 'G', 'G', 'G', 'G', 'F', 'G', 'W'],
+          ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'F', 'G', 'W'],
           ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
           ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
           ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
