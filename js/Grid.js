@@ -3,10 +3,9 @@ import Tile from './Tile.js'
 export default {
   components: {
     Tile,
-  
   },
     template:`
-    <div>
+    <div id="map">
     <label for="level">Choose which level to play!</label>
     <div class="level">
       <button type="button" @click="level1">Level 1</button>
@@ -56,7 +55,7 @@ export default {
         this.tiles = []
         this.grid = [
           ['W', 'W', 'W', 'W', 'W'],
-          ['W', 'P', 'G', 'G', 'W'],
+          ['W', 'P', 'S', 'G', 'W'],
           ['W', 'G', 'S', 'F', 'W'],
           ['W', 'G', 'G', 'G', 'W'],
           ['W', 'W', 'W', 'W', 'W']
@@ -194,11 +193,13 @@ export default {
           if(this.tiles[y][x].img === this.playerImage){
             console.log('This is the player')
           }
-
+          
           //Moving right
           else if(this.playerImage == this.tiles[y][x-1].img){
             //Checking if theres a stone and if it can be moved
-            if(this.tiles[y][x].img == this.stoneImage && (this.tiles[y][x+1].img != this.wallImage) && (this.tiles[y][x+1].img != this.stoneImage)){
+            if (this.tiles[y][x].img == this.stoneImage && (this.tiles[y][x+1].img == this.stoneImage)){
+              console.log('No')}
+            else if(this.tiles[y][x].img == this.stoneImage && (this.tiles[y][x+1].img != this.wallImage)){
               this.tiles[y][x].img = this.playerImage;
               this.tiles[y][x+1].img = this.stoneImage;
               this.tiles[y][x-1].img = this.grassImage;
@@ -218,13 +219,15 @@ export default {
           //Moving left
           else if(this.playerImage == this.tiles[y][x+1].img){
              //Checking if theres a stone and if it can be moved
-             if(this.tiles[y][x].img == this.stoneImage && (this.tiles[y][x-1].img != this.wallImage)){
+             if (this.tiles[y][x].img == this.stoneImage && (this.tiles[y][x-1].img == this.stoneImage)){
+              console.log('No')}
+             else if(this.tiles[y][x].img == this.stoneImage && (this.tiles[y][x-1].img != this.wallImage)){
               this.tiles[y][x].img = this.playerImage;
               this.tiles[y][x-1].img = this.stoneImage;
               this.tiles[y][x+1].img = this.grassImage;
               console.log('You tried to move the stone')
             }
-            //Cant move if thers a wall after
+            //Cant move if theres a wall after
             else if ((this.tiles[y][x].img == this.stoneImage && (this.tiles[y][x-1].img == this.wallImage))){
               console.log('Cant move')}
               else{
@@ -241,8 +244,10 @@ export default {
           }
           //Moving down
           else if(this.playerImage == this.tiles[y-1][x].img){
-             //Checking if theres a stone and if it can be moved
-             if(this.tiles[y][x].img == this.stoneImage && (this.tiles[y+1][x].img != this.wallImage)){
+             //Checking if theres a stone and if it can be 
+             if (this.tiles[y][x].img == this.stoneImage && (this.tiles[y+1][x].img == this.stoneImage)){
+              console.log('No')}
+             else if(this.tiles[y][x].img == this.stoneImage && (this.tiles[y+1][x].img != this.wallImage)){
               this.tiles[y][x].img = this.playerImage;
               this.tiles[y+1][x].img = this.stoneImage;
               this.tiles[y-1][x].img = this.grassImage;
@@ -263,7 +268,9 @@ export default {
           //Moving up
           else if(this.playerImage == this.tiles[y+1][x].img){
              //Checking if theres a stone and if it can be moved
-             if(this.tiles[y][x].img == this.stoneImage && (this.tiles[y-1][x].img != this.wallImage)){
+             if (this.tiles[y][x].img == this.stoneImage && (this.tiles[y-1][x].img == this.stoneImage)){
+              console.log('No')}
+             else if(this.tiles[y][x].img == this.stoneImage && (this.tiles[y-1][x].img != this.wallImage)){
               this.tiles[y][x].img = this.playerImage;
               this.tiles[y-1][x].img = this.stoneImage;
               this.tiles[y+1][x].img = this.grassImage;
@@ -284,6 +291,10 @@ export default {
           }
           this.flatTiles = this.tiles.flat()
       
+        }
+        if(this.tiles[3][7].img == this.grassImage){
+          this.tiles[3][7].img = this.finishImage
+          
         }
         else{
           console.log("Cant move")
