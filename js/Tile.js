@@ -15,5 +15,14 @@ export default {
     mounted() {
      this.$refs.tile.style.setProperty('background-image', `url(${this.position.img})`)
     },
+    watch:{
+        position:{
+          deep: true,
+          handler(val){
+            console.log(val)
+            this.$refs.tile.style.setProperty('background-image', `url(${this.position.img})`)
+          }
+        }
+      }
 
 }

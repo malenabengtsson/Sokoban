@@ -18,7 +18,7 @@ export default {
         <Tile
           v-for="(tile, i) of flatTiles" 
           v-bind:position="tile" 
-          v-bind:key="'tile' + i + tile.x + tile.y + render"
+          v-bind:key="'tile' + i + tile.x + tile.y"
           @testRight="testRight"
           >
         </Tile>
@@ -33,6 +33,7 @@ export default {
       return{
         tiles: [],
         grid: [],
+        flatTiles: [],
         gameBoard: 5,
       wallImage: 'css/img/wall.jpg',
       stoneImage: 'css/img/stone.png',
@@ -40,12 +41,8 @@ export default {
       finishImage: 'css/img/finish.png',
       grassImage: 'css/img/grass.png',
       render: 0,
-      playerPosition: ''
-      }
-    },
-    computed: {
-      flatTiles() {
-        return this.tiles.flat()
+      playerPosition: '',
+      img: ''
       }
     },
     /*
@@ -120,19 +117,21 @@ export default {
                 break;
                 case "P":
                     this.tiles[row][col].img= this.playerImage;
-                   //this.playerPosition = this.tiles[row][col]
                 break;
                 case "F":
                     this.tiles[row][col].img= this.finishImage;
                     break;
-                    case "G":
+                case "G":
                       this.tiles[row][col].img = this.grassImage;
-                      break;
+                    break;
             }
+  
           }
         }
         console.log(this.tiles);
-        this.render++;
+        this.flatTiles = this.tiles.flat()
+        //this.render++
+
       },
       level2(){
         console.log("hello")
@@ -150,7 +149,7 @@ export default {
             let position = {
               x: col,
               y: row,
-              img: Image,
+              img: '',
             }
             this.tiles[row].push(position)
             
@@ -176,17 +175,18 @@ export default {
           }
         }
         console.log(this.tiles)
-        this.render++
+        this.flatTiles = this.tiles.flat()
+        //this.render++;
       },
       testRight(x, y){
         console.log('X is' + x)
         console.log('Y is' + y)
         if (this.tiles[y][x].img != this.wallImage){
           this.tiles[y][x].img = this.playerImage;
-          this.tiles[y][x+1].img = this.grassImage
+          this.tiles[y][x+1].img = this.grassImage;
+          this.flatTiles = this.tiles.flat()
           //playerPosition = this.tiles[x][y].img
-          x++
-          this.render++;
+          //this.render++
           
         }
         else{
