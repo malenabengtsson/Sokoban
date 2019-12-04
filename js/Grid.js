@@ -103,8 +103,8 @@ export default {
           this.tiles[row] = []
           for(let col = 0; col < 5; col++){
             let position = {
-              y: col,
-              x: row,
+              x: col,
+              y: row,
               img: Image,
             }
             this.tiles[row].push(position)
@@ -119,7 +119,7 @@ export default {
                 break;
                 case "P":
                     this.tiles[row][col].img= this.playerImage;
-                    this.tiles[row][col] = playerPosition;
+                   //this.playerPosition = this.tiles[row][col]
                 break;
                 case "F":
                     this.tiles[row][col].img= this.finishImage;
@@ -130,7 +130,8 @@ export default {
             }
           }
         }
-        console.log(this.tiles)
+        console.log(this.tiles);
+        this.render++;
       },
       level2(){
         console.log("hello")
@@ -146,8 +147,8 @@ export default {
           this.tiles[row] = []
           for(let col = 0; col < 5; col++){
             let position = {
-              y: col,
-              x: row,
+              x: col,
+              y: row,
               img: Image,
             }
             this.tiles[row].push(position)
@@ -162,23 +163,26 @@ export default {
                 break;
                 case "P":
                     this.tiles[row][col].img= this.playerImage;
-                    //this.tiles[row][col] = playerPosition;
+                   //this.playerPosition = this.tiles[row][col]
                 break;
                 case "F":
                     this.tiles[row][col].img= this.finishImage;
                     break;
                     case "G":
-                        this.tiles[row][col].img = this.grassImage;
-                        break;
+                      this.tiles[row][col].img = this.grassImage;
+                      break;
             }
           }
         }
         console.log(this.tiles)
+        this.render++
       },
       testRight(x, y){
-        if (this.tiles[x][y].img != this.wallImage){
-          this.tiles[x][y].img = this.playerImage;
-          this.tiles[x+1][y].img = this.grassImage
+        console.log('X is' + x)
+        console.log('Y is' + y)
+        if (this.tiles[y][x].img != this.wallImage){
+          this.tiles[y][x].img = this.playerImage;
+          this.tiles[y][x+1].img = this.grassImage
           //playerPosition = this.tiles[x][y].img
           x++
           this.render++;
