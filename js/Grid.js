@@ -1,12 +1,8 @@
 import Tile from './Tile.js'
-import Player from './Player.js'
-
-document.onkeydown = checkKey;
 
 export default {
   components: {
     Tile,
-    Player
   },
     template:`
     <div>
