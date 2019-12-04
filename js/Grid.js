@@ -18,7 +18,7 @@ export default {
         <Tile
           v-for="(tile, i) of flatTiles" 
           v-bind:position="tile" 
-          v-bind:key="'tile' + i + tile.x + tile.y + render"
+          v-bind:key="'tile' + i + tile.x + tile.y"
           @testRight="testRight"
           >
         </Tile>
@@ -33,6 +33,7 @@ export default {
       return{
         tiles: [],
         grid: [],
+        flatTiles: [],
         gameBoard: 5,
       wallImage: '/css/img/wall.jpg',
       stoneImage: '/css/img/stone.png',
@@ -40,12 +41,8 @@ export default {
       finishImage: '/css/img/finish.png',
       grassImage: '/css/img/grass.png',
       render: 0,
-      playerPosition: ''
-      }
-    },
-    computed: {
-      flatTiles() {
-        return this.tiles.flat()
+      playerPosition: '',
+      img: ''
       }
     },
     created() {
@@ -103,8 +100,8 @@ export default {
           this.tiles[row] = []
           for(let col = 0; col < 5; col++){
             let position = {
-              y: col,
-              x: row,
+              x: col,
+              y: row,
               img: Image,
             }
             this.tiles[row].push(position)
@@ -119,18 +116,21 @@ export default {
                 break;
                 case "P":
                     this.tiles[row][col].img= this.playerImage;
-                    //this.tiles[row][col] = playerPosition;
                 break;
                 case "F":
                     this.tiles[row][col].img= this.finishImage;
                     break;
-                    case "G":
+                case "G":
                       this.tiles[row][col].img = this.grassImage;
-                      break;
+                    break;
             }
+  
           }
         }
-        console.log(this.tiles)
+        console.log(this.tiles);
+        this.flatTiles = this.tiles.flat()
+        //this.render++
+
       },
       level2(){
         console.log("hello")
@@ -148,7 +148,7 @@ export default {
             let position = {
               x: col,
               y: row,
-              img: Image,
+              img: '',
             }
             this.tiles[row].push(position)
             
@@ -162,26 +162,30 @@ export default {
                 break;
                 case "P":
                     this.tiles[row][col].img= this.playerImage;
-                    //this.tiles[row][col] = playerPosition;
+                   //this.playerPosition = this.tiles[row][col]
                 break;
                 case "F":
                     this.tiles[row][col].img= this.finishImage;
                     break;
                     case "G":
-                        this.tiles[row][col].img = this.grassImage;
-                        break;
+                      this.tiles[row][col].img = this.grassImage;
+                      break;
             }
           }
         }
         console.log(this.tiles)
+        this.flatTiles = this.tiles.flat()
+        //this.render++;
       },
       testRight(x, y){
-        if (this.tiles[x][y].img != this.wallImage){
-          this.tiles[x][y].img = this.playerImage;
-          this.tiles[x+1][y].img = this.grassImage
+        console.log('X is' + x)
+        console.log('Y is' + y)
+        if (this.tiles[y][x].img != this.wallImage){
+          this.tiles[y][x].img = this.playerImage;
+          this.tiles[y][x+1].img = this.grassImage;
+          this.flatTiles = this.tiles.flat()
           //playerPosition = this.tiles[x][y].img
-          x++
-          this.render++;
+          //this.render++
           
         }
         else{
