@@ -34,11 +34,11 @@ export default {
         tiles: [],
         grid: [],
         gameBoard: 5,
-      wallImage: '/css/img/wall.jpg',
-      stoneImage: '/css/img/stone.png',
-      playerImage: '/css/img/player.png',
-      finishImage: '/css/img/finish.png',
-      grassImage: '/css/img/grass.png',
+      wallImage: 'css/img/wall.jpg',
+      stoneImage: 'css/img/stone.png',
+      playerImage: 'css/img/player.png',
+      finishImage: 'css/img/finish.png',
+      grassImage: 'css/img/grass.png',
       render: 0,
       playerPosition: ''
       }
