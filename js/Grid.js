@@ -18,7 +18,7 @@ export default {
           v-for="(tile, i) of flatTiles" 
           v-bind:position="tile" 
           v-bind:key="'tile' + i + tile.x + tile.y + render"
-          @testRight="testRight"
+          @movePlayer="movePlayer"
           >
         </Tile>
       </div>
@@ -238,9 +238,9 @@ export default {
           }
         }
       },
-      testRight(x, y){
-        console.log('X is ' + x)
-        console.log('Y is ' + y)
+      movePlayer(x, y){
+        console.log('X is' + x)
+        console.log('Y is' + y)
 
         if (this.tiles[y][x].img != this.wallImage){
          
