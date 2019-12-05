@@ -243,7 +243,7 @@ export default {
           }
         }
       },
-      testRight(x, y){
+      movePlayer(x, y){
         console.log('X is' + x)
         console.log('Y is' + y)
 
