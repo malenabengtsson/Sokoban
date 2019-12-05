@@ -24,7 +24,7 @@ export default {
       </div>
       <label for="restart">Are you stuck?</label>
     <div class="restart">
-      <button style="button" id="restart">Reset level</button>
+      <button style="button" id="reset" @click="reset">Reset</button>
       </div>
       </div>
     `,
@@ -405,7 +405,10 @@ export default {
         }
         this.nrStoneOnGoal = 0
         
-      }
+      },
+      reset(){
+        window.location.reload()
       
     }
   }
+}
