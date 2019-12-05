@@ -1,7 +1,8 @@
 export default {
     props: ['position'],
     template:`
-        <span ref="tile" class="tile" @click="logPosition" ></span>
+        <span ref="tile" class="tile" @click="logPosition"></span>
+        
     `,
     methods: {
         logPosition() {
@@ -12,6 +13,16 @@ export default {
         }
     },
     mounted() {
-       this.$refs.tile.style.setProperty('background-image', `url(${this.position.img})`)
-    }
+     this.$refs.tile.style.setProperty('background-image', `url(${this.position.img})`)
+    },
+    watch:{
+        position:{
+          deep: true,
+          handler(val){
+            console.log(val)
+            this.$refs.tile.style.setProperty('background-image', `url(${this.position.img})`)
+          }
+        }
+      }
+
 }
