@@ -194,7 +194,9 @@ export default {
           //Moving right
           else if(this.playerImage == this.tiles[y][x-1].img){
             //Checking if theres a stone and if it can be moved
-            if(this.tiles[y][x].img == this.stoneImage && (this.tiles[y][x+1].img != this.wallImage)){
+            if (this.tiles[y][x].img == this.stoneImage && (this.tiles[y][x+1].img == this.stoneImage)){
+              console.log('No')}
+            else if(this.tiles[y][x].img == this.stoneImage && (this.tiles[y][x+1].img != this.wallImage)){
               this.tiles[y][x].img = this.playerImage;
               this.tiles[y][x+1].img = this.stoneImage;
               this.tiles[y][x-1].img = this.grassImage;
@@ -211,7 +213,9 @@ export default {
           //Moving left
           else if(this.playerImage == this.tiles[y][x+1].img){
              //Checking if theres a stone and if it can be moved
-             if(this.tiles[y][x].img == this.stoneImage && (this.tiles[y][x-1].img != this.wallImage)){
+             if (this.tiles[y][x].img == this.stoneImage && (this.tiles[y][x-1].img == this.stoneImage)){
+              console.log('No')}
+             else if(this.tiles[y][x].img == this.stoneImage && (this.tiles[y][x-1].img != this.wallImage)){
               this.tiles[y][x].img = this.playerImage;
               this.tiles[y][x-1].img = this.stoneImage;
               this.tiles[y][x+1].img = this.grassImage;
@@ -229,8 +233,10 @@ export default {
           }
           //Moving down
           else if(this.playerImage == this.tiles[y-1][x].img){
-             //Checking if theres a stone and if it can be moved
-             if(this.tiles[y][x].img == this.stoneImage && (this.tiles[y+1][x].img != this.wallImage)){
+             //Checking if theres a stone and if it can be 
+             if (this.tiles[y][x].img == this.stoneImage && (this.tiles[y+1][x].img == this.stoneImage)){
+              console.log('No')}
+             else if(this.tiles[y][x].img == this.stoneImage && (this.tiles[y+1][x].img != this.wallImage)){
               this.tiles[y][x].img = this.playerImage;
               this.tiles[y+1][x].img = this.stoneImage;
               this.tiles[y-1][x].img = this.grassImage;
@@ -248,7 +254,9 @@ export default {
           //Moving up
           else if(this.playerImage == this.tiles[y+1][x].img){
              //Checking if theres a stone and if it can be moved
-             if(this.tiles[y][x].img == this.stoneImage && (this.tiles[y-1][x].img != this.wallImage)){
+             if (this.tiles[y][x].img == this.stoneImage && (this.tiles[y-1][x].img == this.stoneImage)){
+              console.log('No')}
+             else if(this.tiles[y][x].img == this.stoneImage && (this.tiles[y-1][x].img != this.wallImage)){
               this.tiles[y][x].img = this.playerImage;
               this.tiles[y-1][x].img = this.stoneImage;
               this.tiles[y+1][x].img = this.grassImage;
@@ -269,6 +277,7 @@ export default {
         }
         if(this.tiles[3][7].img == this.grassImage){
           this.tiles[3][7].img = this.finishImage
+          
         }
         else{
           console.log("Cant move")
