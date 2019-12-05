@@ -257,11 +257,10 @@ export default {
           //Moving right
           else if(this.playerImage == this.tiles[y][x-1].img){
             //Checking if theres a stone and if it can be moved
-            if (this.tiles[y][x].img == 
-              (this.stoneImage && this.tiles[y][x+1].img == this.stoneImage) ||
-              (this.stoneOnGoal && this.tiles[y][x+1].img == this.stoneOnGoal)||
-              (this.stoneOnGoal && this.tiles[y][x+1].img == this.stoneImage)||
-              (this.stoneImage && this.tiles[y][x+1].img == this.stoneOnGoal)) {
+            if ((this.tiles[y][x].img == this.stoneImage && this.tiles[y][x+1].img == this.stoneImage) ||
+              (this.tiles[y][x].img == this.stoneOnGoal && this.tiles[y][x+1].img == this.stoneOnGoal)||
+              (this.tiles[y][x].img == this.stoneOnGoal && this.tiles[y][x+1].img == this.stoneImage)||
+              ( this.tiles[y][x].img == this.stoneImage && this.tiles[y][x+1].img == this.stoneOnGoal)) {
               console.log('No')}
 
             else if((this.tiles[y][x].img == this.stoneImage && this.tiles[y][x+1].img != this.wallImage) ||
