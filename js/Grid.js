@@ -18,7 +18,7 @@ export default {
           v-for="(tile, i) of flatTiles" 
           v-bind:position="tile" 
           v-bind:key="'tile' + i + tile.x + tile.y + render"
-          @testRight="testRight"
+          @movePlayer="movePlayer"
           >
         </Tile>
       </div>
@@ -40,6 +40,7 @@ export default {
       finishImage: 'css/img/finish.png',
       grassImage: 'css/img/grass.png',
       render: 0,
+      nrStoneOnGoal: 0
       }
 
     },
@@ -237,9 +238,9 @@ export default {
           }
         }
       },
-      testRight(x, y){
-        console.log('X is ' + x)
-        console.log('Y is ' + y)
+      movePlayer(x, y){
+        console.log('X is' + x)
+        console.log('Y is' + y)
 
         if (this.tiles[y][x].img != this.wallImage){
          
@@ -344,6 +345,7 @@ export default {
             if (this.tiles[i][j].img != this.playerImage){
             if (this.grid[i][j] == 'F' && this.tiles[i][j].img == this.stoneImage){
               console.log('Stone on goal')
+              this.nrStoneOnGoal++
             }
             else if (this.grid[i][j] == 'F' && this.tiles[i][j].img != this.finishImage){
               this.tiles[i][j].img = this.finishImage
@@ -357,6 +359,10 @@ export default {
  
         this.flatTiles = this.tiles.flat()
       }
+      if(this.nrStoneOnGoal == 3){
+        console.log('u have won')
+      }
+      this.nrStoneOnGoal = 0
     }
   }
 }
