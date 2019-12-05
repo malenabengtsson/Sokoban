@@ -11,7 +11,7 @@ export default {
       <button type="button" @click="level1">Level 1</button>
       <button type="button" @click="level2">Level 2</button>
       <button type="button" @click="level3">Level 3</button>
-      <button type="button">Level 4</button>
+      <button type="button" @click="level4">Level 4</button>
       </div>
       <div class="grid-layout">
         <Tile
@@ -33,7 +33,7 @@ export default {
         tiles: [],
         grid: [],
         flatTiles: [],
-        gameBoard: 5,
+        gameBoard: 10,
       wallImage: 'css/img/wall.jpg',
       stoneImage: 'css/img/stone.png',
       playerImage: 'css/img/player.png',
@@ -53,20 +53,26 @@ export default {
     methods: {
       level1(){
         this.tiles = []
+        this.grid = []
         this.grid = [
-          ['W', 'W', 'W', 'W', 'W'],
-          ['W', 'P', 'S', 'G', 'W'],
-          ['W', 'G', 'S', 'F', 'W'],
-          ['W', 'G', 'G', 'G', 'W'],
-          ['W', 'W', 'W', 'W', 'W']
+          [' ', ' ', ' ', 'W', 'W', 'W', 'W', 'W', ' ', ' '],
+          [' ', ' ', ' ', 'W', 'P', 'G', 'G', 'W', ' ', ' '],
+          [' ', ' ', ' ', 'W', 'G', 'S', 'G', 'W', ' ', ' '],
+          [' ', ' ', ' ', 'W', 'G', 'G', 'F', 'W', ' ', ' '],
+          [' ', ' ', ' ', 'W', 'W', 'W', 'W', 'W', ' ', ' '],
+          [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+          [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+          [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+          [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+          [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
         ]
-        for(let row = 0; row < 5; row++){
+        for(let row = 0; row < 10; row++){
           this.tiles[row] = []
-          for(let col = 0; col < 5; col++){
+          for(let col = 0; col < 10; col++){
             let position = {
               x: col,
               y: row,
-              img: Image,
+              img: '',
             }
             this.tiles[row].push(position)
             
@@ -99,16 +105,22 @@ export default {
       },
       level2(){
         this.tiles = []
+        this.grid = []
         this.grid = [
-          ['W', 'W', 'W', 'W', 'W'],
-          ['W', 'G', 'G', 'G', 'W'],
-          ['W', 'P', 'S', 'F', 'W'],
-          ['W', 'G', 'G', 'G', 'W'],
-          ['W', 'W', 'W', 'W', 'W']
+          [' ', ' ', ' ', 'W', 'W', 'W', 'W', 'W', ' ', ' '],
+          [' ', ' ', ' ', 'W', 'G', 'G', 'G', 'W', ' ', ' '],
+          [' ', ' ', ' ', 'W', 'G', 'S', 'F', 'W', ' ', ' '],
+          [' ', ' ', ' ', 'W', 'P', 'G', 'G', 'W', ' ', ' '],
+          [' ', ' ', ' ', 'W', 'W', 'W', 'W', 'W', ' ', ' '],
+          [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+          [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+          [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+          [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+          [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
         ]
-        for(let row = 0; row < 5; row++){
+        for(let row = 0; row < 10; row++){
           this.tiles[row] = []
-          for(let col = 0; col < 5; col++){
+          for(let col = 0; col < 10; col++){
             let position = {
               x: col,
               y: row,
@@ -141,6 +153,7 @@ export default {
       },
       level3(){
         this.tiles = []
+        this.grid = []
         this.grid = [
           ['W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W'],
           ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
@@ -184,10 +197,56 @@ export default {
           }
         }
       },
+      level4(){
+        this.tiles = []
+        this.grid = []
+        this.grid = [
+          ['W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W'],
+          ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
+          ['W', 'G', 'G', 'G', 'W', 'S', 'G', 'G', 'G', 'W'],
+          ['W', 'G', 'S', 'G', 'W', 'G', 'G', 'F', 'G', 'W'],
+          ['W', 'G', 'S', 'G', 'G', 'G', 'G', 'F', 'G', 'W'],
+          ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'F', 'G', 'W'],
+          ['W', 'P', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
+          ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
+          ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
+          ['W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W']
+        ]
+        for(let row = 0; row < 10; row++){
+          this.tiles[row] = []
+          for(let col = 0; col < 10; col++){
+            let position = {
+              x: col,
+              y: row,
+              img: '',
+            }
+            this.tiles[row].push(position)
+            
+            switch (this.grid[row][col]){
+              case "W":
+                this.tiles[row][col].img= this.wallImage;
+                break;
+                case "S":
+                this.tiles[row][col].img= this.stoneImage;
+                break;
+                case "P":
+                    this.tiles[row][col].img= this.playerImage; 
+                break;
+                case "F":
+                    this.tiles[row][col].img= this.finishImage;
+               break;
+                case "G":
+                      this.tiles[row][col].img = this.grassImage;
+                      break;
+            }
+            this.flatTiles = this.tiles.flat()
+          }
+        }
+      },
       testRight(x, y){
         console.log('X is' + x)
         console.log('Y is' + y)
-        let onGoal = false
+
         if (this.tiles[y][x].img != this.wallImage){
          
           if(this.tiles[y][x].img === this.playerImage){
@@ -294,7 +353,12 @@ export default {
         }
         if(this.tiles[3][7].img == this.grassImage){
           this.tiles[3][7].img = this.finishImage
-          
+        }
+        if(this.tiles[4][7].img == this.grassImage){
+          this.tiles[4][7].img = this.finishImage
+        }
+        if(this.tiles[5][7].img == this.grassImage){
+          this.tiles[5][7].img = this.finishImage
         }
         else{
           console.log("Cant move")
