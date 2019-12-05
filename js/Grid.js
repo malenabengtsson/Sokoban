@@ -41,7 +41,8 @@ export default {
       grassImage: 'css/img/grass.png',
       stoneOnGoal: 'css/img/stoneOnGoal.png',
       render: 0,
-      nrStoneOnGoal: 0
+      nrStoneOnGoal: 0,
+      nrOfGoals: 0
       }
 
     },
@@ -52,6 +53,7 @@ export default {
     */
     methods: {
       level1(){
+        this.nrOfGoals = 1
         this.tiles = []
         this.grid = []
         this.grid = [
@@ -100,6 +102,7 @@ export default {
 
       },
       level2(){
+        this.nrOfGoals = 1
         this.tiles = []
         this.grid = []
         this.grid = [
@@ -148,6 +151,7 @@ export default {
         //this.render++;
       },
       level3(){
+        this.nrOfGoals = 3
         this.tiles = []
         this.grid = []
         this.grid = [
@@ -194,6 +198,7 @@ export default {
         }
       },
       level4(){
+        this.nrOfGoals = 3
         this.tiles = []
         this.grid = []
         this.grid = [
@@ -363,6 +368,7 @@ export default {
             }
           
         }
+        
         for (let i = 0; i <this.tiles.length; i++){
           for (let j = 0; j <this.tiles[x].length; j++){
             if (this.tiles[i][j].img != this.playerImage){
@@ -386,13 +392,20 @@ export default {
             }
           }
         }
- 
+        
         this.flatTiles = this.tiles.flat()
 
-      if(this.nrStoneOnGoal == 3){
-        console.log('u have won')
+        if(this.nrStoneOnGoal == this.nrOfGoals){
+          console.log('u have won')
+          if (confirm('You completed the level! Press OK to continue to next level')) {
+            this.level4()
+          } else {
+            this.level3()
+          }
+        }
+        this.nrStoneOnGoal = 0
+        
       }
-      //this.nrStoneOnGoal = 0
+      
     }
   }
-}
