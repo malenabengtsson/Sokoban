@@ -394,17 +394,18 @@ export default {
         }
         
         this.flatTiles = this.tiles.flat()
+
+        if(this.nrStoneOnGoal == this.nrOfGoals){
+          console.log('u have won')
+          if (confirm('You completed the level! Press OK to continue to next level')) {
+            this.level4()
+          } else {
+            this.level3()
+          }
+        }
+        this.nrStoneOnGoal = 0
         
       }
-      if(this.nrStoneOnGoal == this.nrOfGoals){
-        console.log('u have won')
-        if (confirm('You completed the level! Press OK to continue to next level')) {
-          this.level4()
-        } else {
-          this.level3()
-        }
-      }
-      this.nrStoneOnGoal = 0
+      
     }
   }
-}
