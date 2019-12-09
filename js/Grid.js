@@ -13,6 +13,7 @@ export default {
       <button type="button" @click="level2">Level 2</button>
       <button type="button" @click="level3">Level 3</button>
       <button type="button" @click="level4">Level 4</button>
+      <button type="button" @click="power">Powerup</button>
       </div>
       <div class="outside">
       <div class="grid-layout">
@@ -33,18 +34,22 @@ export default {
         grid: [],
         flatTiles: [],
         gameBoard: 10,
+      backgroundImage: '#673AB7',
       wallImage: 'css/img/wall.jpg',
       stoneImage: 'css/img/stone.png',
       playerImage: 'css/img/player.png',
       finishImage: 'css/img/finish.png',
       grassImage: 'css/img/grass.png',
       stoneOnGoal: 'css/img/stoneOnGoal.png',
+      bgImage: 'css/img/bgimage.png',
       nrStoneOnGoal: 0,
       nrOfGoals: 0,
       moves: 0,
+      remainingPowerups: 0,
       level: 1,
       xValue: 0,
       yValue: 0,
+      usePowerup: false
       }
 
     },
@@ -56,13 +61,14 @@ export default {
     methods: {
       level1(){
         this.level = 1
+        this.remainingPowerups = 1
         this.nrOfGoals = 3
         this.tiles = []
         this.grid = []
         this.grid = [
           [' ', 'W', 'W', 'W', 'W', ' ', ' ', ' ', ' ', ' '],
           [' ', 'W', 'F', 'W', 'W', 'W', 'W', 'W', ' ', ' '],
-          [' ', 'W', 'F', 'F', 'G', 'W', 'W', 'W', ' ', ' '],
+          [' ', 'W', ' ', 'F', 'G', 'W', 'W', 'W', ' ', ' '],
           [' ', 'W', 'G', 'G', 'G', 'G', 'G', 'W', ' ', ' '],
           [' ', 'W', 'G', 'S', 'S', 'S', 'P', 'W', ' ', ' '],
           [' ', 'W', 'G', 'G', 'G', 'G', 'W', 'W', ' ', ' '],
@@ -78,6 +84,7 @@ export default {
               x: col,
               y: row,
               img: '',
+              color: ''
             }
             this.tiles[row].push(position)
             
@@ -96,6 +103,9 @@ export default {
                     break;
                 case "G":
                       this.tiles[row][col].img = this.grassImage;
+                    break;
+                    case " ":
+                      this.tiles[row][col].img = this.bgImage;
                     break;
             }
   
@@ -255,6 +265,15 @@ export default {
         this.xValue = x;
         this.yValue = y;
 
+        if (this.usePowerup == true && (this.tiles[y][x].img == this.wallImage)){
+          this.tiles[y][x].img = this.grassImage
+          this.remainingPowerups--
+          this.usePowerup = false
+          return
+        }
+        else{
+          console.log("nothing")
+        }
           //Moving right
           if(this.playerImage == this.tiles[y][x-1].img){
           moveRight(this.xValue, this.yValue, this)
@@ -280,6 +299,12 @@ export default {
       reset(){
         window.location.reload()
     },
+    power(){
+      if(this.remainingPowerups > 0){
+        this.usePowerup = true
+      }
+    },
+  
     resetLevel(){
       console.log("u pressed r key")
         if(this.level == 1){
