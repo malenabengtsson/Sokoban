@@ -313,7 +313,7 @@ export default {
       else if (e.keyCode == '39') {
          // right arrow
          console.log("u pressed right")
-         this.moveRight(this.xValue+1, this.yValue)
+         moveRight(this.xValue+1, this.yValue, this)
          
       } 
       else if (e.keyCode == '82') {
@@ -340,8 +340,8 @@ export default {
           console.log("u pressed something else")
           return
       }
-   this.checkAndPlaceGoals()
-   this.checkIfCompleted()
+   checkAndPlaceGoals(this)
+   checkIfCompleted(this)
   }
 }
 }
