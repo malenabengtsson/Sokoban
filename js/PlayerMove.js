@@ -1,4 +1,9 @@
+import Tile from './Tile.js'
+
 export default {
+    components:{
+        
+    },
     template: `
     <div></div>
     `,
@@ -8,7 +13,7 @@ export default {
         }
     },
     created() {
-        document.onkeydown = checkKey
+        window.onkeydown = checkKey()
     },
 methods: {
     checkKey(e) {
