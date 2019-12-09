@@ -14,6 +14,7 @@ export default {
       <button type="button" @click="level3">Level 3</button>
       <button type="button" @click="level4">Level 4</button>
       </div>
+      <div class="outside">
       <div class="grid-layout">
         <Tile
           v-for="(tile, i) of flatTiles" 
@@ -22,6 +23,7 @@ export default {
           @movePlayer="movePlayer"
           >
         </Tile>
+      </div>
       </div>
       </div>
     `,
