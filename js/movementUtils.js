@@ -1,15 +1,17 @@
 
 function moveRight(x,y, grid){
-    if (grid.tiles[y][x].img != grid.wallImage && grid.tiles[y][x].img != grid.bgImage){
+    if (grid.tiles[y][x].img != grid.wallImage){
         //Checking if theres a stone and if it can be moved
         if ((grid.tiles[y][x].img == grid.stoneImage && grid.tiles[y][x+1].img == grid.stoneImage) ||
         (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y][x+1].img == grid.stoneOnGoal)||
         (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y][x+1].img == grid.stoneImage)||
-        ( grid.tiles[y][x].img == grid.stoneImage && grid.tiles[y][x+1].img == grid.stoneOnGoal)) {
+        (grid.tiles[y][x].img == grid.stoneImage && grid.tiles[y][x+1].img == grid.stoneOnGoal)||
+        (grid.tiles[y][x].img == grid.stoneImage && grid.tiles[y][x+1].img == grid.bgImage)||
+        (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y][x+1].img == grid.bgImage)) {
             console.log('Cant move stone into stone')
         }
         else if((grid.tiles[y][x].img == grid.stoneImage && grid.tiles[y][x+1].img != grid.wallImage) ||
-            (grid.tiles[y][x].img == grid.stoneOnGoal && (grid.tiles[y][x+1].img != grid.wallImage))){
+            (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y][x+1].img != grid.wallImage)){
             grid.tiles[y][x].img = grid.playerImage;
             grid.tiles[y][x+1].img = grid.stoneImage;
             grid.tiles[y][x-1].img = grid.grassImage;
@@ -30,12 +32,14 @@ function moveRight(x,y, grid){
     }
 }
 function moveLeft(x, y, grid){
-  if (grid.tiles[y][x].img != grid.wallImage && grid.tiles[y][x].img != grid.bgImage){
+  if (grid.tiles[y][x].img != grid.wallImage){
    //Checking if theres a stone and if it can be moved
    if ((grid.tiles[y][x].img == grid.stoneImage && grid.tiles[y][x-1].img == grid.stoneImage) ||
    (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y][x-1].img == grid.stoneImage)||
    (grid.tiles[y][x].img == grid.stoneImage && grid.tiles[y][x-1].img == grid.stoneOnGoal)||
-   (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y][x-1].img == grid.stoneOnGoal)){
+   (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y][x-1].img == grid.stoneOnGoal)||
+   (grid.tiles[y][x].img == grid.stoneImage && grid.tiles[y][x-1].img == grid.bgImage)||
+   (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y][x-1].img == grid.bgImage)){
     console.log('Cant move stone into stone')}
 
    else if((grid.tiles[y][x].img == grid.stoneImage && grid.tiles[y][x-1].img != grid.wallImage)||
@@ -65,7 +69,9 @@ function moveDown(x,y, grid){
    if ((grid.tiles[y][x].img == grid.stoneImage && grid.tiles[y+1][x].img == grid.stoneImage)||
    (grid.tiles[y][x].img == grid.stoneImage && grid.tiles[y+1][x].img == grid.stoneOnGoal)||
    (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y+1][x].img == grid.stoneImage)||
-   (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y+1][x].img == grid.stoneOnGoal)){
+   (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y+1][x].img == grid.stoneOnGoal)||
+   (grid.tiles[y][x].img == grid.stoneImage && grid.tiles[y+1][x].img == grid.bgImage)||
+   (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y+1][x].img == grid.bgImage)){
     console.log('Cant move stone into stone')}
 
    else if((grid.tiles[y][x].img == grid.stoneImage && grid.tiles[y+1][x].img != grid.wallImage)||
@@ -96,7 +102,9 @@ function moveUp(x,y, grid){
    if ((grid.tiles[y][x].img == grid.stoneImage && grid.tiles[y-1][x].img == grid.stoneImage)||
    (grid.tiles[y][x].img == grid.stoneImage && grid.tiles[y-1][x].img == grid.stoneOnGoal)||
    (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y-1][x].img == grid.stoneOnGoal)||
-   (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y-1][x].img == grid.stoneImage) ){
+   (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y-1][x].img == grid.stoneImage)||
+   (grid.tiles[y][x].img == grid.stoneImage && grid.tiles[y-1][x].img == grid.bgImage)||
+   (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y-1][x].img == grid.bgImage)){
     console.log('Cant move stone into stone')}
 
    else if((grid.tiles[y][x].img == grid.stoneImage && grid.tiles[y-1][x].img != grid.wallImage)||
