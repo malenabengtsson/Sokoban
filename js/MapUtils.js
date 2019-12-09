@@ -45,6 +45,10 @@ function checkIfCompleted(grid){
             console.log("you are on level 3")
             grid.level4()
           }
+          else if(grid.level == 4){
+            console.log("you are on level 4")
+            grid.reset()
+          }
         } else {
          grid.reset()
         }
