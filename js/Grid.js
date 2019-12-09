@@ -8,13 +8,14 @@ export default {
     <div id="map">
     <label for="level">Choose which level to play!</label>
     <div class="level">
-    <button style="button" id="reset" @click="reset">Reset</button>
+    <button style="button" id="reset" @click="resetLevel">Reset</button>
       <button type="button" @click="level1">Level 1</button>
       <button type="button" @click="level2">Level 2</button>
       <button type="button" @click="level3">Level 3</button>
       <button type="button" @click="level4">Level 4</button>
       <button type="button" @click="power">Powerup</button>
       </div>
+      <div class="outside">
       <div class="grid-layout">
         <Tile
           v-for="(tile, i) of flatTiles" 
@@ -23,6 +24,7 @@ export default {
           @movePlayer="movePlayer"
           >
         </Tile>
+      </div>
       </div>
       </div>
     `,
@@ -299,6 +301,25 @@ export default {
       }
     },
   
+    resetLevel(){
+      console.log("u pressed r key")
+        if(this.level == 1){
+          console.log("u go to level1")
+          this.level1()
+        }
+        else if(this.level == 2){
+          console.log("u go to level2")
+          this.level2()
+        }
+        else if(this.level == 3){
+          console.log("u go to level3")
+          this.level3()
+        }
+        else if(this.level == 4){
+          console.log("u go to level4")
+          this.level4()
+        }
+    },
 
     checkKey(e) {
 
@@ -338,23 +359,7 @@ export default {
       } 
       else if (e.keyCode == '82') {
         // r key
-        console.log("u pressed r key")
-        if(this.level == 1){
-          console.log("u go to level1")
-          this.level1()
-        }
-        else if(this.level == 2){
-          console.log("u go to level2")
-          this.level2()
-        }
-        else if(this.level == 3){
-          console.log("u go to level3")
-          this.level3()
-        }
-        else if(this.level == 4){
-          console.log("u go to level4")
-          this.level4()
-        }
+        this.resetLevel()
      }
       else {
           console.log("u pressed something else")
