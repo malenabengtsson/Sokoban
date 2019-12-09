@@ -8,6 +8,7 @@ export default {
     <div id="map">
     <label for="level">Choose which level to play!</label>
     <div class="level">
+    <button style="button" id="reset" @click="reset">Reset</button>
       <button type="button" @click="level1">Level 1</button>
       <button type="button" @click="level2">Level 2</button>
       <button type="button" @click="level3">Level 3</button>
@@ -21,10 +22,6 @@ export default {
           @movePlayer="movePlayer"
           >
         </Tile>
-      </div>
-      <label for="restart">Are you stuck?</label>
-    <div class="restart">
-      <button style="button" id="reset" @click="reset">Reset</button>
       </div>
       </div>
     `,
