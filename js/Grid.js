@@ -41,6 +41,7 @@ export default {
       finishImage: 'css/img/finish.png',
       grassImage: 'css/img/grass.png',
       stoneOnGoal: 'css/img/stoneOnGoal.png',
+      bgImage: 'css/img/bgimage.png',
       nrStoneOnGoal: 0,
       nrOfGoals: 0,
       moves: 0,
@@ -67,7 +68,7 @@ export default {
         this.grid = [
           [' ', 'W', 'W', 'W', 'W', ' ', ' ', ' ', ' ', ' '],
           [' ', 'W', 'F', 'W', 'W', 'W', 'W', 'W', ' ', ' '],
-          [' ', 'W', 'F', 'F', 'G', 'W', 'W', 'W', ' ', ' '],
+          [' ', 'W', ' ', 'F', 'G', 'W', 'W', 'W', ' ', ' '],
           [' ', 'W', 'G', 'G', 'G', 'G', 'G', 'W', ' ', ' '],
           [' ', 'W', 'G', 'S', 'S', 'S', 'P', 'W', ' ', ' '],
           [' ', 'W', 'G', 'G', 'G', 'G', 'W', 'W', ' ', ' '],
@@ -102,6 +103,9 @@ export default {
                     break;
                 case "G":
                       this.tiles[row][col].img = this.grassImage;
+                    break;
+                    case " ":
+                      this.tiles[row][col].img = this.bgImage;
                     break;
             }
   
