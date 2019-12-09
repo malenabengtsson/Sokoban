@@ -46,11 +46,11 @@ export default {
       }
 
     },
-    /*
+    
     created() {
-     
+      window.onkeydown = this.checkKey
     },
-    */
+    
     methods: {
       level1(){
         this.level = 1
@@ -443,7 +443,35 @@ export default {
       this.moves++
      
         }
-    }
+    },
+    checkKey(e) {
+
+      e = e || window.event;
+  
+      if (e.keyCode == '38') {
+          // up arrow
+          console.log("u pressed up")
+          this.moveUp(this.xValue, this.yValue)
+      }
+      else if (e.keyCode == '40') {
+          // down arrow
+          console.log("u pressed down")
+          this.moveDown()
+      }
+      else if (e.keyCode == '37') {
+         // left arrow
+         console.log("u pressed left")
+         this.moveLeft()
+      }
+      else if (e.keyCode == '39') {
+         // right arrow
+         console.log("u pressed right")
+         this.moveRight()
+      } else {
+          console.log("u pressed something else")
+      }
+  
+  }
   }
 }
 }
