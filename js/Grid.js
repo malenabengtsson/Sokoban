@@ -279,6 +279,8 @@ export default {
         window.location.reload()
     },
     moveRight(x,y){
+      utilsMoveRight(x,y, this);
+      /*
       if (this.tiles[y][x].img != this.wallImage){
         //Checking if theres a stone and if it can be moved
         if ((this.tiles[y][x].img == this.stoneImage && this.tiles[y][x+1].img == this.stoneImage) ||
@@ -301,12 +303,13 @@ export default {
         console.log('Cant move')}
       
       else{
-      this.tiles[y][x].img = this.playerImage;
-      this.tiles[y][x-1].img = this.grassImage;
-      console.log('Moved right')
-      this.moves++
-    }
-    }},
+        this.tiles[y][x].img = this.playerImage;
+        this.tiles[y][x-1].img = this.grassImage;
+        console.log('Moved right')
+        this.moves++
+      }
+    }*/
+  },
     moveLeft(x, y){
       if (this.tiles[y][x].img != this.wallImage){
        //Checking if theres a stone and if it can be moved
