@@ -166,7 +166,7 @@ export default {
           ['W', 'W', 'W', 'G', 'G', 'G', 'F', 'G', 'W', 'W'],
           ['W', 'W', 'W', 'F', 'G', 'G', 'G', 'W', 'W', 'W'],
           ['W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W'],
-          ['W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W']
+          [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
         ]
         for(let row = 0; row <this.gameBoard; row++){
           this.tiles[row] = []
@@ -206,7 +206,6 @@ export default {
         this.grid = []
         this.grid = [
           ['W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W'],
-          ['W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W'],
           ['W', 'W', 'W', 'W', 'F', 'G', 'P', 'W', 'W', 'W'],
           ['W', 'F', 'G', 'F', 'G', 'W', 'G', 'W', 'W', 'W'],
           ['W', 'G', 'W', 'G', 'G', 'G', 'F', 'G', 'G', 'W'],
@@ -214,7 +213,8 @@ export default {
           ['W', 'S', 'W', 'G', 'W', 'W', 'G', 'W', 'G', 'W'],
           ['W', 'G', 'G', 'S', 'W', 'W', 'S', 'S', 'G', 'W'],
           ['W', 'W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
-          ['W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W']
+          ['W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W'],
+          [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
         ]
         for(let row = 0; row <this.gameBoard; row++){
           this.tiles[row] = []
