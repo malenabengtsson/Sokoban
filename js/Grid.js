@@ -166,7 +166,7 @@ export default {
           ['W', 'W', 'W', 'G', 'G', 'G', 'F', 'G', 'W', 'W'],
           ['W', 'W', 'W', 'F', 'G', 'G', 'G', 'W', 'W', 'W'],
           ['W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W'],
-          ['W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W']
+          [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
         ]
         for(let row = 0; row <this.gameBoard; row++){
           this.tiles[row] = []
@@ -206,7 +206,6 @@ export default {
         this.grid = []
         this.grid = [
           ['W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W'],
-          ['W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W'],
           ['W', 'W', 'W', 'W', 'F', 'G', 'P', 'W', 'W', 'W'],
           ['W', 'F', 'G', 'F', 'G', 'W', 'G', 'W', 'W', 'W'],
           ['W', 'G', 'W', 'G', 'G', 'G', 'F', 'G', 'G', 'W'],
@@ -214,7 +213,8 @@ export default {
           ['W', 'S', 'W', 'G', 'W', 'W', 'G', 'W', 'G', 'W'],
           ['W', 'G', 'G', 'S', 'W', 'W', 'S', 'S', 'G', 'W'],
           ['W', 'W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
-          ['W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W']
+          ['W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W'],
+          [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
         ]
         for(let row = 0; row <this.gameBoard; row++){
           this.tiles[row] = []
@@ -279,6 +279,8 @@ export default {
         window.location.reload()
     },
     moveRight(x,y){
+      utilsMoveRight(x,y, this);
+      /*
       if (this.tiles[y][x].img != this.wallImage){
         //Checking if theres a stone and if it can be moved
         if ((this.tiles[y][x].img == this.stoneImage && this.tiles[y][x+1].img == this.stoneImage) ||
@@ -301,12 +303,13 @@ export default {
         console.log('Cant move')}
       
       else{
-      this.tiles[y][x].img = this.playerImage;
-      this.tiles[y][x-1].img = this.grassImage;
-      console.log('Moved right')
-      this.moves++
-    }
-    }},
+        this.tiles[y][x].img = this.playerImage;
+        this.tiles[y][x-1].img = this.grassImage;
+        console.log('Moved right')
+        this.moves++
+      }
+    }*/
+  },
     moveLeft(x, y){
       if (this.tiles[y][x].img != this.wallImage){
        //Checking if theres a stone and if it can be moved
