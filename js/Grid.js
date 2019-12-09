@@ -269,57 +269,12 @@ export default {
           else if(this.playerImage == this.tiles[y+1][x].img){
           this.moveUp(this.xValue, this.yValue)
             }
-        //Loop to set goal-image when player is not on that tile
-        for (let i = 0; i <this.tiles.length; i++){
-          for (let j = 0; j <this.tiles[x].length; j++){
-            if (this.tiles[i][j].img != this.playerImage){
-
-            if (this.tiles[i][j].img == this.stoneOnGoal){
-                console.log('Stone in right position')
-                this.nrStoneOnGoal++
-            }
-            else if (this.grid[i][j] == 'F' && this.tiles[i][j].img == this.stoneImage){
-              this.tiles[i][j].img = this.stoneOnGoal
-              console.log('Stone on goal')
-              
-            }
-            else if (this.grid[i][j] == 'F' && this.tiles[i][j].img != this.finishImage){
-              this.tiles[i][j].img = this.finishImage
-              console.log('Set goal image')
-            }
-          }
-            else{
-              console.log('Do nothing')
-            }
+            this.checkAndPlaceGoals()
+            this.checkIfCompleted()
+       
             
-          }
-        }
-        console.log('Number of stones in right position: ' + this.nrStoneOnGoal)
-        this.flatTiles = this.tiles.flat()
+          },
 
-        // Check if all stones are on the goal-images
-        if(this.nrStoneOnGoal == this.nrOfGoals){
-          console.log(`You cleared the stage with ${this.moves} moves!`)
-          if (confirm('You completed the level! Press OK to continue to next level')) {
-            if(this.level == 1){
-              console.log("you are on level 1")
-              this.level2()
-            }
-            else if(this.level == 2){
-              console.log("you are on level 2")
-              this.level3()
-            }
-            else if(this.level == 3){
-              console.log("you are on level 3")
-              this.level4()
-            }
-          } else {
-           this.reset()
-          }
-        }
-        this.nrStoneOnGoal = 0
-        
-      },
       reset(){
         window.location.reload()
     },
@@ -414,6 +369,7 @@ export default {
     }},
     moveUp(x,y){
       if (this.tiles[y][x].img != this.wallImage){
+        console.log('First if')
        //Checking if theres a stone and if it can be moved
        if ((this.tiles[y][x].img == this.stoneImage && this.tiles[y-1][x].img == this.stoneImage)||
        (this.tiles[y][x].img == this.stoneImage && this.tiles[y-1][x].img == this.stoneOnGoal)||
@@ -443,33 +399,99 @@ export default {
      
         }
     }},
+
+    checkAndPlaceGoals(){
+       //Loop to set goal-image when player is not on that tile
+       for (let i = 0; i <this.tiles.length; i++){
+        for (let j = 0; j <this.tiles[i].length; j++){
+          if (this.tiles[i][j].img != this.playerImage){
+
+          if (this.tiles[i][j].img == this.stoneOnGoal){
+              console.log('Stone in right position')
+              this.nrStoneOnGoal++
+          }
+          else if (this.grid[i][j] == 'F' && this.tiles[i][j].img == this.stoneImage){
+            this.tiles[i][j].img = this.stoneOnGoal
+            console.log('Stone on goal')
+            
+          }
+          else if (this.grid[i][j] == 'F' && this.tiles[i][j].img != this.finishImage){
+            this.tiles[i][j].img = this.finishImage
+            console.log('Set goal image')
+          }
+        }
+          else{
+            console.log('Do nothing')
+          }
+          this.flatTiles = this.tiles.flat()
+    }}},
+
+    checkIfCompleted(){
+      console.log('Number of stones in right position: ' + this.nrStoneOnGoal)
+
+
+        // Check if all stones are on the goal-images
+        if(this.nrStoneOnGoal == this.nrOfGoals){
+          console.log(`You cleared the stage with ${this.moves} moves!`)
+          if (confirm('You completed the level! Press OK to continue to next level')) {
+            if(this.level == 1){
+              console.log("you are on level 1")
+              this.level2()
+            }
+            else if(this.level == 2){
+              console.log("you are on level 2")
+              this.level3()
+            }
+            else if(this.level == 3){
+              console.log("you are on level 3")
+              this.level4()
+            }
+          } else {
+           this.reset()
+          }
+        }
+        this.nrStoneOnGoal = 0
+        this.flatTiles = this.tiles.flat()
+        
+    },
     checkKey(e) {
 
       e = e || window.event;
+
+      for (let i = 0; i <this.tiles.length; i++){
+        for (let j = 0; j <this.tiles[i].length; j++){
+          if(this.tiles[i][j].img == this.playerImage){
+            this.xValue = j;
+            this.yValue = i;
+          }
+        }
+      }
+          console.log('X is : ' + this.xValue)
+          console.log('Y is: ' + this.yValue)
   
       if (e.keyCode == '38') {
           // up arrow
           console.log("u pressed up")
-          this.moveUp(this.xValue, this.yValue)
+          this.moveUp(this.xValue, this.yValue-1)
       }
       else if (e.keyCode == '40') {
           // down arrow
           console.log("u pressed down")
-          this.moveDown()
+          this.moveDown(this.xValue, this.yValue+1)
       }
       else if (e.keyCode == '37') {
          // left arrow
          console.log("u pressed left")
-         this.moveLeft()
+         this.moveLeft(this.xValue-1, this.yValue)
       }
       else if (e.keyCode == '39') {
          // right arrow
          console.log("u pressed right")
-         this.moveRight()
+         this.moveRight(this.xValue+1, this.yValue)
       } else {
           console.log("u pressed something else")
       }
-  
+   this.checkAndPlaceGoals()
+   this.checkIfCompleted()
   }
-  }
-}
+  }}
