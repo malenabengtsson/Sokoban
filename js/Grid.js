@@ -313,11 +313,35 @@ export default {
       else if (e.keyCode == '39') {
          // right arrow
          console.log("u pressed right")
-         moveRight(this.xValue+1, this.yValue, this)
+         this.moveRight(this.xValue+1, this.yValue)
+         
       } 
-     
-   checkAndPlaceGoals(this)
-   checkIfCompleted(this)
+      else if (e.keyCode == '82') {
+        // r key
+        console.log("u pressed r key")
+        if(this.level == 1){
+          console.log("u go to level1")
+          this.level1()
+        }
+        else if(this.level == 2){
+          console.log("u go to level2")
+          this.level2()
+        }
+        else if(this.level == 3){
+          console.log("u go to level3")
+          this.level3()
+        }
+        else if(this.level == 4){
+          console.log("u go to level4")
+          this.level4()
+        }
+     }
+      else {
+          console.log("u pressed something else")
+          return
+      }
+   this.checkAndPlaceGoals()
+   this.checkIfCompleted()
   }
 }
 }
