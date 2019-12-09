@@ -1,6 +1,6 @@
 
 function moveRight(x,y, grid){
-    if (grid.tiles[y][x].img != grid.wallImage){
+    if (grid.tiles[y][x].img != grid.wallImage && grid.tiles[y][x].img != grid.bgImage){
         //Checking if theres a stone and if it can be moved
         if ((grid.tiles[y][x].img == grid.stoneImage && grid.tiles[y][x+1].img == grid.stoneImage) ||
         (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y][x+1].img == grid.stoneOnGoal)||
@@ -32,7 +32,7 @@ function moveRight(x,y, grid){
     }
 }
 function moveLeft(x, y, grid){
-  if (grid.tiles[y][x].img != grid.wallImage){
+  if (grid.tiles[y][x].img != grid.wallImage && grid.tiles[y][x].img != grid.bgImage){
    //Checking if theres a stone and if it can be moved
    if ((grid.tiles[y][x].img == grid.stoneImage && grid.tiles[y][x-1].img == grid.stoneImage) ||
    (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y][x-1].img == grid.stoneImage)||
