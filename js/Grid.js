@@ -53,24 +53,24 @@ export default {
     */
     methods: {
       level1(){
-        this.nrOfGoals = 1
+        this.nrOfGoals = 3
         this.tiles = []
         this.grid = []
         this.grid = [
-          [' ', ' ', ' ', 'W', 'W', 'W', 'W', 'W', ' ', ' '],
-          [' ', ' ', ' ', 'W', 'P', 'G', 'G', 'W', ' ', ' '],
-          [' ', ' ', ' ', 'W', 'G', 'S', 'G', 'W', ' ', ' '],
-          [' ', ' ', ' ', 'W', 'G', 'G', 'F', 'W', ' ', ' '],
-          [' ', ' ', ' ', 'W', 'W', 'W', 'W', 'W', ' ', ' '],
-          [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-          [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+          [' ', 'W', 'W', 'W', 'W', ' ', ' ', ' ', ' ', ' '],
+          [' ', 'W', 'F', 'W', 'W', 'W', 'W', 'W', ' ', ' '],
+          [' ', 'W', 'F', 'F', 'G', 'W', 'W', 'W', ' ', ' '],
+          [' ', 'W', 'G', 'G', 'G', 'G', 'G', 'W', ' ', ' '],
+          [' ', 'W', 'G', 'S', 'S', 'S', 'P', 'W', ' ', ' '],
+          [' ', 'W', 'G', 'G', 'G', 'G', 'W', 'W', ' ', ' '],
+          [' ', 'W', 'W', 'W', 'W', 'W', 'W', ' ', ' ', ' '],
           [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
           [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
           [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
         ]
-        for(let row = 0; row < 10; row++){
+        for(let row = 0; row <this.gameBoard; row++){
           this.tiles[row] = []
-          for(let col = 0; col < 10; col++){
+          for(let col = 0; col <this.gameBoard; col++){
             let position = {
               x: col,
               y: row,
@@ -102,24 +102,24 @@ export default {
 
       },
       level2(){
-        this.nrOfGoals = 1
+        this.nrOfGoals = 3
         this.tiles = []
         this.grid = []
         this.grid = [
-          [' ', ' ', ' ', 'W', 'W', 'W', 'W', 'W', ' ', ' '],
-          [' ', ' ', ' ', 'W', 'G', 'G', 'G', 'W', ' ', ' '],
-          [' ', ' ', ' ', 'W', 'G', 'S', 'F', 'W', ' ', ' '],
-          [' ', ' ', ' ', 'W', 'P', 'G', 'G', 'W', ' ', ' '],
-          [' ', ' ', ' ', 'W', 'W', 'W', 'W', 'W', ' ', ' '],
-          [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-          [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-          [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-          [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+          [' ', 'W', 'W', 'W', 'W', 'W', ' ', ' ', ' ', ' '],
+          [' ', 'W', 'G', 'G', 'G', 'W', 'W', 'W', 'W', ' '],
+          [' ', 'W', 'G', 'G', 'G', 'W', 'G', 'G', 'W', ' '],
+          [' ', 'W', 'W', 'G', 'G', 'G', 'G', 'F', 'W', ' '],
+          ['W', 'W', 'W', 'G', 'W', 'W', 'W', 'F', 'W', ' '],
+          ['W', 'G', 'S', 'G', 'W', ' ', 'W', 'F', 'W', ' '],
+          ['W', 'G', 'S', 'S', 'W', ' ', 'W', 'W', 'W', ' '],
+          ['W', 'P', 'G', 'G', 'W', ' ', '', ' ', ' ', ' '],
+          ['W', 'W', 'W', 'W', 'W', ' ', ' ', ' ', ' ', ' '],
           [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
         ]
-        for(let row = 0; row < 10; row++){
+        for(let row = 0; row <this.gameBoard; row++){
           this.tiles[row] = []
-          for(let col = 0; col < 10; col++){
+          for(let col = 0; col <this.gameBoard; col++){
             let position = {
               x: col,
               y: row,
@@ -154,20 +154,20 @@ export default {
         this.tiles = []
         this.grid = []
         this.grid = [
-          ['W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W'],
-          ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
-          ['W', 'P', 'S', 'G', 'W', 'G', 'G', 'G', 'G', 'W'],
-          ['W', 'G', 'S', 'G', 'G', 'G', 'G', 'F', 'G', 'W'],
-          ['W', 'G', 'S', 'G', 'G', 'G', 'G', 'F', 'G', 'W'],
-          ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'F', 'G', 'W'],
+          ['W', 'W', 'W', 'W', 'W', ' ', ' ', ' ', ' ', ' '],
+          ['W', 'G', 'G', 'G', 'W', 'W', 'W', 'W', 'W', ' '],
+          ['W', 'P', 'S', 'G', 'W', 'G', 'G', 'G', 'W', ' '],
+          ['W', 'W', 'W', 'G', 'G', 'G', 'G', 'F', 'W', ' '],
+          ['W', 'W', 'W', 'G', 'G', 'G', 'G', 'F', 'W', ' '],
+          ['W', 'W', 'W', 'G', 'G', 'G', 'G', 'F', 'W', 'W'],
           ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
           ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
           ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
           ['W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W']
         ]
-        for(let row = 0; row < 10; row++){
+        for(let row = 0; row <this.gameBoard; row++){
           this.tiles[row] = []
-          for(let col = 0; col < 10; col++){
+          for(let col = 0; col <this.gameBoard; col++){
             let position = {
               x: col,
               y: row,
@@ -212,9 +212,9 @@ export default {
           ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
           ['W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W']
         ]
-        for(let row = 0; row < 10; row++){
+        for(let row = 0; row <this.gameBoard; row++){
           this.tiles[row] = []
-          for(let col = 0; col < 10; col++){
+          for(let col = 0; col <this.gameBoard; col++){
             let position = {
               x: col,
               y: row,
@@ -400,6 +400,7 @@ export default {
             else{
               console.log('Do nothing')
             }
+            
           }
         }
         console.log('Number of stones in right position: ' + this.nrStoneOnGoal)
