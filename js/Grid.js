@@ -202,19 +202,19 @@ export default {
       },
       level4(){
         this.level = 4
-        this.nrOfGoals = 3
+        this.nrOfGoals = 5
         this.tiles = []
         this.grid = []
         this.grid = [
           ['W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W'],
-          ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
-          ['W', 'G', 'G', 'G', 'W', 'S', 'G', 'G', 'G', 'W'],
-          ['W', 'G', 'S', 'G', 'W', 'G', 'G', 'F', 'G', 'W'],
-          ['W', 'G', 'S', 'G', 'G', 'G', 'G', 'F', 'G', 'W'],
-          ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'F', 'G', 'W'],
-          ['W', 'P', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
-          ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
-          ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
+          ['W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W'],
+          ['W', 'W', 'W', 'W', 'F', 'G', 'P', 'W', 'W', 'W'],
+          ['W', 'F', 'G', 'F', 'G', 'W', 'G', 'W', 'W', 'W'],
+          ['W', 'G', 'W', 'G', 'G', 'G', 'F', 'G', 'G', 'W'],
+          ['W', 'G', 'W', 'G', 'S', 'F', 'S', 'G', 'G', 'W'],
+          ['W', 'S', 'W', 'G', 'W', 'W', 'G', 'W', 'G', 'W'],
+          ['W', 'G', 'G', 'S', 'W', 'W', 'S', 'S', 'G', 'W'],
+          ['W', 'W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
           ['W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W']
         ]
         for(let row = 0; row <this.gameBoard; row++){
