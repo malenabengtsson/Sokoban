@@ -252,8 +252,6 @@ export default {
         console.log('Y is' + y)
         this.xValue = x;
         this.yValue = y;
-
-        if (this.tiles[y][x].img != this.wallImage){
           //Moving right
           if(this.playerImage == this.tiles[y][x-1].img){
           this.moveRight(this.xValue, this.yValue)
@@ -271,8 +269,7 @@ export default {
           this.moveUp(this.xValue, this.yValue)
             
             }
-          
-        }
+        
         //Loop to set goal-image when player is not on that tile
         for (let i = 0; i <this.tiles.length; i++){
           for (let j = 0; j <this.tiles[x].length; j++){
@@ -328,6 +325,7 @@ export default {
         window.location.reload()
     },
     moveRight(x,y){
+      if (this.tiles[y][x].img != this.wallImage){
         //Checking if theres a stone and if it can be moved
         if ((this.tiles[y][x].img == this.stoneImage && this.tiles[y][x+1].img == this.stoneImage) ||
         (this.tiles[y][x].img == this.stoneOnGoal && this.tiles[y][x+1].img == this.stoneOnGoal)||
@@ -354,8 +352,9 @@ export default {
       console.log('Moved right')
       this.moves++
     }
-    },
+    }},
     moveLeft(x, y){
+      if (this.tiles[y][x].img != this.wallImage){
        //Checking if theres a stone and if it can be moved
        if ((this.tiles[y][x].img == this.stoneImage && this.tiles[y][x-1].img == this.stoneImage) ||
        (this.tiles[y][x].img == this.stoneOnGoal && this.tiles[y][x-1].img == this.stoneImage)||
@@ -383,8 +382,9 @@ export default {
       console.log('Moved left')
       this.moves++
         }
-    },
+    }},
     moveDown(x,y){
+      if (this.tiles[y][x].img != this.wallImage){
        //Checking if theres a stone and if it can be 
        if ((this.tiles[y][x].img == this.stoneImage && this.tiles[y+1][x].img == this.stoneImage)||
        (this.tiles[y][x].img == this.stoneImage && this.tiles[y+1][x].img == this.stoneOnGoal)||
@@ -412,8 +412,9 @@ export default {
       this.moves++
       
       }
-    },
+    }},
     moveUp(x,y){
+      if (this.tiles[y][x].img != this.wallImage){
        //Checking if theres a stone and if it can be moved
        if ((this.tiles[y][x].img == this.stoneImage && this.tiles[y-1][x].img == this.stoneImage)||
        (this.tiles[y][x].img == this.stoneImage && this.tiles[y-1][x].img == this.stoneOnGoal)||
@@ -444,4 +445,5 @@ export default {
         }
     }
   }
+}
 }
