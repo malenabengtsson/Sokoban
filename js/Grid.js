@@ -490,6 +490,7 @@ export default {
          this.moveRight(this.xValue+1, this.yValue)
       } else {
           console.log("u pressed something else")
+          return
       }
    this.checkAndPlaceGoals()
    this.checkIfCompleted()
