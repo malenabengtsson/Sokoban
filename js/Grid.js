@@ -8,6 +8,7 @@ export default {
     <div id="map">
     <label for="level">Choose which level to play!</label>
     <div class="level">
+    <button style="button" id="reset" @click="reset">Reset</button>
       <button type="button" @click="level1">Level 1</button>
       <button type="button" @click="level2">Level 2</button>
       <button type="button" @click="level3">Level 3</button>
@@ -21,10 +22,6 @@ export default {
           @movePlayer="movePlayer"
           >
         </Tile>
-      </div>
-      <label for="restart">Are you stuck?</label>
-    <div class="restart">
-      <button style="button" id="reset" @click="reset">Reset</button>
       </div>
       </div>
     `,
@@ -43,6 +40,7 @@ export default {
       nrStoneOnGoal: 0,
       nrOfGoals: 0,
       moves: 0,
+      level: 1
       }
 
     },
@@ -53,6 +51,7 @@ export default {
     */
     methods: {
       level1(){
+        this.level = 1
         this.nrOfGoals = 3
         this.tiles = []
         this.grid = []
@@ -102,6 +101,7 @@ export default {
 
       },
       level2(){
+        this.level = 2
         this.nrOfGoals = 3
         this.tiles = []
         this.grid = []
@@ -150,6 +150,7 @@ export default {
         //this.render++;
       },
       level3(){
+        this.level = 3
         this.nrOfGoals = 3
         this.tiles = []
         this.grid = []
@@ -197,6 +198,7 @@ export default {
         }
       },
       level4(){
+        this.level = 4
         this.nrOfGoals = 3
         this.tiles = []
         this.grid = []
@@ -410,9 +412,20 @@ export default {
         if(this.nrStoneOnGoal == this.nrOfGoals){
           console.log(`You cleared the stage with ${this.moves} moves!`)
           if (confirm('You completed the level! Press OK to continue to next level')) {
-            this.level4()
+            if(this.level == 1){
+              console.log("you are on level 1")
+              this.level2()
+            }
+            else if(this.level == 2){
+              console.log("you are on level 2")
+              this.level3()
+            }
+            else if(this.level == 3){
+              console.log("you are on level 3")
+              this.level4()
+            }
           } else {
-            this.level3()
+           this.reset()
           }
         }
         this.nrStoneOnGoal = 0
