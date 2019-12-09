@@ -252,6 +252,7 @@ export default {
         console.log('Y is' + y)
         this.xValue = x;
         this.yValue = y;
+
           //Moving right
           if(this.playerImage == this.tiles[y][x-1].img){
           this.moveRight(this.xValue, this.yValue)
@@ -267,9 +268,7 @@ export default {
           //Moving up
           else if(this.playerImage == this.tiles[y+1][x].img){
           this.moveUp(this.xValue, this.yValue)
-            
             }
-        
         //Loop to set goal-image when player is not on that tile
         for (let i = 0; i <this.tiles.length; i++){
           for (let j = 0; j <this.tiles[x].length; j++){
@@ -443,7 +442,7 @@ export default {
       this.moves++
      
         }
-    },
+    }},
     checkKey(e) {
 
       e = e || window.event;
@@ -473,5 +472,4 @@ export default {
   
   }
   }
-}
 }
