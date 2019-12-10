@@ -122,19 +122,21 @@ export default {
       },
       level2(){
         this.level = 2
-        this.nrOfGoals = 3
+        this.remainingPowerups = 1
+        this.powerUp = 'Strength'
+        this.nrOfGoals = 4
         this.tiles = []
         this.grid = []
         this.grid = [
-          [' ', 'W', 'W', 'W', 'W', 'W', ' ', ' ', ' ', ' '],
-          [' ', 'W', 'G', 'G', 'G', 'W', 'W', 'W', 'W', ' '],
-          [' ', 'W', 'G', 'G', 'G', 'W', 'G', 'G', 'W', ' '],
-          [' ', 'W', 'W', 'G', 'G', 'G', 'G', 'F', 'W', ' '],
-          ['W', 'W', 'W', 'G', 'W', 'W', 'W', 'F', 'W', ' '],
-          ['W', 'G', 'S', 'G', 'W', ' ', 'W', 'F', 'W', ' '],
-          ['W', 'G', 'S', 'S', 'W', ' ', 'W', 'W', 'W', ' '],
-          ['W', 'P', 'G', 'G', 'W', ' ', '', ' ', ' ', ' '],
-          ['W', 'W', 'W', 'W', 'W', ' ', ' ', ' ', ' ', ' '],
+          ['W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W'],
+          ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
+          ['W', 'G', 'G', 'P', 'G', 'G', 'G', 'W', 'G', 'W'],
+          ['W', 'G', 'W', 'F', 'W', 'G', 'G', 'W', 'S', 'W'],
+          ['W', 'G', 'S', 'S', 'F', 'S', 'G', 'W', 'S', 'W'],
+          ['W', 'G', 'W', 'F', 'W', 'W', 'G', 'W', 'F', 'W'],
+          ['W', 'G', 'G', 'G', 'W', 'W', 'G', 'G', 'U', 'W'],
+          ['W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W'],
+          [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
           [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
         ]
         for(let row = 0; row <this.gameBoard; row++){
@@ -162,7 +164,10 @@ export default {
                break;
                 case "G":
                       this.tiles[row][col].img = this.grassImage;
-                      break;
+                break;
+                case "U":
+                      this.tiles[row][col].img = this.powerUpImage;
+                break;
             }
           }
         }
