@@ -50,7 +50,8 @@ export default {
       level: 1,
       xValue: 0,
       yValue: 0,
-      usePowerup: false
+      usePowerup: false,
+      powerUp: ''
       }
 
     },
@@ -62,7 +63,8 @@ export default {
     methods: {
       level1(){
         this.level = 1
-        this.remainingPowerups = 0
+        this.remainingPowerups = 1
+        this.powerUp = 'Strength'
         this.nrOfGoals = 3
         this.tiles = []
         this.grid = []
@@ -70,6 +72,8 @@ export default {
           [' ', 'W', 'W', 'W', 'W', ' ', ' ', ' ', ' ', ' '],
           [' ', 'W', 'F', 'W', 'W', 'W', 'W', 'W', ' ', ' '],
           [' ', 'W', 'F', 'F', 'G', 'W', 'W', 'W', ' ', ' '],
+          [' ', 'W', 'G', 'G', 'G', 'F', 'F', 'W', ' ', ' '],
+          [' ', 'W', 'G', 'S', 'S', 'S', 'P', 'W', ' ', ' '],
           [' ', 'W', 'G', 'G', 'G', 'G', 'G', 'W', ' ', ' '],
           [' ', 'W', 'U', 'S', 'S', 'S', 'P', 'W', ' ', ' '],
           [' ', 'W', 'G', 'G', 'G', 'G', 'W', 'W', ' ', ' '],
@@ -264,16 +268,19 @@ export default {
         }
       },
       movePlayerOnClick(x, y){
-        console.log('X is' + x)
-        console.log('Y is' + y)
         this.xValue = x;
         this.yValue = y;
 
-        if (this.usePowerup == true && (this.tiles[y][x].img == this.wallImage)){
+        if(this.powerUp == 'Wallbreaker'){
+          if (this.usePowerup == true && (this.tiles[y][x].img == this.wallImage)){
           this.tiles[y][x].img = this.grassImage
           this.remainingPowerups--
-          this.usePowerup = false
+          this.usePowerup = false;
           return
+          }
+        else if(this.powerUp == 'Strength'){
+            console.log('Super strong')
+          }
         }
         else{
           console.log("nothing")
@@ -305,26 +312,21 @@ export default {
     },
     power(){
       if(this.remainingPowerups > 0){
-        this.usePowerup = true
+        this.usePowerup = true;
       }
     },
   
     resetLevel(){
-      console.log("u pressed r key")
         if(this.level == 1){
-          console.log("u go to level1")
           this.level1()
         }
         else if(this.level == 2){
-          console.log("u go to level2")
           this.level2()
         }
         else if(this.level == 3){
-          console.log("u go to level3")
           this.level3()
         }
         else if(this.level == 4){
-          console.log("u go to level4")
           this.level4()
         }
     },
@@ -341,40 +343,37 @@ export default {
           }
         }
       }
-          console.log('X is : ' + this.xValue)
-          console.log('Y is: ' + this.yValue)
   
       if (e.keyCode == '38') {
           // up arrow
-          console.log("u pressed up")
           moveUp(this.xValue, this.yValue-1, this)
+          
       }
       else if (e.keyCode == '40') {
           // down arrow
-          console.log("u pressed down")
           moveDown(this.xValue, this.yValue+1, this)
+         
       }
       else if (e.keyCode == '37') {
          // left arrow
-         console.log("u pressed left")
          moveLeft(this.xValue-1, this.yValue, this)
+        
       }
       else if (e.keyCode == '39') {
          // right arrow
-         console.log("u pressed right")
-         moveRight(this.xValue+1, this.yValue, this)
-         
+         moveRight(this.xValue+1, this.yValue, this) 
       } 
       else if (e.keyCode == '82') {
         // r key
         this.resetLevel()
      }
       else {
-          console.log("u pressed something else")
+         
           return
       }
-   checkAndPlaceGoals(this)
-   checkIfCompleted(this)
+      checkAndPlaceGoals(this)
+      checkIfCompleted(this)
+  
   }
 }
 }
