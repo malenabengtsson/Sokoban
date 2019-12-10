@@ -21,7 +21,7 @@ export default {
           v-for="(tile, i) of flatTiles" 
           v-bind:position="tile" 
           v-bind:key="'tile' + i + tile.x + tile.y"
-          @movePlayer="movePlayer"
+          @movePlayerOnClick="movePlayerOnClick"
           >
         </Tile>
       </div>
@@ -68,7 +68,7 @@ export default {
         this.grid = [
           [' ', 'W', 'W', 'W', 'W', ' ', ' ', ' ', ' ', ' '],
           [' ', 'W', 'F', 'W', 'W', 'W', 'W', 'W', ' ', ' '],
-          [' ', 'W', ' ', 'F', 'G', 'W', 'W', 'W', ' ', ' '],
+          [' ', 'W', 'F', 'F', 'G', 'W', 'W', 'W', ' ', ' '],
           [' ', 'W', 'G', 'G', 'G', 'G', 'G', 'W', ' ', ' '],
           [' ', 'W', 'G', 'S', 'S', 'S', 'P', 'W', ' ', ' '],
           [' ', 'W', 'G', 'G', 'G', 'G', 'W', 'W', ' ', ' '],
@@ -259,7 +259,7 @@ export default {
           }
         }
       },
-      movePlayer(x, y){
+      movePlayerOnClick(x, y){
         console.log('X is' + x)
         console.log('Y is' + y)
         this.xValue = x;
