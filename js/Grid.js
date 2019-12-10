@@ -8,23 +8,23 @@ export default {
     <div id="map">
     <label for="level">Choose which level to play!</label>
     <div class="level">
+    <button style="button" id="reset" @click="resetLevel">Reset</button>
       <button type="button" @click="level1">Level 1</button>
       <button type="button" @click="level2">Level 2</button>
       <button type="button" @click="level3">Level 3</button>
       <button type="button" @click="level4">Level 4</button>
+      <button type="button" @click="power">Powerup</button>
       </div>
+      <div class="outside">
       <div class="grid-layout">
         <Tile
           v-for="(tile, i) of flatTiles" 
           v-bind:position="tile" 
           v-bind:key="'tile' + i + tile.x + tile.y"
-          @movePlayer="movePlayer"
+          @movePlayerOnClick="movePlayerOnClick"
           >
         </Tile>
       </div>
-      <label for="restart">Are you stuck?</label>
-    <div class="restart">
-      <button style="button" id="reset" @click="reset">Reset</button>
       </div>
       </div>
     `,
@@ -34,25 +34,34 @@ export default {
         grid: [],
         flatTiles: [],
         gameBoard: 10,
+      backgroundImage: '#673AB7',
       wallImage: 'css/img/wall.jpg',
       stoneImage: 'css/img/stone.png',
       playerImage: 'css/img/player.png',
       finishImage: 'css/img/finish.png',
       grassImage: 'css/img/grass.png',
       stoneOnGoal: 'css/img/stoneOnGoal.png',
+      bgImage: 'css/img/bgimage.png',
       nrStoneOnGoal: 0,
       nrOfGoals: 0,
       moves: 0,
+      remainingPowerups: 0,
+      level: 1,
+      xValue: 0,
+      yValue: 0,
+      usePowerup: false
       }
 
     },
-    /*
+    
     created() {
-     
+      window.onkeydown = this.checkKey
     },
-    */
+    
     methods: {
       level1(){
+        this.level = 1
+        this.remainingPowerups = 1
         this.nrOfGoals = 3
         this.tiles = []
         this.grid = []
@@ -75,6 +84,7 @@ export default {
               x: col,
               y: row,
               img: '',
+              color: ''
             }
             this.tiles[row].push(position)
             
@@ -94,6 +104,9 @@ export default {
                 case "G":
                       this.tiles[row][col].img = this.grassImage;
                     break;
+                    case " ":
+                      this.tiles[row][col].img = this.bgImage;
+                    break;
             }
   
           }
@@ -102,6 +115,7 @@ export default {
 
       },
       level2(){
+        this.level = 2
         this.nrOfGoals = 3
         this.tiles = []
         this.grid = []
@@ -150,20 +164,21 @@ export default {
         //this.render++;
       },
       level3(){
-        this.nrOfGoals = 3
+        this.level = 3
+        this.nrOfGoals = 4
         this.tiles = []
         this.grid = []
         this.grid = [
-          ['W', 'W', 'W', 'W', 'W', ' ', ' ', ' ', ' ', ' '],
-          ['W', 'G', 'G', 'G', 'W', 'W', 'W', 'W', 'W', ' '],
-          ['W', 'P', 'S', 'G', 'W', 'G', 'G', 'G', 'W', ' '],
-          ['W', 'W', 'W', 'G', 'G', 'G', 'G', 'F', 'W', ' '],
-          ['W', 'W', 'W', 'G', 'G', 'G', 'G', 'F', 'W', ' '],
-          ['W', 'W', 'W', 'G', 'G', 'G', 'G', 'F', 'W', 'W'],
-          ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
-          ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
-          ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
-          ['W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W']
+          ['W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W'],
+          ['W', 'G', 'G', 'G', 'F', 'G', 'S', 'P', 'W', 'W'],
+          ['W', 'F', 'W', 'W', 'W', 'G', 'G', 'S', 'G', 'W'],
+          ['W', 'G', 'G', 'W', 'W', 'G', 'W', 'G', 'G', 'W'],
+          ['W', 'G', 'G', 'G', 'S', 'G', 'W', 'G', 'G', 'W'],
+          ['W', 'G', 'G', 'S', 'W', 'G', 'W', 'G', 'G', 'W'],
+          ['W', 'W', 'W', 'G', 'G', 'G', 'F', 'G', 'W', 'W'],
+          ['W', 'W', 'W', 'F', 'G', 'G', 'G', 'W', 'W', 'W'],
+          ['W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W'],
+          [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
         ]
         for(let row = 0; row <this.gameBoard; row++){
           this.tiles[row] = []
@@ -197,20 +212,21 @@ export default {
         }
       },
       level4(){
-        this.nrOfGoals = 3
+        this.level = 4
+        this.nrOfGoals = 5
         this.tiles = []
         this.grid = []
         this.grid = [
           ['W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W'],
-          ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
-          ['W', 'G', 'G', 'G', 'W', 'S', 'G', 'G', 'G', 'W'],
-          ['W', 'G', 'S', 'G', 'W', 'G', 'G', 'F', 'G', 'W'],
-          ['W', 'G', 'S', 'G', 'G', 'G', 'G', 'F', 'G', 'W'],
-          ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'F', 'G', 'W'],
-          ['W', 'P', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
-          ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
-          ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
-          ['W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W']
+          ['W', 'W', 'W', 'W', 'F', 'G', 'P', 'W', 'W', 'W'],
+          ['W', 'F', 'G', 'F', 'G', 'W', 'G', 'W', 'W', 'W'],
+          ['W', 'G', 'W', 'G', 'G', 'G', 'F', 'G', 'G', 'W'],
+          ['W', 'G', 'W', 'G', 'S', 'F', 'S', 'G', 'G', 'W'],
+          ['W', 'S', 'W', 'G', 'W', 'W', 'G', 'W', 'G', 'W'],
+          ['W', 'G', 'G', 'S', 'W', 'W', 'S', 'S', 'G', 'W'],
+          ['W', 'W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
+          ['W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W'],
+          [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
         ]
         for(let row = 0; row <this.gameBoard; row++){
           this.tiles[row] = []
@@ -243,184 +259,118 @@ export default {
           }
         }
       },
-      movePlayer(x, y){
+      movePlayerOnClick(x, y){
         console.log('X is' + x)
         console.log('Y is' + y)
+        this.xValue = x;
+        this.yValue = y;
 
-        if (this.tiles[y][x].img != this.wallImage){
-         
-          if(this.tiles[y][x].img === this.playerImage){
-            console.log('This is the player')
-          }
-          
+        if (this.usePowerup == true && (this.tiles[y][x].img == this.wallImage)){
+          this.tiles[y][x].img = this.grassImage
+          this.remainingPowerups--
+          this.usePowerup = false
+          return
+        }
+        else{
+          console.log("nothing")
+        }
           //Moving right
-          else if(this.playerImage == this.tiles[y][x-1].img){
-            //Checking if theres a stone and if it can be moved
-            if ((this.tiles[y][x].img == this.stoneImage && this.tiles[y][x+1].img == this.stoneImage) ||
-              (this.tiles[y][x].img == this.stoneOnGoal && this.tiles[y][x+1].img == this.stoneOnGoal)||
-              (this.tiles[y][x].img == this.stoneOnGoal && this.tiles[y][x+1].img == this.stoneImage)||
-              ( this.tiles[y][x].img == this.stoneImage && this.tiles[y][x+1].img == this.stoneOnGoal)) {
-              console.log('Cant move stone into stone')}
-
-            else if((this.tiles[y][x].img == this.stoneImage && this.tiles[y][x+1].img != this.wallImage) ||
-               (this.tiles[y][x].img == this.stoneOnGoal && (this.tiles[y][x+1].img != this.wallImage))){
-              this.tiles[y][x].img = this.playerImage;
-              this.tiles[y][x+1].img = this.stoneImage;
-              this.tiles[y][x-1].img = this.grassImage;
-              console.log('You tried to move the stone')
-              this.moves++
-            }
-            //Cant move if thers a wall after
-            else if ((this.tiles[y][x].img == this.stoneImage && (this.tiles[y][x+1].img == this.wallImage)) ||
-            (this.tiles[y][x].img == this.stoneOnGoal && (this.tiles[y][x+1].img == this.wallImage))){
-              console.log('Cant move')}
-            
-            else{
-            this.tiles[y][x].img = this.playerImage;
-            this.tiles[y][x-1].img = this.grassImage;
-            console.log('Moved right')
-            this.moves++
-            
-          }
+          if(this.playerImage == this.tiles[y][x-1].img){
+          moveRight(this.xValue, this.yValue, this)
           }
           //Moving left
           else if(this.playerImage == this.tiles[y][x+1].img){
-             //Checking if theres a stone and if it can be moved
-             if ((this.tiles[y][x].img == this.stoneImage && this.tiles[y][x-1].img == this.stoneImage) ||
-             (this.tiles[y][x].img == this.stoneOnGoal && this.tiles[y][x-1].img == this.stoneImage)||
-             (this.tiles[y][x].img == this.stoneImage && this.tiles[y][x-1].img == this.stoneOnGoal)||
-             (this.tiles[y][x].img == this.stoneOnGoal && this.tiles[y][x-1].img == this.stoneOnGoal)){
-              console.log('Cant move stone into stone')}
-
-             else if((this.tiles[y][x].img == this.stoneImage && this.tiles[y][x-1].img != this.wallImage)||
-             (this.tiles[y][x].img == this.stoneOnGoal && this.tiles[y][x-1].img != this.wallImage)){
-              this.tiles[y][x].img = this.playerImage;
-              this.tiles[y][x-1].img = this.stoneImage;
-              this.tiles[y][x+1].img = this.grassImage;
-              console.log('You tried to move the stone')
-              this.moves++
-            }
-            //Cant move if theres a wall after
-            else if ((this.tiles[y][x].img == this.stoneImage && this.tiles[y][x-1].img == this.wallImage)||
-            (this.tiles[y][x].img == this.stoneOnGoal && this.tiles[y][x-1].img == this.wallImage)){
-              console.log('Cant move')}
-              else{
-                //If theres no stone
-              
-            this.tiles[y][x].img = this.playerImage;
-            this.tiles[y][x+1].img = this.grassImage;
-            console.log('Moved left')
-            this.moves++
-            
-              }
+            moveLeft(this.xValue, this.yValue, this)
           }
           //Moving down
           else if(this.playerImage == this.tiles[y-1][x].img){
-             //Checking if theres a stone and if it can be 
-             if ((this.tiles[y][x].img == this.stoneImage && this.tiles[y+1][x].img == this.stoneImage)||
-             (this.tiles[y][x].img == this.stoneImage && this.tiles[y+1][x].img == this.stoneOnGoal)||
-             (this.tiles[y][x].img == this.stoneOnGoal && this.tiles[y+1][x].img == this.stoneImage)||
-             (this.tiles[y][x].img == this.stoneOnGoal && this.tiles[y+1][x].img == this.stoneOnGoal)){
-              console.log('Cant move stone into stone')}
-
-             else if((this.tiles[y][x].img == this.stoneImage && this.tiles[y+1][x].img != this.wallImage)||
-             (this.tiles[y][x].img == this.stoneOnGoal && this.tiles[y+1][x].img != this.wallImage)){
-              this.tiles[y][x].img = this.playerImage;
-              this.tiles[y+1][x].img = this.stoneImage;
-              this.tiles[y-1][x].img = this.grassImage;
-              console.log('You tried to move the stone')
-              this.moves++
-            }
-            //Cant move if thers a wall after
-            else if ((this.tiles[y][x].img == this.stoneImage && this.tiles[y+1][x].img == this.wallImage)||
-            (this.tiles[y][x].img == this.stoneOnGoal && this.tiles[y+1][x].img == this.wallImage)){
-              console.log('Cant move')}
-              else{
-                //If theres no stone
-            this.tiles[y][x].img = this.playerImage;
-            this.tiles[y-1][x].img = this.grassImage;
-            console.log('Moved down')
-            this.moves++
-            
-            }
+            moveDown(this.xValue, this.yValue, this)
           }
           //Moving up
           else if(this.playerImage == this.tiles[y+1][x].img){
-             //Checking if theres a stone and if it can be moved
-             if ((this.tiles[y][x].img == this.stoneImage && this.tiles[y-1][x].img == this.stoneImage)||
-             (this.tiles[y][x].img == this.stoneImage && this.tiles[y-1][x].img == this.stoneOnGoal)||
-             (this.tiles[y][x].img == this.stoneOnGoal && this.tiles[y-1][x].img == this.stoneOnGoal)||
-             (this.tiles[y][x].img == this.stoneOnGoal && this.tiles[y-1][x].img == this.stoneImage) ){
-              console.log('Cant move stone into stone')}
-
-             else if((this.tiles[y][x].img == this.stoneImage && this.tiles[y-1][x].img != this.wallImage)||
-             (this.tiles[y][x].img == this.stoneOnGoal && this.tiles[y-1][x].img != this.wallImage)){
-              this.tiles[y][x].img = this.playerImage;
-              this.tiles[y-1][x].img = this.stoneImage;
-              this.tiles[y+1][x].img = this.grassImage;
-              console.log('You tried to move the stone')
-              this.moves++
+          moveUp(this.xValue, this.yValue, this)
             }
-            //Cant move if thers a wall after
-            else if ((this.tiles[y][x].img == this.stoneImage && this.tiles[y-1][x].img == this.wallImage)||
-            (this.tiles[y][x].img == this.stoneOnGoal && this.tiles[y-1][x].img == this.wallImage)){
-              console.log('Cant move')}
-
-              else{
-            //If theres no stone
-            this.tiles[y][x].img = this.playerImage;
-            this.tiles[y+1][x].img = this.grassImage;
-            console.log('Moved up')
-            this.moves++
-           
-              }
+            checkAndPlaceGoals(this)
+            checkIfCompleted(this)
+       
             
-            }
-          
-        }
-        //Loop to set goal-image when player is not on that tile
-        for (let i = 0; i <this.tiles.length; i++){
-          for (let j = 0; j <this.tiles[x].length; j++){
-            if (this.tiles[i][j].img != this.playerImage){
+          },
 
-            if (this.tiles[i][j].img == this.stoneOnGoal){
-                console.log('Stone in right position')
-                this.nrStoneOnGoal++
-            }
-            else if (this.grid[i][j] == 'F' && this.tiles[i][j].img == this.stoneImage){
-              this.tiles[i][j].img = this.stoneOnGoal
-              console.log('Stone on goal')
-              
-            }
-            else if (this.grid[i][j] == 'F' && this.tiles[i][j].img != this.finishImage){
-              this.tiles[i][j].img = this.finishImage
-              console.log('Set goal image')
-            }
-          }
-            else{
-              console.log('Do nothing')
-            }
-            
-          }
-        }
-        console.log('Number of stones in right position: ' + this.nrStoneOnGoal)
-        this.flatTiles = this.tiles.flat()
-
-        // Check if all stones are on the goal-images
-        if(this.nrStoneOnGoal == this.nrOfGoals){
-          console.log(`You cleared the stage with ${this.moves} moves!`)
-          if (confirm('You completed the level! Press OK to continue to next level')) {
-            this.level4()
-          } else {
-            this.level3()
-          }
-        }
-        this.nrStoneOnGoal = 0
-        
-      },
       reset(){
         window.location.reload()
-      
-    }
+    },
+    power(){
+      if(this.remainingPowerups > 0){
+        this.usePowerup = true
+      }
+    },
+  
+    resetLevel(){
+      console.log("u pressed r key")
+        if(this.level == 1){
+          console.log("u go to level1")
+          this.level1()
+        }
+        else if(this.level == 2){
+          console.log("u go to level2")
+          this.level2()
+        }
+        else if(this.level == 3){
+          console.log("u go to level3")
+          this.level3()
+        }
+        else if(this.level == 4){
+          console.log("u go to level4")
+          this.level4()
+        }
+    },
+
+    checkKey(e) {
+
+      e = e || window.event;
+
+      for (let i = 0; i <this.tiles.length; i++){
+        for (let j = 0; j <this.tiles[i].length; j++){
+          if(this.tiles[i][j].img == this.playerImage){
+            this.xValue = j;
+            this.yValue = i;
+          }
+        }
+      }
+          console.log('X is : ' + this.xValue)
+          console.log('Y is: ' + this.yValue)
+  
+      if (e.keyCode == '38') {
+          // up arrow
+          console.log("u pressed up")
+          moveUp(this.xValue, this.yValue-1, this)
+      }
+      else if (e.keyCode == '40') {
+          // down arrow
+          console.log("u pressed down")
+          moveDown(this.xValue, this.yValue+1, this)
+      }
+      else if (e.keyCode == '37') {
+         // left arrow
+         console.log("u pressed left")
+         moveLeft(this.xValue-1, this.yValue, this)
+      }
+      else if (e.keyCode == '39') {
+         // right arrow
+         console.log("u pressed right")
+         moveRight(this.xValue+1, this.yValue, this)
+         
+      } 
+      else if (e.keyCode == '82') {
+        // r key
+        this.resetLevel()
+     }
+      else {
+          console.log("u pressed something else")
+          return
+      }
+   checkAndPlaceGoals(this)
+   checkIfCompleted(this)
   }
+}
 }
