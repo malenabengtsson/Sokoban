@@ -42,6 +42,7 @@ export default {
       grassImage: 'css/img/grass.png',
       stoneOnGoal: 'css/img/stoneOnGoal.png',
       bgImage: 'css/img/bgimage.png',
+      powerUpImage: 'css/img/powerup.jpg',
       nrStoneOnGoal: 0,
       nrOfGoals: 0,
       moves: 0,
@@ -61,7 +62,7 @@ export default {
     methods: {
       level1(){
         this.level = 1
-        this.remainingPowerups = 1
+        this.remainingPowerups = 0
         this.nrOfGoals = 3
         this.tiles = []
         this.grid = []
@@ -70,7 +71,7 @@ export default {
           [' ', 'W', 'F', 'W', 'W', 'W', 'W', 'W', ' ', ' '],
           [' ', 'W', 'F', 'F', 'G', 'W', 'W', 'W', ' ', ' '],
           [' ', 'W', 'G', 'G', 'G', 'G', 'G', 'W', ' ', ' '],
-          [' ', 'W', 'G', 'S', 'S', 'S', 'P', 'W', ' ', ' '],
+          [' ', 'W', 'U', 'S', 'S', 'S', 'P', 'W', ' ', ' '],
           [' ', 'W', 'G', 'G', 'G', 'G', 'W', 'W', ' ', ' '],
           [' ', 'W', 'W', 'W', 'W', 'W', 'W', ' ', ' ', ' '],
           [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
@@ -106,6 +107,9 @@ export default {
                     break;
                     case " ":
                       this.tiles[row][col].img = this.bgImage;
+                    break;
+                    case "U":
+                      this.tiles[row][col].img = this.powerUpImage;
                     break;
             }
   
