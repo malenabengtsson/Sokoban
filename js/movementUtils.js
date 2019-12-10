@@ -85,9 +85,15 @@ function moveDown(x,y, grid){
   //Cant move if thers a wall after
   else if ((grid.tiles[y][x].img == grid.stoneImage && grid.tiles[y+1][x].img == grid.wallImage)||
   (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y+1][x].img == grid.wallImage)){
-    console.log('Cant move')}
+    console.log('Cant move')
+  }
+  
     else{
       //If theres no stone
+      if(grid.tiles[y][x].img == grid.powerUpImage){
+        console.log('u took the powerup')
+        grid.remainingPowerUps = 1
+      }
   grid.tiles[y][x].img = grid.playerImage;
   grid.tiles[y-1][x].img = grid.grassImage;
   console.log('Moved down')
