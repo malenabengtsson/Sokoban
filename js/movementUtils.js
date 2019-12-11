@@ -81,8 +81,10 @@ static moveRight(x,y, grid){
         (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y][x+1].img == grid.stoneImage)||
         (grid.tiles[y][x].img == grid.stoneImage && grid.tiles[y][x+1].img == grid.stoneOnGoal)||
         (grid.tiles[y][x].img == grid.stoneImage && grid.tiles[y][x+1].img == grid.bgImage)||
-        (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y][x+1].img == grid.bgImage)) {
-            console.log('Cant move stone into stone')
+        (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y][x+1].img == grid.bgImage)||
+        (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y][x+1].img == grid.powerUpImage)||
+        (grid.tiles[y][x].img == grid.stoneImage && grid.tiles[y][x+1].img == grid.powerUpImage)) {
+            console.log('Cant move stone into stone/powerup')
         }
         else if((grid.tiles[y][x].img == grid.stoneImage && grid.tiles[y][x+1].img != grid.wallImage) ||
             (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y][x+1].img != grid.wallImage)){
@@ -186,7 +188,9 @@ static moveLeft(x, y, grid){
    (grid.tiles[y][x].img == grid.stoneImage && grid.tiles[y][x-1].img == grid.stoneOnGoal)||
    (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y][x-1].img == grid.stoneOnGoal)||
    (grid.tiles[y][x].img == grid.stoneImage && grid.tiles[y][x-1].img == grid.bgImage)||
-   (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y][x-1].img == grid.bgImage)){
+   (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y][x-1].img == grid.bgImage)||
+   (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y][x-1].img == grid.powerUpImage)||
+   (grid.tiles[y][x].img == grid.stoneImage && grid.tiles[y][x-1].img == grid.powerUpImage)){
     console.log('Cant move stone into stone')}
 
    else if((grid.tiles[y][x].img == grid.stoneImage && grid.tiles[y][x-1].img != grid.wallImage)||
@@ -292,7 +296,9 @@ static moveDown(x,y, grid){
    (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y+1][x].img == grid.stoneImage)||
    (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y+1][x].img == grid.stoneOnGoal)||
    (grid.tiles[y][x].img == grid.stoneImage && grid.tiles[y+1][x].img == grid.bgImage)||
-   (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y+1][x].img == grid.bgImage)){
+   (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y+1][x].img == grid.bgImage)||
+   (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y+1][x].img == grid.powerUpImage)||
+   (grid.tiles[y][x].img == grid.stoneImage && grid.tiles[y+1][x].img == grid.powerUpImage)){
     console.log('Cant move stone into stone')}
 
    else if((grid.tiles[y][x].img == grid.stoneImage && grid.tiles[y+1][x].img != grid.wallImage)||
@@ -399,7 +405,9 @@ static moveUp(x,y, grid){
    (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y-1][x].img == grid.stoneOnGoal)||
    (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y-1][x].img == grid.stoneImage)||
    (grid.tiles[y][x].img == grid.stoneImage && grid.tiles[y-1][x].img == grid.bgImage)||
-   (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y-1][x].img == grid.bgImage)){
+   (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y-1][x].img == grid.bgImage)||
+   (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y-1][x].img == grid.powerUpImage)||
+   (grid.tiles[y][x].img == grid.stoneImage && grid.tiles[y-1][x].img == grid.powerUpImage)){
     console.log('Cant move stone into stone')}
 
    else if((grid.tiles[y][x].img == grid.stoneImage && grid.tiles[y-1][x].img != grid.wallImage)||
