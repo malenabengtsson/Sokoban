@@ -46,7 +46,7 @@ export default {
       grassImage: 'css/img/grass.png',
       stoneOnGoal: 'css/img/stoneOnGoal.png',
       bgImage: 'css/img/bgimage.png',
-      powerUpImage: 'css/img/powerup.jpg',
+      powerUpImage: 'css/img/powerup.png',
       nrStoneOnGoal: 0,
       nrOfGoals: 0,
       moves: 0,
