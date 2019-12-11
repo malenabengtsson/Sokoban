@@ -82,4 +82,36 @@ static checkIfCompleted(grid){
       grid.flatTiles = grid.tiles.flat()
     
     }
+    static renderMap(grid, row, col){
+      switch (grid.grid[row][col]){
+        case "W":
+          grid.tiles[row][col].img= grid.wallImage;
+          break;
+          case "S":
+          grid.tiles[row][col].img= grid.stoneImage;
+          break;
+          case "P":
+              grid.tiles[row][col].img= grid.playerImage;
+          break;
+          case "F":
+              grid.tiles[row][col].img= grid.finishImage;
+              break;
+          case "G":
+                grid.tiles[row][col].img = grid.grassImage;
+              break;
+              case " ":
+                grid.tiles[row][col].img = grid.bgImage;
+              break;
+              case "U":
+                grid.tiles[row][col].img = grid.powerUpImage;
+                grid.number = Math.floor(Math.random()* 2) + 1;
+                if (grid.number == 1){
+                  grid.powerUp = 'Strength'
+                }
+                else{
+                  grid.powerUp = 'Wallbreaker'
+                }
+              break;
+      }
+    }
   }
