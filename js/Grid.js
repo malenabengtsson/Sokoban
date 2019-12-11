@@ -56,7 +56,8 @@ export default {
       yValue: 0,
       usePowerup: false,
       powerUp: '',
-      powerUpTaken: false
+      powerUpTaken: false,
+      number: 0,
       }
 
     },
@@ -69,7 +70,6 @@ export default {
       level1(){
         this.moves = 0
         this.level = 1
-        this.powerUp = 'Strength'
         this.nrOfGoals = 3
         this.tiles = []
         this.grid = []
@@ -84,33 +84,10 @@ export default {
               color: ''
             }
             this.tiles[row].push(position)
-            
-            switch (this.grid[row][col]){
-              case "W":
-                this.tiles[row][col].img= this.wallImage;
-                break;
-                case "S":
-                this.tiles[row][col].img= this.stoneImage;
-                break;
-                case "P":
-                    this.tiles[row][col].img= this.playerImage;
-                break;
-                case "F":
-                    this.tiles[row][col].img= this.finishImage;
-                    break;
-                case "G":
-                      this.tiles[row][col].img = this.grassImage;
-                    break;
-                    case " ":
-                      this.tiles[row][col].img = this.bgImage;
-                    break;
-                    case "U":
-                      this.tiles[row][col].img = this.powerUpImage;
-                    break;
-            }
-  
+            MapUtils.renderMap(this, row, col)
           }
         }
+        console.log('Your powerup is: ' + this.powerUp)
         this.flatTiles = this.tiles.flat()
 
       },
@@ -132,27 +109,8 @@ export default {
               img: '',
             }
             this.tiles[row].push(position)
-            
-            switch (this.grid[row][col]){
-              case "W":
-                this.tiles[row][col].img= this.wallImage;
-                break;
-                case "S":
-                this.tiles[row][col].img= this.stoneImage;
-                break;
-                case "P":
-                    this.tiles[row][col].img= this.playerImage;
-                break;
-                case "F":
-                    this.tiles[row][col].img= this.finishImage;
-               break;
-                case "G":
-                      this.tiles[row][col].img = this.grassImage;
-                break;
-                case "U":
-                      this.tiles[row][col].img = this.powerUpImage;
-                break;
-            }
+            MapUtils.renderMap(this, row, col)
+           
           }
         }
         this.flatTiles = this.tiles.flat()
@@ -175,23 +133,7 @@ export default {
             }
             this.tiles[row].push(position)
             
-            switch (this.grid[row][col]){
-              case "W":
-                this.tiles[row][col].img= this.wallImage;
-                break;
-                case "S":
-                this.tiles[row][col].img= this.stoneImage;
-                break;
-                case "P":
-                    this.tiles[row][col].img= this.playerImage; 
-                break;
-                case "F":
-                    this.tiles[row][col].img= this.finishImage;
-               break;
-                case "G":
-                      this.tiles[row][col].img = this.grassImage;
-                      break;
-            }
+            MapUtils.renderMap(this, row, col)
             this.flatTiles = this.tiles.flat()
           }
         }
@@ -214,23 +156,7 @@ export default {
             }
             this.tiles[row].push(position)
             
-            switch (this.grid[row][col]){
-              case "W":
-                this.tiles[row][col].img= this.wallImage;
-                break;
-                case "S":
-                this.tiles[row][col].img= this.stoneImage;
-                break;
-                case "P":
-                    this.tiles[row][col].img= this.playerImage; 
-                break;
-                case "F":
-                    this.tiles[row][col].img= this.finishImage;
-               break;
-                case "G":
-                      this.tiles[row][col].img = this.grassImage;
-                      break;
-            }
+            MapUtils.renderMap(this, row, col)
             this.flatTiles = this.tiles.flat()
           }
         }
