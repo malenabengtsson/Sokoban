@@ -1,7 +1,9 @@
 import Tile from './Tile.js'
 import movementUtils from './movementUtils.js'
 import MapUtils from './MapUtils.js'
-//import { levels} from '..js'
+import {levels} from './levels.js'
+
+
 export default {
   components: {
     Tile,
@@ -69,18 +71,7 @@ export default {
         this.nrOfGoals = 3
         this.tiles = []
         this.grid = []
-        this.grid = [
-          [' ', 'W', 'W', 'W', 'W', ' ', ' ', ' ', ' ', ' '],
-          [' ', 'W', 'F', 'W', 'W', 'W', 'W', 'W', ' ', ' '],
-          [' ', 'W', 'F', 'F', 'G', 'W', 'W', 'W', ' ', ' '],
-          [' ', 'W', 'G', 'G', 'G', 'G', 'G', 'W', ' ', ' '],
-          [' ', 'W', 'G', 'G', 'S', 'G', 'G', 'W', ' ', ' '],
-          [' ', 'W', 'U', 'S', 'F', 'S', 'P', 'W', ' ', ' '],
-          [' ', 'W', 'G', 'G', 'G', 'G', 'W', 'W', ' ', ' '],
-          [' ', 'W', 'W', 'W', 'W', 'W', 'W', ' ', ' ', ' '],
-          [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-          [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-        ]
+        this.grid = levels[0]
         for(let row = 0; row <this.gameBoard; row++){
           this.tiles[row] = []
           for(let col = 0; col <this.gameBoard; col++){
@@ -127,18 +118,8 @@ export default {
         this.nrOfGoals = 4
         this.tiles = []
         this.grid = []
-        this.grid = [
-          ['W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W'],
-          ['W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
-          ['W', 'G', 'G', 'P', 'G', 'G', 'G', 'W', 'G', 'W'],
-          ['W', 'G', 'W', 'F', 'W', 'G', 'G', 'W', 'S', 'W'],
-          ['W', 'G', 'S', 'S', 'F', 'S', 'G', 'W', 'S', 'W'],
-          ['W', 'G', 'W', 'F', 'W', 'W', 'G', 'W', 'F', 'W'],
-          ['W', 'G', 'G', 'G', 'W', 'W', 'G', 'G', 'U', 'W'],
-          ['W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W'],
-          [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-          [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-        ]
+        console.log(levels[1])
+        this.grid = levels[1]
         for(let row = 0; row <this.gameBoard; row++){
           this.tiles[row] = []
           for(let col = 0; col <this.gameBoard; col++){
@@ -179,18 +160,7 @@ export default {
         this.nrOfGoals = 4
         this.tiles = []
         this.grid = []
-        this.grid = [
-          ['W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W'],
-          ['W', 'G', 'G', 'G', 'F', 'G', 'S', 'P', 'W', 'W'],
-          ['W', 'F', 'W', 'W', 'W', 'G', 'G', 'S', 'G', 'W'],
-          ['W', 'G', 'G', 'W', 'W', 'G', 'W', 'G', 'G', 'W'],
-          ['W', 'G', 'G', 'G', 'S', 'G', 'W', 'G', 'G', 'W'],
-          ['W', 'G', 'G', 'S', 'W', 'G', 'W', 'G', 'G', 'W'],
-          ['W', 'W', 'W', 'G', 'G', 'G', 'F', 'G', 'W', 'W'],
-          ['W', 'W', 'W', 'F', 'G', 'G', 'G', 'W', 'W', 'W'],
-          ['W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W'],
-          [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-        ]
+        this.grid = levels[2]
         for(let row = 0; row <this.gameBoard; row++){
           this.tiles[row] = []
           for(let col = 0; col <this.gameBoard; col++){
@@ -227,18 +197,8 @@ export default {
         this.nrOfGoals = 5
         this.tiles = []
         this.grid = []
-        this.grid = [
-          ['W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W'],
-          ['W', 'W', 'W', 'W', 'F', 'G', 'P', 'W', 'W', 'W'],
-          ['W', 'F', 'G', 'F', 'G', 'W', 'G', 'W', 'W', 'W'],
-          ['W', 'G', 'W', 'G', 'G', 'G', 'F', 'G', 'G', 'W'],
-          ['W', 'G', 'W', 'G', 'S', 'F', 'S', 'G', 'G', 'W'],
-          ['W', 'S', 'W', 'G', 'W', 'W', 'G', 'W', 'G', 'W'],
-          ['W', 'G', 'G', 'S', 'W', 'W', 'S', 'S', 'G', 'W'],
-          ['W', 'W', 'G', 'G', 'G', 'G', 'G', 'G', 'G', 'W'],
-          ['W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W'],
-          [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-        ]
+        this.grid = levels[3]
+        
         for(let row = 0; row <this.gameBoard; row++){
           this.tiles[row] = []
           for(let col = 0; col <this.gameBoard; col++){
