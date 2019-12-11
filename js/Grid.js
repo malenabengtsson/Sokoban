@@ -356,7 +356,9 @@ export default {
   
       if (e.keyCode == '38') {
           // up arrow
-          moveUp(this.xValue, this.yValue-1, this)
+
+          movementUtils.moveUp(this.xValue, this.yValue-1, this)
+      
           checkIfCompleted(this)
       }
       else if (e.keyCode == '40') {
@@ -378,8 +380,13 @@ export default {
         this.resetLevel()
      }
 
-       checkAndPlaceGoals(this)
-       checkIfCompleted(this)
+      else {
+         
+          return
+      }
+      MapUtils.checkAndPlaceGoals(this)
+      MapUtils.checkIfCompleted(this)
+
   
    }
   }

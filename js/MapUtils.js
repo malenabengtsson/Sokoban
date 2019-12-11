@@ -34,8 +34,10 @@ static checkIfCompleted(grid){
     console.log('Number of stones in right position: ' + grid.nrStoneOnGoal)
       // Check if all stones are on the goal-images
       if(grid.nrStoneOnGoal == grid.nrOfGoals){
+
         console.log(`You cleared the stage with ${grid.moves} moves!`)
         if (confirm(`You completed the level with ${grid.moves} moves! Press OK to continue to the next level!`)) {
+
           if(grid.level == 1){
             grid.level2()
           }
