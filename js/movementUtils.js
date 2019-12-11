@@ -1,5 +1,8 @@
+export default class MovementUtils{
+  constructor(){
 
-function moveRight(x,y, grid){
+  }
+static moveRight(x,y, grid){
     if (grid.tiles[y][x].img != grid.wallImage && grid.tiles[y][x].img != grid.bgImage){
         //Checking if theres a stone and if it can be moved
         if (grid.powerUp == 'Strength' && grid.usePowerup == true){
@@ -14,8 +17,8 @@ function moveRight(x,y, grid){
             grid.tiles[y][x].img = grid.playerImage
             grid.tiles[y][x+1].img = grid.stoneImage
             grid.tiles[y][x+2].img = grid.stoneImage
-            grid.remainingPowerups--
             grid.usePowerup = false
+            grid.remainingPowerups--
             
             }
           }
@@ -31,8 +34,8 @@ function moveRight(x,y, grid){
             grid.tiles[y][x].img = grid.playerImage
             grid.tiles[y][x+1].img = grid.stoneImage
             grid.tiles[y][x+2].img = grid.stoneImage
+            grid.usePowerup = false;
             grid.remainingPowerups--
-            grid.usePowerup = false
          
             }
         }
@@ -98,7 +101,7 @@ function moveRight(x,y, grid){
         }
     }
   }
-function moveLeft(x, y, grid){
+static moveLeft(x, y, grid){
   if (grid.tiles[y][x].img != grid.wallImage && grid.tiles[y][x].img != grid.bgImage){
 
     if (grid.powerUp == 'Strength' && grid.usePowerup == true){
@@ -199,7 +202,7 @@ function moveLeft(x, y, grid){
   }
   
 }
-function moveDown(x,y, grid){
+static moveDown(x,y, grid){
   if (grid.tiles[y][x].img != grid.wallImage && grid.tiles[y][x].img != grid.bgImage){
     if (grid.powerUp == 'Strength' && grid.usePowerup == true){
       console.log('Recognized power up')
@@ -304,7 +307,7 @@ function moveDown(x,y, grid){
   }
 }
 }
-function moveUp(x,y, grid){
+static moveUp(x,y, grid){
   if (grid.tiles[y][x].img != grid.wallImage && grid.tiles[y][x].img != grid.bgImage){
     if (grid.powerUp == 'Strength' && grid.usePowerup == true){
       console.log('Recognized power up')
@@ -401,5 +404,6 @@ function moveUp(x,y, grid){
  
     }
   }
+}
 }
 

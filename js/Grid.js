@@ -1,5 +1,7 @@
 import Tile from './Tile.js'
-
+import movementUtils from './movementUtils.js'
+import MapUtils from './MapUtils.js'
+//import { levels} from '..js'
 export default {
   components: {
     Tile,
@@ -18,9 +20,9 @@ export default {
       <div class="outside">
       <div class="grid-layout">
         <Tile
-          v-for="(tile, i) of flatTiles" 
+          v-for="(tile, i) of tiles.flat()" 
           v-bind:position="tile" 
-          v-bind:key="'tile' + i + tile.x + tile.y"
+          v-bind:key="'tile' + i + tile.x + tile.y + tile.img"
           @movePlayerOnClick="movePlayerOnClick"
           >
         </Tile>
@@ -290,22 +292,22 @@ export default {
         }
           //Moving right
           if(this.playerImage == this.tiles[y][x-1].img){
-          moveRight(this.xValue, this.yValue, this)
+          movementUtils.moveRight(this.xValue, this.yValue, this)
           }
           //Moving left
           else if(this.playerImage == this.tiles[y][x+1].img){
-            moveLeft(this.xValue, this.yValue, this)
+            movementUtils.moveLeft(this.xValue, this.yValue, this)
           }
           //Moving down
           else if(this.playerImage == this.tiles[y-1][x].img){
-            moveDown(this.xValue, this.yValue, this)
+            movementUtils.moveDown(this.xValue, this.yValue, this)
           }
           //Moving up
           else if(this.playerImage == this.tiles[y+1][x].img){
-          moveUp(this.xValue, this.yValue, this)
+            movementUtils.moveUp(this.xValue, this.yValue, this)
             }
-            checkAndPlaceGoals(this)
-            checkIfCompleted(this)
+            MapUtils.checkAndPlaceGoals(this)
+            MapUtils.checkIfCompleted(this)
        
             
           },
@@ -349,22 +351,22 @@ export default {
   
       if (e.keyCode == '38') {
           // up arrow
-          moveUp(this.xValue, this.yValue-1, this)
+          movementUtils.moveUp(this.xValue, this.yValue-1, this)
           
       }
       else if (e.keyCode == '40') {
           // down arrow
-          moveDown(this.xValue, this.yValue+1, this)
+          movementUtils.moveDown(this.xValue, this.yValue+1, this)
          
       }
       else if (e.keyCode == '37') {
          // left arrow
-         moveLeft(this.xValue-1, this.yValue, this)
+         movementUtils.moveLeft(this.xValue-1, this.yValue, this)
         
       }
       else if (e.keyCode == '39') {
          // right arrow
-         moveRight(this.xValue+1, this.yValue, this) 
+         movementUtils.moveRight(this.xValue+1, this.yValue, this) 
       } 
       else if (e.keyCode == '82') {
         // r key
@@ -374,9 +376,9 @@ export default {
          
           return
       }
-      checkAndPlaceGoals(this)
-      checkIfCompleted(this)
+      MapUtils.checkAndPlaceGoals(this)
+      MapUtils.checkIfCompleted(this)
   
+   }
   }
-}
 }
