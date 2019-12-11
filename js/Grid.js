@@ -69,31 +69,35 @@ export default {
     methods: {
       level1(){
         this.powerUpTaken = false
+        this.remainingPowerups = 0
         this.moves = 0
         this.level = 1
         this.nrOfGoals = 3
         this.tiles = []
         this.grid = []
         this.grid = levels[0]
+
         for(let row = 0; row <this.gameBoard; row++){
           this.tiles[row] = []
           for(let col = 0; col <this.gameBoard; col++){
             let position = {
               x: col,
               y: row,
-              img: '',
-              color: ''
+              img: '', 
             }
+          
             this.tiles[row].push(position)
-            MapUtils.renderMap(this, row, col)
-          }
-        }
+        MapUtils.renderMap(this, row, col)
+          
+        
         console.log('Your powerup is: ' + this.powerUp)
         this.flatTiles = this.tiles.flat()
-
+      }
+        }
       },
       level2(){
         this.powerUpTaken = false
+        this.remainingPowerups = 0
         this.moves = 0
         this.level = 2
         this.powerUp = 'Strength'
@@ -119,6 +123,7 @@ export default {
         //this.render++;
       },
       level3(){
+        this.remainingPowerups = 0
         this.powerUpTaken = false
         this.moves = 0
         this.level = 3
@@ -142,6 +147,7 @@ export default {
         }
       },
       level4(){
+        this.remainingPowerups = 0
         this.powerUpTaken = false
         this.moves = 0
         this.level = 4

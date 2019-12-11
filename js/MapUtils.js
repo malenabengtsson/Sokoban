@@ -87,6 +87,7 @@ static checkIfCompleted(grid){
     
     }
     static renderMap(grid, row, col){
+
       switch (grid.grid[row][col]){
         case "W":
           grid.tiles[row][col].img= grid.wallImage;
