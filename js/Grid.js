@@ -68,6 +68,7 @@ export default {
     
     methods: {
       level1(){
+        this.usePowerup = false
         this.powerUpTaken = false
         this.moves = 0
         this.level = 1
