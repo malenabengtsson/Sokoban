@@ -68,6 +68,7 @@ export default {
     
     methods: {
       level1(){
+        this.powerUpTaken = false
         this.moves = 0
         this.level = 1
         this.nrOfGoals = 3
@@ -92,6 +93,7 @@ export default {
 
       },
       level2(){
+        this.powerUpTaken = false
         this.moves = 0
         this.level = 2
         this.powerUp = 'Strength'
@@ -117,6 +119,7 @@ export default {
         //this.render++;
       },
       level3(){
+        this.powerUpTaken = false
         this.moves = 0
         this.level = 3
         this.nrOfGoals = 4
@@ -139,6 +142,7 @@ export default {
         }
       },
       level4(){
+        this.powerUpTaken = false
         this.moves = 0
         this.level = 4
         this.nrOfGoals = 5
