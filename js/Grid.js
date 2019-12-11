@@ -65,7 +65,6 @@ export default {
     methods: {
       level1(){
         this.level = 1
-        this.remainingPowerups = 1
         this.powerUp = 'Strength'
         this.nrOfGoals = 3
         this.tiles = []
@@ -318,7 +317,9 @@ export default {
     power(){
       if(this.remainingPowerups > 0){
         this.usePowerup = true;
+        console.log('u r in the powerfunction')
       }
+     
     },
   
     resetLevel(){
@@ -338,6 +339,10 @@ export default {
 
     checkKey(e) {
 
+      if(![37,38,39,40,82].includes(e.keyCode)){
+        return
+      }
+
       e = e || window.event;
 
       for (let i = 0; i <this.tiles.length; i++){
@@ -351,8 +356,8 @@ export default {
   
       if (e.keyCode == '38') {
           // up arrow
-          movementUtils.moveUp(this.xValue, this.yValue-1, this)
-          
+          moveUp(this.xValue, this.yValue-1, this)
+          checkIfCompleted(this)
       }
       else if (e.keyCode == '40') {
           // down arrow
@@ -372,12 +377,9 @@ export default {
         // r key
         this.resetLevel()
      }
-      else {
-         
-          return
-      }
-      MapUtils.checkAndPlaceGoals(this)
-      MapUtils.checkIfCompleted(this)
+
+       checkAndPlaceGoals(this)
+       checkIfCompleted(this)
   
    }
   }
