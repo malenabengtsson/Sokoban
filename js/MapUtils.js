@@ -11,29 +11,29 @@ export default class MapUtils{
        }
        else if (grid.tiles[i][j].img == grid.stoneOnGoal){
         grid.nrStoneOnGoal++
-        console.log('one more stone in pos')
-        
        }
+       
        else if (grid.grid[i][j] == 'F' && grid.tiles[i][j].img != grid.finishImage){
          grid.tiles[i][j].img = grid.finishImage
          console.log('Set goal image')
     
        }
-       else if (grid.grid[i][j] == 'U' && grid.tiles[i][j].img == grid.playerImage){
-        console.log('u took the powerup')
-        grid.remainingPowerups = 1
+      
       }
+      if (grid.grid[i][j] == 'U' && grid.tiles[i][j].img == grid.playerImage){
+        if (grid.remainingPowerups > 0){
+          console.log('Do nothing')
+        }
+        else{
+        console.log('Remaining power ups: ' + grid.remainingPowerups)
+        grid.remainingPowerups++
      }
-       else{
-       }
-
        grid.flatTiles = grid.tiles.flat()
        
  }
 }
-}
-
-
+    }
+    }
 static checkIfCompleted(grid){
 
     console.log('Number of stones in right position: ' + grid.nrStoneOnGoal)
