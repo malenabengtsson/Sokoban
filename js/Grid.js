@@ -15,7 +15,7 @@ export default {
       <button type="button" @click="level2">Level 2</button>
       <button type="button" @click="level3">Level 3</button>
       <button type="button" @click="level4">Level 4</button>
-      <button type="button" @click="power">Powerup</button>
+      <button type="button" @click="power">Use your Powerup</button>
       </div>
       <div class="outside">
       <div class="grid-layout">
@@ -357,9 +357,8 @@ export default {
       if (e.keyCode == '38') {
           // up arrow
 
+
           movementUtils.moveUp(this.xValue, this.yValue-1, this)
-      
-          MapUtils.checkIfCompleted(this)
       }
       else if (e.keyCode == '40') {
           // down arrow

@@ -5,14 +5,22 @@ export default class MapUtils{
      for (let j = 0; j <grid.tiles[i].length; j++){
        if (grid.tiles[i][j].img != grid.playerImage){
 
+
        
         if (grid.tiles[i][j].img == grid.stoneOnGoal){
           grid.nrStoneOnGoal++
 
          }
          else if (grid.grid[i][j] == 'F' && grid.tiles[i][j].img == grid.stoneImage){
+
+       if (grid.grid[i][j] == 'F' && grid.tiles[i][j].img == grid.stoneImage){
          grid.tiles[i][j].img = grid.stoneOnGoal
          
+       }
+       else if (grid.tiles[i][j].img == grid.stoneOnGoal){
+        grid.nrStoneOnGoal++
+        console.log('one more stone in pos')
+        
        }
        else if (grid.grid[i][j] == 'F' && grid.tiles[i][j].img != grid.finishImage){
          grid.tiles[i][j].img = grid.finishImage
@@ -36,7 +44,10 @@ export default class MapUtils{
  }
 }
 }
+
+
 static checkIfCompleted(grid){
+
     console.log('Number of stones in right position: ' + grid.nrStoneOnGoal)
       // Check if all stones are on the goal-images
       if(grid.nrStoneOnGoal == grid.nrOfGoals){
