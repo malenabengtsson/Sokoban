@@ -37,7 +37,12 @@ static addPowerUp(grid){
       console.log(grid.powerUpTaken)
     grid.remainingPowerups++
     setTimeout(() => {
-      alert('You can now push two stones at once!\nPress Use your Powerup to use it!')
+      if(grid.powerUp == 'Strength'){
+        alert('You can now push two stones at once!\nPress Use your Powerup to use it!')
+        }
+        else {
+          alert('You can now bomb a wall!\nPress Use your Powerup to use it and click on a wall!')
+        }
     }, 10);
     grid.powerUpTaken = true
       
