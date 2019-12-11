@@ -68,7 +68,6 @@ export default {
     
     methods: {
       level1(){
-        this.usePowerup = false
         this.powerUpTaken = false
         this.remainingPowerups = 0
         this.moves = 0
@@ -78,48 +77,28 @@ export default {
         this.grid = []
         this.grid = levels[0]
 
-        for(let row = 0; row <this.gameBoard; row++){
-          this.tiles[row] = []
-          for(let col = 0; col <this.gameBoard; col++){
-            let position = {
-              x: col,
-              y: row,
-              img: '', 
-            }
-          
-            this.tiles[row].push(position)
-        MapUtils.renderMap(this, row, col)
+      
+        MapUtils.createAndRenderMap(this)
           
         
         console.log('Your powerup is: ' + this.powerUp)
         this.flatTiles = this.tiles.flat()
       }
-        }
-      },
+      ,
       level2(){
         this.powerUpTaken = false
         this.remainingPowerups = 0
         this.moves = 0
         this.level = 2
-        this.powerUp = 'Strength'
         this.nrOfGoals = 4
         this.tiles = []
         this.grid = []
         console.log(levels[1])
         this.grid = levels[1]
-        for(let row = 0; row <this.gameBoard; row++){
-          this.tiles[row] = []
-          for(let col = 0; col <this.gameBoard; col++){
-            let position = {
-              x: col,
-              y: row,
-              img: '',
-            }
-            this.tiles[row].push(position)
-            MapUtils.renderMap(this, row, col)
+       
+        MapUtils.createAndRenderMap(this)
            
-          }
-        }
+        
         this.flatTiles = this.tiles.flat()
         //this.render++;
       },
@@ -132,20 +111,12 @@ export default {
         this.tiles = []
         this.grid = []
         this.grid = levels[2]
-        for(let row = 0; row <this.gameBoard; row++){
-          this.tiles[row] = []
-          for(let col = 0; col <this.gameBoard; col++){
-            let position = {
-              x: col,
-              y: row,
-              img: '',
-            }
-            this.tiles[row].push(position)
-            
-            MapUtils.renderMap(this, row, col)
+        
+        MapUtils.createAndRenderMap(this)
+
             this.flatTiles = this.tiles.flat()
-          }
-        }
+          
+        
       },
       level4(){
         this.remainingPowerups = 0
@@ -157,21 +128,10 @@ export default {
         this.grid = []
         this.grid = levels[3]
         
-        for(let row = 0; row <this.gameBoard; row++){
-          this.tiles[row] = []
-          for(let col = 0; col <this.gameBoard; col++){
-            let position = {
-              x: col,
-              y: row,
-              img: '',
-            }
-            this.tiles[row].push(position)
-            
-            MapUtils.renderMap(this, row, col)
+        MapUtils.createAndRenderMap(this)
             this.flatTiles = this.tiles.flat()
-          }
-        }
-      },
+          },
+          
       movePlayerOnClick(x, y){
         this.xValue = x;
         this.yValue = y;
