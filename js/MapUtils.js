@@ -21,17 +21,19 @@ export default class MapUtils{
       
       }
       if (grid.grid[i][j] == 'U' && grid.tiles[i][j].img == grid.playerImage){
+        if (grid.remainingPowerups > 0){
+          console.log('Do nothing')
+        }
+        else{
         console.log('Remaining power ups: ' + grid.remainingPowerups)
         grid.remainingPowerups++
-        grid.grid[i][j] = ''
      }
        grid.flatTiles = grid.tiles.flat()
        
  }
 }
-}
-
-
+    }
+    }
 static checkIfCompleted(grid){
 
     console.log('Number of stones in right position: ' + grid.nrStoneOnGoal)
