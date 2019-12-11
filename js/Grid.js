@@ -74,8 +74,8 @@ export default {
           [' ', 'W', 'F', 'W', 'W', 'W', 'W', 'W', ' ', ' '],
           [' ', 'W', 'F', 'F', 'G', 'W', 'W', 'W', ' ', ' '],
           [' ', 'W', 'G', 'G', 'G', 'G', 'G', 'W', ' ', ' '],
-          [' ', 'W', 'G', 'G', 'G', 'G', 'G', 'W', ' ', ' '],
-          [' ', 'W', 'U', 'S', 'S', 'S', 'P', 'W', ' ', ' '],
+          [' ', 'W', 'G', 'G', 'S', 'G', 'G', 'W', ' ', ' '],
+          [' ', 'W', 'U', 'S', 'F', 'S', 'P', 'W', ' ', ' '],
           [' ', 'W', 'G', 'G', 'G', 'G', 'W', 'W', ' ', ' '],
           [' ', 'W', 'W', 'W', 'W', 'W', 'W', ' ', ' ', ' '],
           [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
@@ -123,7 +123,6 @@ export default {
       },
       level2(){
         this.level = 2
-        this.remainingPowerups = 1
         this.powerUp = 'Strength'
         this.nrOfGoals = 4
         this.tiles = []

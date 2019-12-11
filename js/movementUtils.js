@@ -5,6 +5,7 @@ export default class MovementUtils{
 
   }
 static moveRight(x,y, grid){
+  console.log(grid.usePowerup)
     if (grid.tiles[y][x].img != grid.wallImage && grid.tiles[y][x].img != grid.bgImage){
         //Checking if theres a stone and if it can be moved
         if (grid.powerUp == 'Strength' && grid.usePowerup == true){
@@ -24,7 +25,7 @@ static moveRight(x,y, grid){
             
             }
           }
-        }
+        
         else if
         (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y][x+1].img == grid.stoneOnGoal && grid.tiles[y][x+2].img != grid.wallImage){
           if (grid.tiles[y][x+2].img == grid.stoneImage){
@@ -74,6 +75,7 @@ static moveRight(x,y, grid){
     
             }
           }
+        }
         if ((grid.tiles[y][x].img == grid.stoneImage && grid.tiles[y][x+1].img == grid.stoneImage) ||
         (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y][x+1].img == grid.stoneOnGoal)||
         (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y][x+1].img == grid.stoneImage)||
@@ -109,6 +111,7 @@ static moveRight(x,y, grid){
     }, 10);
   }
 static moveLeft(x, y, grid){
+  console.log(grid.usePowerup)
   if (grid.tiles[y][x].img != grid.wallImage && grid.tiles[y][x].img != grid.bgImage){
 
     if (grid.powerUp == 'Strength' && grid.usePowerup == true){
@@ -128,7 +131,6 @@ static moveLeft(x, y, grid){
        
         }
       }
-    }
     else if
     (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y][x-1].img == grid.stoneOnGoal && grid.tiles[y][x-2].img != grid.wallImage){
       if (grid.tiles[y][x-2].img == grid.stoneImage){
@@ -177,6 +179,7 @@ static moveLeft(x, y, grid){
     
         }
     }
+  }
    //Checking if theres a stone and if it can be moved
    if ((grid.tiles[y][x].img == grid.stoneImage && grid.tiles[y][x-1].img == grid.stoneImage) ||
    (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y][x-1].img == grid.stoneImage)||
@@ -214,6 +217,7 @@ static moveLeft(x, y, grid){
   }, 10);
 }
 static moveDown(x,y, grid){
+  console.log(grid.usePowerup)
   if (grid.tiles[y][x].img != grid.wallImage && grid.tiles[y][x].img != grid.bgImage){
     if (grid.powerUp == 'Strength' && grid.usePowerup == true){
       console.log('Recognized power up')
@@ -231,7 +235,7 @@ static moveDown(x,y, grid){
         grid.usePowerup = false
         }
       }
-    }
+    
     else if
     (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y+1][x].img == grid.stoneOnGoal && grid.tiles[y+2][x].img != grid.wallImage){
       if (grid.tiles[y+2][x].img == grid.stoneImage){
@@ -281,6 +285,7 @@ static moveDown(x,y, grid){
       
         }
     }
+  }
    //Checking if theres a stone and if it can be 
    if ((grid.tiles[y][x].img == grid.stoneImage && grid.tiles[y+1][x].img == grid.stoneImage)||
    (grid.tiles[y][x].img == grid.stoneImage && grid.tiles[y+1][x].img == grid.stoneOnGoal)||
@@ -324,6 +329,7 @@ setTimeout(() => {
 }, 10);
 }
 static moveUp(x,y, grid){
+  console.log(grid.usePowerup)
   if (grid.tiles[y][x].img != grid.wallImage && grid.tiles[y][x].img != grid.bgImage){
     if (grid.powerUp == 'Strength' && grid.usePowerup == true){
       console.log('Recognized power up')
@@ -341,7 +347,7 @@ static moveUp(x,y, grid){
         grid.usePowerup = false
         }
       }
-    }
+    
     else if
     (grid.tiles[y][x].img == grid.stoneOnGoal && grid.tiles[y-1][x].img == grid.stoneOnGoal && grid.tiles[y-2][x].img != grid.wallImage){
       if (grid.tiles[y-2][x].img == grid.stoneImage){
@@ -389,6 +395,7 @@ static moveUp(x,y, grid){
         grid.usePowerup = false
         }
     }
+  }
    //Checking if theres a stone and if it can be moved
    if ((grid.tiles[y][x].img == grid.stoneImage && grid.tiles[y-1][x].img == grid.stoneImage)||
    (grid.tiles[y][x].img == grid.stoneImage && grid.tiles[y-1][x].img == grid.stoneOnGoal)||
