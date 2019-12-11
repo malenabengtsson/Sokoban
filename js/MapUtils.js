@@ -36,15 +36,14 @@ static addPowerUp(grid){
       console.log('Remaining power ups: ' + grid.remainingPowerups)
       console.log(grid.powerUpTaken)
     grid.remainingPowerups++
+    setTimeout(() => {
+      alert('You can now push two stones at once!\nPress Use your Powerup to use it!')
+    }, 10);
     grid.powerUpTaken = true
       
     }
     else{
-      console.log(grid.u)
-    /*setTimeout(() => {
-      alert('You can now push two stones at once!')
-    }, 10);*/
-    
+      console.log(grid.powerUpTaken)
  }
    grid.flatTiles = grid.tiles.flat()
    
