@@ -100,6 +100,11 @@ static moveRight(x,y, grid){
             grid.moves++
         }
     }
+
+    setTimeout(() => {
+      checkAndPlaceGoals(grid)
+      checkIfCompleted(grid)
+    }, 10);
   }
 static moveLeft(x, y, grid){
   if (grid.tiles[y][x].img != grid.wallImage && grid.tiles[y][x].img != grid.bgImage){
@@ -201,6 +206,10 @@ static moveLeft(x, y, grid){
     }
   }
   
+  setTimeout(() => {
+    checkAndPlaceGoals(grid)
+    checkIfCompleted(grid)
+  }, 10);
 }
 static moveDown(x,y, grid){
   if (grid.tiles[y][x].img != grid.wallImage && grid.tiles[y][x].img != grid.bgImage){
@@ -297,7 +306,7 @@ static moveDown(x,y, grid){
       //If theres no stone
       if(grid.tiles[y][x].img == grid.powerUpImage){
         console.log('u took the powerup')
-        grid.remainingPowerUps = 1
+        grid.remainingPowerUps++
       }
   grid.tiles[y][x].img = grid.playerImage;
   grid.tiles[y-1][x].img = grid.grassImage;
@@ -306,6 +315,11 @@ static moveDown(x,y, grid){
   
   }
 }
+
+setTimeout(() => {
+  checkAndPlaceGoals(grid)
+  checkIfCompleted(grid)
+}, 10);
 }
 static moveUp(x,y, grid){
   if (grid.tiles[y][x].img != grid.wallImage && grid.tiles[y][x].img != grid.bgImage){
@@ -404,6 +418,12 @@ static moveUp(x,y, grid){
  
     }
   }
+  
+  setTimeout(() => {
+    checkAndPlaceGoals(grid)
+    checkIfCompleted(grid)
+  }, 10);
+  
 }
 }
 
