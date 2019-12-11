@@ -11,17 +11,16 @@ export default {
             let y = this.position.y
             this.$emit('movePlayerOnClick', x, y)
         }
-    },
-    mounted() {
-     this.$refs.tile.style.setProperty('background-image', `url(${this.position.img})`)
-    },
-    watch:{
-        position:{
-          deep: true,
-          handler(val){
-            this.$refs.tile.style.setProperty('background-image', `url(${this.position.img})`)
-          }
+    },mounted() {
+      this.$refs.tile.style.setProperty('background-image', `url(${this.position.img})`)
+     },
+     watch:{
+      position:{
+        deep: true,
+        handler(val){
+          this.$refs.tile.style.setProperty('background-image', `url(${this.position.img})`)
         }
       }
+    }
 
 }
