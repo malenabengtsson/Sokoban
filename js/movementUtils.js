@@ -311,10 +311,7 @@ static moveDown(x,y, grid){
   
     else{
       //If theres no stone
-      if(grid.tiles[y][x].img == grid.powerUpImage){
-        console.log('u took the powerup')
-        grid.remainingPowerUps++
-      }
+
   grid.tiles[y][x].img = grid.playerImage;
   grid.tiles[y-1][x].img = grid.grassImage;
   console.log('Moved down')
