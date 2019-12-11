@@ -64,6 +64,7 @@ export default {
     
     methods: {
       level1(){
+        this.moves = 0
         this.level = 1
         this.powerUp = 'Strength'
         this.nrOfGoals = 3
@@ -122,6 +123,7 @@ export default {
 
       },
       level2(){
+        this.moves = 0
         this.level = 2
         this.remainingPowerups = 1
         this.powerUp = 'Strength'
@@ -176,6 +178,7 @@ export default {
         //this.render++;
       },
       level3(){
+        this.moves = 0
         this.level = 3
         this.nrOfGoals = 4
         this.tiles = []
@@ -224,6 +227,7 @@ export default {
         }
       },
       level4(){
+        this.moves = 0
         this.level = 4
         this.nrOfGoals = 5
         this.tiles = []
