@@ -1,5 +1,8 @@
 export default class MapUtils{
+  
+
   static checkAndPlaceGoals(grid){
+    
     //Loop to set goal-image when player is not on that tile
     for (let i = 0; i <grid.tiles.length; i++){
      for (let j = 0; j <grid.tiles[i].length; j++){
@@ -20,20 +23,35 @@ export default class MapUtils{
        }
       
       }
-      if (grid.grid[i][j] == 'U' && grid.tiles[i][j].img == grid.playerImage){
-        if (grid.remainingPowerups > 0){
-          console.log('Do nothing')
-        }
-        else{
-        console.log('Remaining power ups: ' + grid.remainingPowerups)
-        grid.remainingPowerups++
-     }
-       grid.flatTiles = grid.tiles.flat()
-       
- }
+     
 }
     }
     }
+
+static addPowerUp(grid){
+  for (let i = 0; i <grid.tiles.length; i++){
+    for (let j = 0; j <grid.tiles[i].length; j++){
+  if (grid.grid[i][j] == 'U' && grid.tiles[i][j].img == grid.playerImage){
+    if (grid.powerUpTaken == false){
+      console.log('Remaining power ups: ' + grid.remainingPowerups)
+      console.log(grid.powerUpTaken)
+    grid.remainingPowerups++
+    grid.powerUpTaken = true
+      
+    }
+    else{
+      console.log(grid.u)
+    /*setTimeout(() => {
+      alert('You can now push two stones at once!')
+    }, 10);*/
+    
+ }
+   grid.flatTiles = grid.tiles.flat()
+   
+}
+}
+  }}
+
 static checkIfCompleted(grid){
 
     console.log('Number of stones in right position: ' + grid.nrStoneOnGoal)
