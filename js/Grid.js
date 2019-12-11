@@ -55,7 +55,8 @@ export default {
       xValue: 0,
       yValue: 0,
       usePowerup: false,
-      powerUp: ''
+      powerUp: '',
+      powerUpTaken: false
       }
 
     },
@@ -349,7 +350,7 @@ export default {
       }
       MapUtils.checkAndPlaceGoals(this)
       MapUtils.checkIfCompleted(this)
-
+      MapUtils.addPowerUp(this)
   
    }
   }
