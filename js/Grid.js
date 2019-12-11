@@ -68,6 +68,7 @@ export default {
     
     methods: {
       level1(){
+        this.usePowerup = false
         this.powerUpTaken = false
         this.remainingPowerups = 0
         this.moves = 0
