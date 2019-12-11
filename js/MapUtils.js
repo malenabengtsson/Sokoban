@@ -1,4 +1,5 @@
-function checkAndPlaceGoals(grid){
+export default class MapUtils{
+  static checkAndPlaceGoals(grid){
     //Loop to set goal-image when player is not on that tile
     for (let i = 0; i <grid.tiles.length; i++){
      for (let j = 0; j <grid.tiles[i].length; j++){
@@ -29,12 +30,14 @@ function checkAndPlaceGoals(grid){
  }
 }
 }
-function checkIfCompleted(grid){
+static checkIfCompleted(grid){
     console.log('Number of stones in right position: ' + grid.nrStoneOnGoal)
       // Check if all stones are on the goal-images
       if(grid.nrStoneOnGoal == grid.nrOfGoals){
+
         console.log(`You cleared the stage with ${grid.moves} moves!`)
         if (confirm(`You completed the level with ${grid.moves} moves! Press OK to continue to the next level!`)) {
+
           if(grid.level == 1){
             grid.level2()
           }
@@ -54,4 +57,6 @@ function checkIfCompleted(grid){
       }
       grid.nrStoneOnGoal = 0
       grid.flatTiles = grid.tiles.flat()
+    
     }
+  }
