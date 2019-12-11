@@ -5,6 +5,7 @@ export default class MovementUtils{
 static moveRight(x,y, grid){
     if (grid.tiles[y][x].img != grid.wallImage && grid.tiles[y][x].img != grid.bgImage){
         //Checking if theres a stone and if it can be moved
+        console.log('Remianing pu: ' + grid.remainingPowerups)
         if (grid.powerUp == 'Strength' && grid.usePowerup == true){
           console.log('Recognized power up')
         if ((grid.tiles[y][x].img == grid.stoneImage && grid.tiles[y][x+1].img == grid.stoneImage && grid.tiles[y][x+2].img != grid.wallImage)){
@@ -19,6 +20,7 @@ static moveRight(x,y, grid){
             grid.tiles[y][x+2].img = grid.stoneImage
             grid.usePowerup = false
             grid.remainingPowerups--
+            
             
             }
           }
@@ -296,8 +298,7 @@ static moveDown(x,y, grid){
     else{
       //If theres no stone
       if(grid.tiles[y][x].img == grid.powerUpImage){
-        console.log('u took the powerup')
-        grid.remainingPowerUps = 1
+        grid.remainingPowerUps++
       }
   grid.tiles[y][x].img = grid.playerImage;
   grid.tiles[y-1][x].img = grid.grassImage;

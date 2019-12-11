@@ -5,10 +5,12 @@ export default class MapUtils{
      for (let j = 0; j <grid.tiles[i].length; j++){
        if (grid.tiles[i][j].img != grid.playerImage){
 
-       if (grid.tiles[i][j].img == grid.stoneOnGoal){
-        grid.nrStoneOnGoal++
-       }
-       else if (grid.grid[i][j] == 'F' && grid.tiles[i][j].img == grid.stoneImage){
+       
+        if (grid.tiles[i][j].img == grid.stoneOnGoal){
+          grid.nrStoneOnGoal++
+
+         }
+         else if (grid.grid[i][j] == 'F' && grid.tiles[i][j].img == grid.stoneImage){
          grid.tiles[i][j].img = grid.stoneOnGoal
          
        }
@@ -17,11 +19,15 @@ export default class MapUtils{
          console.log('Set goal image')
     
        }
-       else if (grid.grid[i][j] == 'U' && grid.tiles[i][j].img == grid.playerImage){
-        console.log('u took the powerup')
-        grid.remainingPowerups = 1
-      }
+       else{
+         console.log('Do nothing')
+       }
+      
      }
+     if (grid.grid[i][j] == 'U' && grid.tiles[i][j].img == grid.playerImage){
+      console.log('Powerups: ' + grid.remainingPowerups)
+      grid.remainingPowerups++
+    }
        else{
        }
 

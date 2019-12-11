@@ -74,7 +74,7 @@ export default {
           [' ', 'W', 'F', 'W', 'W', 'W', 'W', 'W', ' ', ' '],
           [' ', 'W', 'F', 'F', 'G', 'W', 'W', 'W', ' ', ' '],
           [' ', 'W', 'G', 'G', 'G', 'G', 'G', 'W', ' ', ' '],
-          [' ', 'W', 'G', 'G', 'G', 'G', 'G', 'W', ' ', ' '],
+          [' ', 'W', 'U', 'G', 'G', 'G', 'G', 'W', ' ', ' '],
           [' ', 'W', 'U', 'S', 'S', 'S', 'P', 'W', ' ', ' '],
           [' ', 'W', 'G', 'G', 'G', 'G', 'W', 'W', ' ', ' '],
           [' ', 'W', 'W', 'W', 'W', 'W', 'W', ' ', ' ', ' '],
@@ -359,7 +359,7 @@ export default {
 
           movementUtils.moveUp(this.xValue, this.yValue-1, this)
       
-          checkIfCompleted(this)
+          MapUtils.checkIfCompleted(this)
       }
       else if (e.keyCode == '40') {
           // down arrow
@@ -379,11 +379,6 @@ export default {
         // r key
         this.resetLevel()
      }
-
-      else {
-         
-          return
-      }
       MapUtils.checkAndPlaceGoals(this)
       MapUtils.checkIfCompleted(this)
 
