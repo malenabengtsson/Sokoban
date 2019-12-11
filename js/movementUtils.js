@@ -1,3 +1,5 @@
+import MapUtils from './MapUtils.js'
+
 export default class MovementUtils{
   constructor(){
 
@@ -102,8 +104,8 @@ static moveRight(x,y, grid){
     }
 
     setTimeout(() => {
-      checkAndPlaceGoals(grid)
-      checkIfCompleted(grid)
+      MapUtils.checkAndPlaceGoals(grid)
+      MapUtils.checkIfCompleted(grid)
     }, 10);
   }
 static moveLeft(x, y, grid){
@@ -207,8 +209,8 @@ static moveLeft(x, y, grid){
   }
   
   setTimeout(() => {
-    checkAndPlaceGoals(grid)
-    checkIfCompleted(grid)
+    MapUtils.checkAndPlaceGoals(grid)
+    MapUtils.checkIfCompleted(grid)
   }, 10);
 }
 static moveDown(x,y, grid){
@@ -317,8 +319,8 @@ static moveDown(x,y, grid){
 }
 
 setTimeout(() => {
-  checkAndPlaceGoals(grid)
-  checkIfCompleted(grid)
+  MapUtils.checkAndPlaceGoals(grid)
+  MapUtils.checkIfCompleted(grid)
 }, 10);
 }
 static moveUp(x,y, grid){
@@ -420,8 +422,8 @@ static moveUp(x,y, grid){
   }
   
   setTimeout(() => {
-    checkAndPlaceGoals(grid)
-    checkIfCompleted(grid)
+    MapUtils.checkAndPlaceGoals(grid)
+    MapUtils.checkIfCompleted(grid)
   }, 10);
   
 }
