@@ -5,7 +5,7 @@ function checkAndPlaceGoals(grid){
        if (grid.tiles[i][j].img != grid.playerImage){
 
        if (grid.tiles[i][j].img == grid.stoneOnGoal){
-           grid.nrStoneOnGoal++
+        grid.nrStoneOnGoal++
        }
        else if (grid.grid[i][j] == 'F' && grid.tiles[i][j].img == grid.stoneImage){
          grid.tiles[i][j].img = grid.stoneOnGoal
@@ -14,7 +14,12 @@ function checkAndPlaceGoals(grid){
        else if (grid.grid[i][j] == 'F' && grid.tiles[i][j].img != grid.finishImage){
          grid.tiles[i][j].img = grid.finishImage
          console.log('Set goal image')
+    
        }
+       else if (grid.grid[i][j] == 'U' && grid.tiles[i][j].img == grid.playerImage){
+        console.log('u took the powerup')
+        grid.remainingPowerups = 1
+      }
      }
        else{
        }
@@ -29,7 +34,7 @@ function checkIfCompleted(grid){
       // Check if all stones are on the goal-images
       if(grid.nrStoneOnGoal == grid.nrOfGoals){
         console.log(`You cleared the stage with ${grid.moves} moves!`)
-        if (confirm('Press OK to continue to next level')) {
+        if (confirm(`You completed the level with ${grid.moves} moves! Press OK to continue to the next level!`)) {
           if(grid.level == 1){
             grid.level2()
           }
@@ -40,6 +45,7 @@ function checkIfCompleted(grid){
             grid.level4()
           }
           else if(grid.level == 4){
+            alert('You completed the game! Good job!')
             grid.reset()
           }
         } else {
