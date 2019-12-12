@@ -38,7 +38,6 @@ export default {
         grid: [],
         flatTiles: [],
         gameBoard: 10,
-      backgroundImage: '#673AB7',
       wallImage: 'css/img/wall.jpg',
       stoneImage: 'css/img/stone.png',
       playerImage: 'css/img/player.png',
