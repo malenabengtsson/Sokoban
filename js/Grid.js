@@ -12,7 +12,7 @@ export default {
     <div id="map">
     <label for="level">Choose which level to play!</label>
     <div class="level">
-    <button style="button" id="reset" @click="resetLevel">Reset</button>
+    <button style="button" id="reset" @click="resetLevel">Reset (R)</button>
       <button type="button" @click="level1">Level 1</button>
       <button type="button" @click="level2">Level 2</button>
       <button type="button" @click="level3">Level 3</button>
@@ -64,6 +64,7 @@ export default {
     
     created() {
       window.onkeydown = this.checkKey
+  
     },
     
     methods: {
@@ -178,7 +179,9 @@ export default {
     power(){
       if(this.remainingPowerups > 0){
         this.usePowerup = true;
-        console.log('u r in the powerfunction')
+      }
+      else{
+        alert('You dont have any powerups.')
       }
      
     },
