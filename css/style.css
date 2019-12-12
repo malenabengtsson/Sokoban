@@ -43,6 +43,13 @@ body{
 
 }
 
+.information{
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  
+}
+
 label{
   display: flex;
   justify-content: center;
