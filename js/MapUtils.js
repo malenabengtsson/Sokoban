@@ -86,7 +86,18 @@ static checkIfCompleted(grid){
       grid.flatTiles = grid.tiles.flat()
     
     }
-    static renderMap(grid, row, col){
+    static createAndRenderMap(grid){
+      
+      for(let row = 0; row <grid.gameBoard; row++){
+        grid.tiles[row] = []
+        for(let col = 0; col <grid.gameBoard; col++){
+          let position = {
+            x: col,
+            y: row,
+            img: '', 
+          }
+        
+          grid.tiles[row].push(position)
 
       switch (grid.grid[row][col]){
         case "W":
@@ -120,3 +131,5 @@ static checkIfCompleted(grid){
       }
     }
   }
+}
+}
