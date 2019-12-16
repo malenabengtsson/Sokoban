@@ -3994,8 +3994,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFu9Orbg4kIW3U="
 							},
-							"name": "tiles[]",
-							"type": ""
+							"name": "tiles[]"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -4003,8 +4002,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFu9Orbg4kIW3U="
 							},
-							"name": "grid[]",
-							"type": ""
+							"name": "grid[]"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -4012,8 +4010,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFu9Orbg4kIW3U="
 							},
-							"name": "gameboard",
-							"type": ""
+							"name": "gameboard"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -4021,8 +4018,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFu9Orbg4kIW3U="
 							},
-							"name": "wallImage",
-							"type": ""
+							"name": "wallImage"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -4030,8 +4026,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFu9Orbg4kIW3U="
 							},
-							"name": "stoneImage",
-							"type": ""
+							"name": "stoneImage"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -4039,8 +4034,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFu9Orbg4kIW3U="
 							},
-							"name": "playerImage",
-							"type": ""
+							"name": "playerImage"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -4048,8 +4042,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFu9Orbg4kIW3U="
 							},
-							"name": "finishImage",
-							"type": ""
+							"name": "finishImage"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -4057,8 +4050,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFu9Orbg4kIW3U="
 							},
-							"name": "grassImage",
-							"type": ""
+							"name": "grassImage"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -4066,8 +4058,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFu9Orbg4kIW3U="
 							},
-							"name": "stoneOnGoal",
-							"type": ""
+							"name": "stoneOnGoal"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -4075,8 +4066,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFu9Orbg4kIW3U="
 							},
-							"name": "bgImage",
-							"type": ""
+							"name": "bgImage"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -4084,8 +4074,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFu9Orbg4kIW3U="
 							},
-							"name": "powerUpImage",
-							"type": ""
+							"name": "powerUpImage"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -4093,8 +4082,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFu9Orbg4kIW3U="
 							},
-							"name": "nrStoneOnGoal",
-							"type": ""
+							"name": "nrStoneOnGoal"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -4102,8 +4090,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFu9Orbg4kIW3U="
 							},
-							"name": "nrOfGoals",
-							"type": ""
+							"name": "nrOfGoals"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -4111,8 +4098,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFu9Orbg4kIW3U="
 							},
-							"name": "moves",
-							"type": ""
+							"name": "moves"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -4120,8 +4106,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFu9Orbg4kIW3U="
 							},
-							"name": "remainingPowerups",
-							"type": ""
+							"name": "remainingPowerups"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -4129,8 +4114,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFu9Orbg4kIW3U="
 							},
-							"name": "level",
-							"type": ""
+							"name": "level"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -4138,8 +4122,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFu9Orbg4kIW3U="
 							},
-							"name": "xValue",
-							"type": ""
+							"name": "xValue"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -4147,8 +4130,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFu9Orbg4kIW3U="
 							},
-							"name": "yValue",
-							"type": ""
+							"name": "yValue"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -4156,8 +4138,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFu9Orbg4kIW3U="
 							},
-							"name": "usePowerup",
-							"type": ""
+							"name": "usePowerup"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -4165,8 +4146,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFu9Orbg4kIW3U="
 							},
-							"name": "powerUp",
-							"type": ""
+							"name": "powerUp"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -4174,8 +4154,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFu9Orbg4kIW3U="
 							},
-							"name": "powerUpTaken",
-							"type": ""
+							"name": "powerUpTaken"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -4183,8 +4162,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFu9Orbg4kIW3U="
 							},
-							"name": "number",
-							"type": ""
+							"name": "number"
 						}
 					],
 					"operations": [
