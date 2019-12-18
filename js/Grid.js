@@ -79,9 +79,7 @@ export default {
 
       
         MapUtils.createAndRenderMap(this)
-          
-        
-        console.log('Your powerup is: ' + this.powerUp)
+
         this.flatTiles = this.tiles.flat()
       }
       ,
@@ -93,7 +91,6 @@ export default {
         this.nrOfGoals = 4
         this.tiles = []
         this.grid = []
-        console.log(levels[1])
         this.grid = levels[1]
        
         MapUtils.createAndRenderMap(this)
@@ -143,12 +140,6 @@ export default {
           this.usePowerup = false;
           return
           }
-        else if(this.powerUp == 'Strength'){
-            console.log('Super strong')
-          }
-        }
-        else{
-          console.log("nothing")
         }
           //Moving right
           if(this.playerImage == this.tiles[y][x-1].img){
