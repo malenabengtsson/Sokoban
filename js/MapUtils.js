@@ -18,8 +18,6 @@ export default class MapUtils{
        
        else if (grid.grid[i][j] == 'F' && grid.tiles[i][j].img != grid.finishImage){
          grid.tiles[i][j].img = grid.finishImage
-         console.log('Set goal image')
-    
        }
       
       }
@@ -33,8 +31,6 @@ static addPowerUp(grid){
     for (let j = 0; j <grid.tiles[i].length; j++){
   if (grid.grid[i][j] == 'U' && grid.tiles[i][j].img == grid.playerImage){
     if (grid.powerUpTaken == false){
-      console.log('Remaining power ups: ' + grid.remainingPowerups)
-      console.log(grid.powerUpTaken)
     grid.remainingPowerups++
     setTimeout(() => {
       if(grid.powerUp == 'Strength'){
@@ -48,7 +44,6 @@ static addPowerUp(grid){
       
     }
     else{
-      console.log(grid.powerUpTaken)
  }
    grid.flatTiles = grid.tiles.flat()
    
@@ -57,12 +52,8 @@ static addPowerUp(grid){
   }}
 
 static checkIfCompleted(grid){
-
-    console.log('Number of stones in right position: ' + grid.nrStoneOnGoal)
       // Check if all stones are on the goal-images
       if(grid.nrStoneOnGoal == grid.nrOfGoals){
-
-        console.log(`You cleared the stage with ${grid.moves} moves!`)
         if (confirm(`You completed the level with ${grid.moves} moves! Press OK to continue to the next level!`)) {
 
           if(grid.level == 1){

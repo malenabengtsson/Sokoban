@@ -6,7 +6,6 @@ export default {
     `,
     methods: {
         logPosition() {
-            console.log(this.position.x, this.position.y)
             let x = this.position.x
             let y = this.position.y
             this.$emit('movePlayerOnClick', x, y)

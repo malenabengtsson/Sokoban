@@ -5,7 +5,7 @@ export default class MovementUtils{
 
   }
 static moveRight(x,y, grid){
-  console.log(grid.usePowerup)
+
     if (grid.tiles[y][x].img != grid.wallImage && grid.tiles[y][x].img != grid.bgImage){
         //Checking if theres a stone and if it can be moved
         if (grid.powerUp == 'Strength' && grid.usePowerup == true){
@@ -113,7 +113,6 @@ static moveRight(x,y, grid){
     }, 10);
   }
 static moveLeft(x, y, grid){
-  console.log(grid.usePowerup)
   if (grid.tiles[y][x].img != grid.wallImage && grid.tiles[y][x].img != grid.bgImage){
 
     if (grid.powerUp == 'Strength' && grid.usePowerup == true){
@@ -221,7 +220,6 @@ static moveLeft(x, y, grid){
   }, 10);
 }
 static moveDown(x,y, grid){
-  console.log(grid.usePowerup)
   if (grid.tiles[y][x].img != grid.wallImage && grid.tiles[y][x].img != grid.bgImage){
     if (grid.powerUp == 'Strength' && grid.usePowerup == true){
       console.log('Recognized power up')
@@ -332,7 +330,6 @@ setTimeout(() => {
 }, 10);
 }
 static moveUp(x,y, grid){
-  console.log(grid.usePowerup)
   if (grid.tiles[y][x].img != grid.wallImage && grid.tiles[y][x].img != grid.bgImage){
     if (grid.powerUp == 'Strength' && grid.usePowerup == true){
       console.log('Recognized power up')
